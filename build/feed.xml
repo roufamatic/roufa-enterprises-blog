@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Roufa Enterprises, Inc.</title>
+    <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://localhost:8080</link>
+    <description>Making Beautiful Things Work</description>
+    <pubDate>Mon, 07 Oct 2013 17:00:00 -0700</pubDate>
+    <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
+    <language>en</language>
+    <item>
+      <title>A few thoughts on Firebase</title>
+      <link>http://localhost:8080/articles/a-few-thoughts-on-firebase/</link>
+      <pubDate>Mon, 07 Oct 2013 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/a-few-thoughts-on-firebase/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;a href=&quot;http://www.firebase.com/&quot;&gt;Firebase&lt;/a&gt; is a beautiful thing. Real-time updates? AngularJS bindings? No need for a database of your own? It‘s a compelling offering. When it comes to actually using it, though… it’s complicated.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;I‘m building a JavaScript version of the old “dots and lines” game, just for fun. Players take turns choosing line segments on a grid of dots, and when one completes a box (four line segments) he/she gets a point and another turn. My original plan was to try to build this with Firebase. Right off the bat, FireBase packages up much of what I want from my game’s backend: a place to store moves, real-time updates when moves happen, and the ability to distinguish between users via authorization.&lt;/p&gt;
+&lt;p&gt;I hit my first snag when I started to think about security. In a traditional client/server game model, the server maintains a representation of the entire game and acts as the authority on whether any given move is legal. If somebody attempts to cheat by playing a move out of turn, the server can easily detect and prevent it.&lt;/p&gt;
+&lt;p&gt;Firebase, on the other hand, was designed as a promiscuous database in the cloud. Secrecy in Firebase is managed by writing “security rules” in the “Forge” (their dashboard). In their security model, you must pre-define what areas of your data tree are available to each user. Considering that its main selling point is persisting arbitrary JSON objects, having to spend time on their server defining security rules has a definite “bolted-on” feel.&lt;/p&gt;
+&lt;p&gt;Validation on their platform requires a lot of planning ahead. In my case, I first tried to tackle the idea of each player having to take turns. There are a few ways to do this in Firebase, but the easiest is to disallow a write to a particular node if the last write was by the same user. Simple enough.&lt;/p&gt;
+&lt;p&gt;Then came the case where completing a box would give the current user another turn. At this point, Firebase lost its appeal. The solution is to give Firebase a representation of the entire game, just as I&amp;#39;d want in a server-side solution. But… how? How complicated would the validation logic be? &lt;/p&gt;
+&lt;p&gt;I&amp;#39;m not saying there is no solution to the problem that would use Firebase exclusively. There may well be. What I am saying is that, within a few hours, I realized that any solution would be an order of magnitude more difficult than having my own server perform the same task. And at that point… why not host my own database?&lt;/p&gt;
+</description>
+    </item>
+    <item>
+      <title>FlywayDB -- super-simple forward-only raw SQL database migrations for Java</title>
+      <link>http://localhost:8080/articles/flywaydb-super-simple-migrations/</link>
+      <pubDate>Sun, 11  Aug 2013 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/flywaydb-super-simple-migrations/</guid>
+      <author></author>
+      <description>&lt;p&gt;For a recent green-field Java project, I chose &lt;a href=&quot;http://flywaydb.org/&quot;&gt;Flyway&lt;/a&gt; to manage all our database scripts. This library is a gem&lt;a name=&quot;1up&quot;&gt;&lt;/a&gt;&lt;sup&gt;&lt;a href=&quot;http://localhost:8080/articles/flywaydb-super-simple-migrations/#1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, and I highly recommend it for anybody building or maintaining relational databases in Java.&lt;/p&gt;
+&lt;p&gt;It‘s not for every project, of course. Before you commit to using it, you’ll need to be sure yours can adhere to the following guidelines:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;You are only planning to support a single database engine (e.g. MySQL, Postgresql, SQL Server).&lt;/li&gt;
+&lt;li&gt;You are comfortable writing and maintaining raw SQL files for said engine.&lt;/li&gt;
+&lt;li&gt;You are comfortable with a forward-only migration plan and do not need rollback capabilities.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Point #3 is one that FlywayDB enforces simply by exclusion — there is no “down” pattern to follow a la Rails Migrations. I‘ve spent many hours maintaining “down” scripts, and in the few instances where I’ve attempted to use them, they&amp;#39;ve invariably run into problems in the field. For example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Newly inserted data cannot be removed due to a forgotten foreign key constraint (my fault, but an easy mistake to make)&lt;/li&gt;
+&lt;li&gt;Reverted data structures require more thought than automation can accomplish (e.g. you went from a 1:1 relationship to 1:M, and reverting means having to choose to delete user data that could now be important)&lt;/li&gt;
+&lt;li&gt;Sometimes when you go forward you drop tables or columns. There&amp;#39;s no good way to reconstruct them!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Furthermore, old “down” migration code rapidly becomes cruft as newer migrations are added. When your project is a year old, do you really plan to revert back to a database schema from 6 months ago? I&amp;#39;m fine knowing that if I need to revert something, I do so by going forward.&lt;/p&gt;
+&lt;p&gt;Like much modern software, Flyway is very opinionated and prefers convention over configuration. You name your files like &lt;code&gt;VX_Y__DescriptiveName.sql&lt;/code&gt; (where X &amp;amp; Y are major and minor version numbers) and place them in &lt;code&gt;/src/main/resources/db/migration&lt;/code&gt;. Make sure each new file is in ascending order and Flyway takes care of the rest.  When you need to customize the configuration, Flyway is there for you as well. In our case we had some servers running postgresql 8, while our production platform was postgresql 9. That led to some script incompatibilities. We resolved that by adding a separate folder for pg9-specific migrations, then configuring each server to run migrations from their own set of folders.&lt;/p&gt;
+&lt;p&gt;Finally, for actually executing the migrations themselves you have several choices. You can run them via a command-line tool, Gradle or Maven plugin, Ant Task, or take the easy road (as we did) and embed it into your application itself via Spring. The scripts are run within a single transaction, so even if you have a pool of servers attempting to execute the code only one machine will actually succeed at committing. A table called &lt;code&gt;SCHEMA_MIGRATION&lt;/code&gt; will be added to your database, which FlywayDB will use to ensure only needed migrations are run.&lt;/p&gt;
+&lt;p&gt;It&amp;#39;s rare to find a component that does its job so well you rarely even think about it. Flyway fits that description. Give it a try!&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a name=&quot;1&quot; href=&quot;#1up&quot;&gt;1.&lt;/a&gt; Not a ruby gem, just a real world gem. Like a ruby. No wait.&lt;/small&gt;&lt;/p&gt;
+</description>
+    </item>
+    <item>
+      <title>Morse Code Decoder Bookmarklet</title>
+      <link>http://localhost:8080/articles/morse-code-decryptor-bookmarklet/</link>
+      <pubDate>Mon, 29 Jul 2013 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/morse-code-decryptor-bookmarklet/</guid>
+      <author></author>
+      <description>&lt;p&gt;Ever been to a web page where a clever person has left you some morse code? And you have to go to some other website to decrypt it for you? How pass&amp;eacute;! &lt;/p&gt;
+&lt;p&gt;Instead, try this useful bookmarklet!&lt;/p&gt;
+&lt;hr&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;// &lt;![CDATA[
+function selectText(containerid) {
+        if (document.selection) {
+            var range = document.body.createTextRange();
+            range.moveToElementText(document.getElementById(containerid));
+            range.select();
+        } else if (window.getSelection) {
+            var range = document.createRange();
+            range.selectNode(document.getElementById(containerid));
+            window.getSelection().addRange(range);
+        }
+    }
+// ]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Drag this to your bookmarks bar: &lt;a href=&quot;javascript:(function(){var DIT='.';var DAH='-';var dits=['.','&amp;middot;'];var dahs=['_','-','=','&amp;ndash;'];var charCodes=new Array(36);charCodes['.-']='A';charCodes['-...']='B';charCodes['-.-.']='C';charCodes['-..']='D';charCodes['.']='E';charCodes['..-.']='F';charCodes['--.']='G';charCodes['....']='H';charCodes['..']='I';charCodes['.---']='J';charCodes['-.-']='K';charCodes['.-..']='L';charCodes['--']='M';charCodes['-.']='N';charCodes['---']='O';charCodes['.--.']='P';charCodes['--.-']='Q';charCodes['.-.']='R';charCodes['...']='S';charCodes['-']='T';charCodes['..-']='U';charCodes['...-']='V';charCodes['.--']='W';charCodes['-..-']='X';charCodes['-.--']='Y';charCodes['--..']='Z';charCodes['.----']='1';charCodes['..---']='2';charCodes['...--']='3';charCodes['....-']='4';charCodes['.....']='5';charCodes['-....']='6';charCodes['--...']='7';charCodes['---..']='8';charCodes['----.']='9';charCodes['-----']='0';charCodes['.-.-.-']='.';charCodes['--..--']=',';charCodes['..--..']='?';charCodes['-....-']='-';charCodes['-...-']='=';charCodes['---...']=':';charCodes['-.-.-.']=';';charCodes['-.--.']='(';charCodes['-.--.-']=')';charCodes['-..-.']='/';charCodes['.-..-.']='\'\'';charCodes['...-..-']='$';charCodes['.----.']='\'';charCodes['.-.-..']='\n';charCodes['..--.-']='_';charCodes['.--.-.']='@';charCodes['---.']='!';charCodes['-.-.--']='!';charCodes['.-.-.']='+';charCodes['.-...']='~';charCodes['...-.-']='#';charCodes['. ...']='&amp;amp;';charCodes['-..-.']='/';var decrypt=function(){var txt=clean(getSelectionText());var decrypted='';var i=0;var curSeq='';var phrase='';while(i&amp;lt;txt.length){var curChar=txt[i];if(curChar===DIT||curChar===DAH){curSeq+=curChar;}else{if(charCodes[curSeq])phrase+=charCodes[curSeq];else if(phrase.length&amp;amp;&amp;amp;phrase[phrase.length-1]!==' ')phrase+=' ';curSeq='';}i++;}if(charCodes[curSeq])phrase+=charCodes[curSeq];alert(phrase);};var clean=function(txt){var output=txt;var reDits=new RegExp('[\\'+dits.join('\\')+']','g');var reDahs=new RegExp('[\\'+dahs.join('\\')+']','g');var reNada=new RegExp('[^\\'+dits.join('\\')+dahs.join('\\')+']','g');output=output.replace(/^\s*/,'').replace(/\s*$/,'');output=output.replace(reDits,DIT);output=output.replace(reDahs,DAH);output=output.replace(reNada,' ');return output;};var getSelectionText=function(){var text='';if(typeof window.getSelection!='undefined'){var sel=window.getSelection();if(sel.rangeCount){var container=document.createElement('div');for(var i=0,len=sel.rangeCount;i&amp;lt;len;++i){container.appendChild(sel.getRangeAt(i).cloneContents());}text=container.innerText;}}else if(typeof document.selection!='undefined'){if(document.selection.type=='Text'){text=document.selection.createRange().text;}}return text;};decrypt();})();&quot;&gt;Decrypt Morse Code&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Then, &lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;(function(){selectText('sample');})()&quot;&gt;select some text&lt;/a&gt; and click on the bookmark.&lt;/p&gt;
+&lt;pre id=&quot;sample&quot;&gt;
+- .... .- - .----. ... / .- -... --- ..- - /
+- .... . / .-.. --- -. --. / .- -. -.. /
+... .... --- .-. - / --- ..-. /
+.. - ---. .-.-.. .-.-.. .- -. --- - .... . .-. /
+.... .- -. -.. -.-- / - --- --- .-.. /
+..-. .-. --- -- / .-. --- ..- ..-. .- /
+. -. - . .-. .--. .-. .. ... . ... .-.-.-
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/roufamatic/MorseDecryptorBookmarklet&quot;&gt;MorseDecryptorBookmarklet on GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+  </channel>
+</rss>

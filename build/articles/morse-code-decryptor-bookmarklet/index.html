@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Morse Code Decoder Bookmarklet - Roufa Enterprises, Inc.
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="Making Beautiful Things Work">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body class="article-detail">
+    <header class="header">
+      <div class="content-wrap">
+        <h1>Morse Code Decoder Bookmarklet</h1>
+        <p class="author">Written by <span class="author">Michael Roufa</span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><p>Ever been to a web page where a clever person has left you some morse code? And you have to go to some other website to decrypt it for you? How&nbsp;pass&eacute;! </p>
+<p>Instead, try this useful&nbsp;bookmarklet!</p>
+<hr>
+<script type="text/javascript">// <![CDATA[
+function selectText(containerid) {
+        if (document.selection) {
+            var range = document.body.createTextRange();
+            range.moveToElementText(document.getElementById(containerid));
+            range.select();
+        } else if (window.getSelection) {
+            var range = document.createRange();
+            range.selectNode(document.getElementById(containerid));
+            window.getSelection().addRange(range);
+        }
+    }
+// ]]></script>
+
+<p>Drag this to your bookmarks bar: <a href="javascript:(function(){var DIT='.';var DAH='-';var dits=['.','&middot;'];var dahs=['_','-','=','&ndash;'];var charCodes=new Array(36);charCodes['.-']='A';charCodes['-...']='B';charCodes['-.-.']='C';charCodes['-..']='D';charCodes['.']='E';charCodes['..-.']='F';charCodes['--.']='G';charCodes['....']='H';charCodes['..']='I';charCodes['.---']='J';charCodes['-.-']='K';charCodes['.-..']='L';charCodes['--']='M';charCodes['-.']='N';charCodes['---']='O';charCodes['.--.']='P';charCodes['--.-']='Q';charCodes['.-.']='R';charCodes['...']='S';charCodes['-']='T';charCodes['..-']='U';charCodes['...-']='V';charCodes['.--']='W';charCodes['-..-']='X';charCodes['-.--']='Y';charCodes['--..']='Z';charCodes['.----']='1';charCodes['..---']='2';charCodes['...--']='3';charCodes['....-']='4';charCodes['.....']='5';charCodes['-....']='6';charCodes['--...']='7';charCodes['---..']='8';charCodes['----.']='9';charCodes['-----']='0';charCodes['.-.-.-']='.';charCodes['--..--']=',';charCodes['..--..']='?';charCodes['-....-']='-';charCodes['-...-']='=';charCodes['---...']=':';charCodes['-.-.-.']=';';charCodes['-.--.']='(';charCodes['-.--.-']=')';charCodes['-..-.']='/';charCodes['.-..-.']='\'\'';charCodes['...-..-']='$';charCodes['.----.']='\'';charCodes['.-.-..']='\n';charCodes['..--.-']='_';charCodes['.--.-.']='@';charCodes['---.']='!';charCodes['-.-.--']='!';charCodes['.-.-.']='+';charCodes['.-...']='~';charCodes['...-.-']='#';charCodes['. ...']='&amp;';charCodes['-..-.']='/';var decrypt=function(){var txt=clean(getSelectionText());var decrypted='';var i=0;var curSeq='';var phrase='';while(i&lt;txt.length){var curChar=txt[i];if(curChar===DIT||curChar===DAH){curSeq+=curChar;}else{if(charCodes[curSeq])phrase+=charCodes[curSeq];else if(phrase.length&amp;&amp;phrase[phrase.length-1]!==' ')phrase+=' ';curSeq='';}i++;}if(charCodes[curSeq])phrase+=charCodes[curSeq];alert(phrase);};var clean=function(txt){var output=txt;var reDits=new RegExp('[\\'+dits.join('\\')+']','g');var reDahs=new RegExp('[\\'+dahs.join('\\')+']','g');var reNada=new RegExp('[^\\'+dits.join('\\')+dahs.join('\\')+']','g');output=output.replace(/^\s*/,'').replace(/\s*$/,'');output=output.replace(reDits,DIT);output=output.replace(reDahs,DAH);output=output.replace(reNada,' ');return output;};var getSelectionText=function(){var text='';if(typeof window.getSelection!='undefined'){var sel=window.getSelection();if(sel.rangeCount){var container=document.createElement('div');for(var i=0,len=sel.rangeCount;i&lt;len;++i){container.appendChild(sel.getRangeAt(i).cloneContents());}text=container.innerText;}}else if(typeof document.selection!='undefined'){if(document.selection.type=='Text'){text=document.selection.createRange().text;}}return text;};decrypt();})();">Decrypt Morse&nbsp;Code</a></p>
+<p>Then, <a href="javascript:void(0)" onclick="(function(){selectText('sample');})()">select some text</a> and click on the&nbsp;bookmark.</p>
+<pre id="sample">
+- .... .- - .----. ... / .- -... --- ..- - /
+- .... . / .-.. --- -. --. / .- -. -.. /
+... .... --- .-. - / --- ..-. /
+.. - ---. .-.-.. .-.-.. .- -. --- - .... . .-. /
+.... .- -. -.. -.-- / - --- --- .-.. /
+..-. .-. --- -- / .-. --- ..- ..-. .- /
+. -. - . .-. .--. .-. .. ... . ... .-.-.-
+</pre>
+
+<p><a href="https://github.com/roufamatic/MorseDecryptorBookmarklet">MorseDecryptorBookmarklet on&nbsp;GitHub</a></p>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">« Full blog</a></div>
+        <section class="about"><p>Hi, I&#39;m Michael Roufa.</p>
+<p>I‘ve spent the last 15 years working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I’m perfectly happy with Java, PHP, Javascript, MySQL, Postgres, Oracle… but I prefer the Microsoft stack.</p>
+<p><a href="http://stackoverflow.com/users/197860/roufamatic">StackOverflow</a> | <a href="https://github.com/roufamatic">GitHub</a> | <a href="mailto:mike@roufa.com">Email</a></p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2013 Michael Roufa &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>

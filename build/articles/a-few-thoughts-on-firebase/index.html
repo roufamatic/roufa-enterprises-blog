@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>A few thoughts on Firebase - Roufa Enterprises, Inc.
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="Making Beautiful Things Work">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body class="article-detail">
+    <header class="header">
+      <div class="content-wrap">
+        <h1>A few thoughts on Firebase</h1>
+        <p class="author">Written by <span class="author">Michael Roufa</span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><p><a href="http://www.firebase.com/">Firebase</a> is a beautiful thing. Real-time updates? AngularJS bindings? No need for a database of your own? It‘s a compelling offering. When it comes to actually using it, though… it’s&nbsp;complicated.</p>
+<hr>
+<p>I‘m building a JavaScript version of the old “dots and lines” game, just for fun. Players take turns choosing line segments on a grid of dots, and when one completes a box (four line segments) he/she gets a point and another turn. My original plan was to try to build this with Firebase. Right off the bat, FireBase packages up much of what I want from my game’s backend: a place to store moves, real-time updates when moves happen, and the ability to distinguish between users via&nbsp;authorization.</p>
+<p>I hit my first snag when I started to think about security. In a traditional client/server game model, the server maintains a representation of the entire game and acts as the authority on whether any given move is legal. If somebody attempts to cheat by playing a move out of turn, the server can easily detect and prevent&nbsp;it.</p>
+<p>Firebase, on the other hand, was designed as a promiscuous database in the cloud. Secrecy in Firebase is managed by writing “security rules” in the “Forge” (their dashboard). In their security model, you must pre-define what areas of your data tree are available to each user. Considering that its main selling point is persisting arbitrary <span class="caps">JSON</span> objects, having to spend time on their server defining security rules has a definite “bolted-on”&nbsp;feel.</p>
+<p>Validation on their platform requires a lot of planning ahead. In my case, I first tried to tackle the idea of each player having to take turns. There are a few ways to do this in Firebase, but the easiest is to disallow a write to a particular node if the last write was by the same user. Simple&nbsp;enough.</p>
+<p>Then came the case where completing a box would give the current user another turn. At this point, Firebase lost its appeal. The solution is to give Firebase a representation of the entire game, just as I&#39;d want in a server-side solution. But… how? How complicated would the validation logic&nbsp;be? </p>
+<p>I&#39;m not saying there is no solution to the problem that would use Firebase exclusively. There may well be. What I am saying is that, within a few hours, I realized that any solution would be an order of magnitude more difficult than having my own server perform the same task. And at that point… why not host my own&nbsp;database?</p>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">« Full blog</a></div>
+        <section class="about"><p>Hi, I&#39;m Michael Roufa.</p>
+<p>I‘ve spent the last 15 years working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I’m perfectly happy with Java, PHP, Javascript, MySQL, Postgres, Oracle… but I prefer the Microsoft stack.</p>
+<p><a href="http://stackoverflow.com/users/197860/roufamatic">StackOverflow</a> | <a href="https://github.com/roufamatic">GitHub</a> | <a href="mailto:mike@roufa.com">Email</a></p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2013 Michael Roufa &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>
