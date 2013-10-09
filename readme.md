@@ -1,4 +1,10 @@
 
-# Blog
+# Roufa Enterprises Blog
 
-The default [wintersmith](https://github.com/jnordberg/wintersmith) template
+Thought I'd try git publishing and static generation for my [infrequently updated blog](http://www.roufa.com).
+
+Built with [wintersmith](https://github.com/jnordberg/wintersmith). 
+
+
+
+
