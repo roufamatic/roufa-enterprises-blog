@@ -5,9 +5,22 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Mon, 07 Oct 2013 17:00:00 -0700</pubDate>
+    <pubDate>Tue, 08 Oct 2013 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>wintersmith -- So far, so good</title>
+      <link>http://localhost:8080/articles/wintersmith-so-far-so-good/</link>
+      <pubDate>Tue, 08 Oct 2013 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/wintersmith-so-far-so-good/</guid>
+      <author></author>
+      <description>&lt;p&gt;After a very short period running &lt;a href=&quot;http://www.orchardproject.net/&quot;&gt;Orchard&lt;/a&gt; for my blog, I decided to reverse course and try out &lt;a href=&quot;http://wintersmith.io/&quot;&gt;wintersmith&lt;/a&gt; instead. &lt;/p&gt;
+&lt;p&gt;Orchard seemed like a natural fit for me when I started out. Open source, free, .NET-based, and installed with one click from Azure‘s dashboard. I figured I’d spend some time with it, tweak it a bit, make it my own… But then, I didn&amp;#39;t. I had zero desire to play with it. For my needs, it was far too heavyweight, like peeling a potato with a sword.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Enter wintersmith. It&amp;#39;s a node.js variant of Jekyll. Posts are composed as markdown files in a folder structure, with Jade templates to determine the layout. And right out of the box, it looks nice. Editing .md files with the &lt;a href=&quot;http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f&quot;&gt;Web Essentials extension&lt;/a&gt; to Visual Studio is a joy as you can see what the changes will look like every time you press save.&lt;/p&gt;
+&lt;p&gt;The blog is hosted on Azure following &lt;a href=&quot;http://www.collectivematters.com/2012/12/getting-your-blog-onto-azure/&quot;&gt;these steps&lt;/a&gt;. My blog is now code on github. I like it.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>A few thoughts on Firebase</title>
       <link>http://localhost:8080/articles/a-few-thoughts-on-firebase/</link>
@@ -16,7 +29,8 @@
       <author></author>
       <description>&lt;p&gt;&lt;a href=&quot;http://www.firebase.com/&quot;&gt;Firebase&lt;/a&gt; is a beautiful thing. Real-time updates? AngularJS bindings? No need for a database of your own? It‘s a compelling offering. When it comes to actually using it, though… it’s complicated.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;I‘m building a JavaScript version of the old “dots and lines” game, just for fun. Players take turns choosing line segments on a grid of dots, and when one completes a box (four line segments) he/she gets a point and another turn. My original plan was to try to build this with Firebase. Right off the bat, FireBase packages up much of what I want from my game’s backend: a place to store moves, real-time updates when moves happen, and the ability to distinguish between users via authorization.&lt;/p&gt;
+&lt;p&gt;I&amp;#39;m building a JavaScript version of the old “dots and lines” game, just for fun. Players take turns choosing line segments on a grid of dots, and when one completes a box (four line segments) he/she gets a point and another turn. &lt;/p&gt;
+&lt;p&gt;My original plan was to try to build this with Firebase. Right off the bat, FireBase packages up much of what I want from my game&amp;#39;s backend: a place to store moves, real-time updates when moves happen, and the ability to distinguish between users via authorization.&lt;/p&gt;
 &lt;p&gt;I hit my first snag when I started to think about security. In a traditional client/server game model, the server maintains a representation of the entire game and acts as the authority on whether any given move is legal. If somebody attempts to cheat by playing a move out of turn, the server can easily detect and prevent it.&lt;/p&gt;
 &lt;p&gt;Firebase, on the other hand, was designed as a promiscuous database in the cloud. Secrecy in Firebase is managed by writing “security rules” in the “Forge” (their dashboard). In their security model, you must pre-define what areas of your data tree are available to each user. Considering that its main selling point is persisting arbitrary JSON objects, having to spend time on their server defining security rules has a definite “bolted-on” feel.&lt;/p&gt;
 &lt;p&gt;Validation on their platform requires a lot of planning ahead. In my case, I first tried to tackle the idea of each player having to take turns. There are a few ways to do this in Firebase, but the easiest is to disallow a write to a particular node if the last write was by the same user. Simple enough.&lt;/p&gt;

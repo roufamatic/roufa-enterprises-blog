@@ -9,7 +9,9 @@ template: article.jade
 
 ---
 
-I'm building a JavaScript version of the old "dots and lines" game, just for fun. Players take turns choosing line segments on a grid of dots, and when one completes a box (four line segments) he/she gets a point and another turn. My original plan was to try to build this with Firebase. Right off the bat, FireBase packages up much of what I want from my game's backend: a place to store moves, real-time updates when moves happen, and the ability to distinguish between users via authorization.
+I'm building a JavaScript version of the old "dots and lines" game, just for fun. Players take turns choosing line segments on a grid of dots, and when one completes a box (four line segments) he/she gets a point and another turn. 
+
+My original plan was to try to build this with Firebase. Right off the bat, FireBase packages up much of what I want from my game's backend: a place to store moves, real-time updates when moves happen, and the ability to distinguish between users via authorization.
 
 I hit my first snag when I started to think about security. In a traditional client/server game model, the server maintains a representation of the entire game and acts as the authority on whether any given move is legal. If somebody attempts to cheat by playing a move out of turn, the server can easily detect and prevent it.
 
