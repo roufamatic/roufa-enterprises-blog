@@ -7,6 +7,8 @@ template: article.jade
 
 For a recent green-field Java project, I chose [Flyway](http://flywaydb.org/) to manage all our database scripts. This library is a gem<a name="1up"></a><sup>[1](#1)</sup>, and I highly recommend it for anybody building or maintaining relational databases in Java.
 
+---
+
 It's not for every project, of course. Before you commit to using it, you'll need to be sure yours can adhere to the following guidelines:
 
 1. You are only planning to support a single database engine (e.g. MySQL, Postgresql, SQL Server).

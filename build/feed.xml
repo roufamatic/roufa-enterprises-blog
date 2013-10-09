@@ -31,6 +31,7 @@
       <guid isPermaLink="true">http://localhost:8080/articles/flywaydb-super-simple-migrations/</guid>
       <author></author>
       <description>&lt;p&gt;For a recent green-field Java project, I chose &lt;a href=&quot;http://flywaydb.org/&quot;&gt;Flyway&lt;/a&gt; to manage all our database scripts. This library is a gem&lt;a name=&quot;1up&quot;&gt;&lt;/a&gt;&lt;sup&gt;&lt;a href=&quot;http://localhost:8080/articles/flywaydb-super-simple-migrations/#1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, and I highly recommend it for anybody building or maintaining relational databases in Java.&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;It‘s not for every project, of course. Before you commit to using it, you’ll need to be sure yours can adhere to the following guidelines:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;You are only planning to support a single database engine (e.g. MySQL, Postgresql, SQL Server).&lt;/li&gt;
