@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>The Worst API ever - Roufa Enterprises, Inc.
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="Making Beautiful Things Work">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body class="article-detail">
+    <header class="header">
+      <div class="content-wrap">
+        <h1>The Worst API ever</h1>
+        <p class="author">Written by <span class="author">Michael Roufa</span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><p>I&#39;m integrating with what may be the worst <span class="caps">API</span> ever. Check this&nbsp;out!</p>
+<pre><code class="lang-xml"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="tag">&lt;<span class="title">soap:Envelope</span> <span class="attribute">xmlns:soap</span>=<span class="value">"http://schemas.xmlsoap.org/soap/envelope/"</span> 
+               <span class="attribute">xmlns:xsi</span>=<span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span> 
+               <span class="attribute">xmlns:xsd</span>=<span class="value">"http://www.w3.org/2001/XMLSchema"</span>&gt;</span>
+ <span class="tag">&lt;<span class="title">soap:Body</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">Create</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.<span class="caps">REDACTED</span>.com/api/"</span>&gt;</span>
+   <span class="tag">&lt;<span class="title">data</span>&gt;</span>
+    ["{\"type\":\"<span class="caps">REDACTED</span>\",\"data\":\"{ParentType: 'REDACTED', ParentId: '1', ActionEntityType: '2', ActionEntityId: '3', SegmentId: '0' }\",\"normalize\":false}"]
+   <span class="tag">&lt;/<span class="title">data</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">Create</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">soap:Body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">soap:Envelope</span>&gt;</span></code></pre>
+<p>So much wrong in so little space. Here we&nbsp;have:</p>
+<ul>
+<li>a <span class="caps">SOAP</span>&nbsp;message…</li>
+<li>… with a “data”&nbsp;parameter…</li>
+<li>… containing a <span class="caps">JSON</span>&nbsp;array…</li>
+<li>… of a single&nbsp;string</li>
+<li>… of <span class="caps">JSON</span> (string-escaped, of&nbsp;course)…</li>
+<li>… that itself contains “data”&nbsp;parameter…</li>
+<li>… which is again a&nbsp;string….</li>
+<li>… of improperly formatted&nbsp;<span class="caps">JSON</span>!</li>
+</ul>
+<p>I suspect the last improper formatting is to reduce the amount of quote-escaping needed given that you are now in double-escape territory. Oh, and lest you think it&#39;s just being permissive — if you attempt to properly <span class="caps">JSON</span>-encode the inner data parameter, the call fails with &quot;unable to parse&nbsp;JSON!&quot; </p>
+<p>This. Is. A. Maz.&nbsp;Ing.</p>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">« Full blog</a></div>
+        <section class="about"><p>Hi, I&#39;m Michael Roufa.</p>
+<p>I‘ve spent the last 15 years working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I’m perfectly happy with Java, PHP, Javascript, MySQL, Postgres, Oracle… but I prefer the Microsoft stack.</p>
+<p><a href="http://stackoverflow.com/users/197860/roufamatic">StackOverflow</a> | <a href="https://github.com/roufamatic">GitHub</a> | <a href="mailto:mike@roufa.com">Email</a></p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2013 Michael Roufa &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>
