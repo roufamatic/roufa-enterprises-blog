@@ -5,9 +5,43 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Tue, 08 Oct 2013 17:00:00 -0700</pubDate>
+    <pubDate>Wed, 09 Oct 2013 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>The Worst API ever</title>
+      <link>http://localhost:8080/articles/the-worst-api-ever/</link>
+      <pubDate>Wed, 09 Oct 2013 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/the-worst-api-ever/</guid>
+      <author></author>
+      <description>&lt;p&gt;I&amp;#39;m integrating with what may be the worst API ever. Check this out!&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-xml&quot;&gt;&lt;span class=&quot;pi&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;soap:Envelope&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;xmlns:soap&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&lt;/span&gt; 
+               &lt;span class=&quot;attribute&quot;&gt;xmlns:xsi&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt; 
+               &lt;span class=&quot;attribute&quot;&gt;xmlns:xsd&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;soap:Body&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;Create&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;xmlns&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;http://www.REDACTED.com/api/&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;data&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    [&quot;{\&quot;type\&quot;:\&quot;REDACTED\&quot;,\&quot;data\&quot;:\&quot;{ParentType: 'REDACTED', ParentId: '1', ActionEntityType: '2', ActionEntityId: '3', SegmentId: '0' }\&quot;,\&quot;normalize\&quot;:false}&quot;]
+   &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;data&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;Create&lt;/span&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;soap:Body&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;soap:Envelope&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So much wrong in so little space. Here we have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a SOAP message…&lt;/li&gt;
+&lt;li&gt;… with a “data” parameter…&lt;/li&gt;
+&lt;li&gt;… containing a JSON array…&lt;/li&gt;
+&lt;li&gt;… of a single string&lt;/li&gt;
+&lt;li&gt;… of JSON (string-escaped, of course)…&lt;/li&gt;
+&lt;li&gt;… that itself contains “data” parameter…&lt;/li&gt;
+&lt;li&gt;… which is again a string….&lt;/li&gt;
+&lt;li&gt;… of improperly formatted JSON!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I suspect the last improper formatting is to reduce the amount of quote-escaping needed given that you are now in double-escape territory. Oh, and lest you think it&amp;#39;s just being permissive — if you attempt to properly JSON-encode the inner data parameter, the call fails with &amp;quot;unable to parse JSON!&amp;quot; &lt;/p&gt;
+&lt;p&gt;This. Is. A. Maz. Ing.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>wintersmith -- So far, so good</title>
       <link>http://localhost:8080/articles/wintersmith-so-far-so-good/</link>
