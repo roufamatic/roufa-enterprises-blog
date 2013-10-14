@@ -5,9 +5,29 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Wed, 09 Oct 2013 17:00:00 -0700</pubDate>
+    <pubDate>Sun, 13 Oct 2013 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Lovely &quot;usage&quot; wrapper for jasmine data-driven tests</title>
+      <link>http://localhost:8080/articles/lovely-usage-wrapper-for-jasmine/</link>
+      <pubDate>Sun, 13 Oct 2013 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/lovely-usage-wrapper-for-jasmine/</guid>
+      <author></author>
+      <description>&lt;p&gt;I was looking for a way to do a bit of data-driven testing with &lt;a href=&quot;http://pivotal.github.io/jasmine/&quot;&gt;jasmine&lt;/a&gt;, and &lt;a href=&quot;http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests&quot;&gt;JP nailed it&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;describe(&lt;span class=&quot;string&quot;&gt;&quot;username validation&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;() {
+  using(&lt;span class=&quot;string&quot;&gt;&quot;valid values&quot;&lt;/span&gt;, 
+    [&lt;span class=&quot;string&quot;&gt;&quot;abc&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;longusername&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;john_doe&quot;&lt;/span&gt;], 
+    &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(value){
+      it(&lt;span class=&quot;string&quot;&gt;&quot;should return true for valid usernames&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;() {
+        expect(validateUserName(value)).toBeTruthy();
+      });
+    });
+});&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The gist is that you can simply wrap your &lt;code&gt;it()&lt;/code&gt; calls in a function that iterates over an array and pass the data in with each loop. It works great with synchronous and asynchronous tests. The function integrates cleanly with the test runner so each spec gets its own descriptive row. Best of all, it has a very pleasing syntax that makes it clear what is going to happen when you use it.&lt;/p&gt;
+&lt;p&gt;Check out &lt;a href=&quot;http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests&quot;&gt;JP&amp;#39;s blog&lt;/a&gt; for the source.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>The Worst API ever</title>
       <link>http://localhost:8080/articles/the-worst-api-ever/</link>

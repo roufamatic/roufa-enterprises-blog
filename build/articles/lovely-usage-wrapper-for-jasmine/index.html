@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Lovely &quot;usage&quot; wrapper for jasmine data-driven tests - Roufa Enterprises, Inc.
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="Making Beautiful Things Work">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body class="article-detail">
+    <header class="header">
+      <div class="content-wrap">
+        <h1>Lovely &quot;usage&quot; wrapper for jasmine data-driven tests</h1>
+        <p class="author"><span class="author">Michael Roufa - 14 October 2013</span> 
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><p>I was looking for a way to do a bit of data-driven testing with <a href="http://pivotal.github.io/jasmine/">jasmine</a>, and <a href="http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests"><span class="caps">JP</span> nailed it</a>.</p>
+<pre><code class="lang-javascript">describe(<span class="string">"username validation"</span>, <span class="keyword">function</span>() {
+  using(<span class="string">"valid values"</span>, 
+    [<span class="string">"abc"</span>, <span class="string">"longusername"</span>, <span class="string">"john_doe"</span>], 
+    <span class="keyword">function</span>(value){
+      it(<span class="string">"should return true for valid usernames"</span>, <span class="keyword">function</span>() {
+        expect(validateUserName(value)).toBeTruthy();
+      });
+    });
+});</code></pre>
+<p>The gist is that you can simply wrap your <code>it()</code> calls in a function that iterates over an array and pass the data in with each loop. It works great with synchronous and asynchronous tests. The function integrates cleanly with the test runner so each spec gets its own descriptive row. Best of all, it has a very pleasing syntax that makes it clear what is going to happen when you use&nbsp;it.</p>
+<p>Check out <a href="http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests"><span class="caps">JP</span>&#39;s blog</a> for the&nbsp;source.</p>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">« Full blog</a></div>
+        <section class="about"><p>Hi, I&#39;m Michael Roufa.</p>
+<p>I‘ve spent the last 15 years working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I’m perfectly happy with Java, PHP, Javascript, MySQL, Postgres, Oracle… but I prefer the Microsoft stack.</p>
+<p><a href="http://stackoverflow.com/users/197860/roufamatic">StackOverflow</a> | <a href="https://github.com/roufamatic">GitHub</a> | <a href="mailto:mike@roufa.com">Email</a></p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2013 Michael Roufa &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>
