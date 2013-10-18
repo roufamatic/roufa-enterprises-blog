@@ -203,9 +203,12 @@ footer .copy, footer .copy a {
   padding: 0 0.7em;
 }
 
+/*
+No thank you!
 .article.intro .content p {
   display: inline;
 }
+*/
 
 .article.intro .content .more {
   text-decoration: underline;

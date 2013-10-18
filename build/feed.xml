@@ -5,9 +5,25 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Sun, 13 Oct 2013 17:00:00 -0700</pubDate>
+    <pubDate>Thu, 17 Oct 2013 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Bootstrapping Quality</title>
+      <link>http://localhost:8080/articles/bootstrapping-quality/</link>
+      <pubDate>Thu, 17 Oct 2013 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/bootstrapping-quality/</guid>
+      <author></author>
+      <description>&lt;p&gt;I gave a talk to CompSci seniors at Seattle University today about Version Control Systems, Test-Driven Development and Continuous Integration. Here are the slides:&lt;/p&gt;
+&lt;div style=&quot;text-align:center&quot;&gt;
+&lt;iframe src=&quot;http://www.slideshare.net/slideshow/embed_code/27346279&quot; width=&quot;476&quot; height=&quot;400&quot; frameborder=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;During the presentation I tried to demonstrate TDD by building &lt;a href=&quot;http://www.codinghorror.com/blog/2007/02/why-cant-programmers-program.html&quot;&gt;FizzBuzz&lt;/a&gt; in a test-driven manner, then showed off Dependency Injection and Mocking by adding text from my twitter feed. &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://localhost:8080/articles/bootstrapping-quality/FizzBuzzInc.zip&quot;&gt;Download the source here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Note: I removed my twitter app authentication keys, so if you execute the program it won&amp;#39;t work. See the file Twit.cs and &lt;a href=&quot;https://dev.twitter.com/docs&quot;&gt;Twitter Development&lt;/a&gt; if you feel the need to resuscitate this.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Lovely &quot;usage&quot; wrapper for jasmine data-driven tests</title>
       <link>http://localhost:8080/articles/lovely-usage-wrapper-for-jasmine/</link>
