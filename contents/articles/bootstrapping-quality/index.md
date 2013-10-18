@@ -15,4 +15,7 @@ During the presentation I tried to demonstrate TDD by building [FizzBuzz](http:/
 
 [Download the source here](FizzBuzzInc.zip).
 
-Note: I removed my twitter app authentication keys, so if you execute the program it won't work. See the file Twit.cs and [Twitter Development](https://dev.twitter.com/docs) if you feel the need to resuscitate this.
+Notes: 
+
+1. I removed my twitter app authentication keys, so if you execute the program it won't work. See the file Twit.cs and [Twitter Development](https://dev.twitter.com/docs) if you feel the need to resuscitate this.
+2. I turned off the Azure VM that hosted the Jenkins instance referenced in the slides. It was costing me two cents an hour! That's like a latte every week.
