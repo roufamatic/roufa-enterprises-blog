@@ -21,7 +21,11 @@
 
 &lt;p&gt;During the presentation I tried to demonstrate TDD by building &lt;a href=&quot;http://www.codinghorror.com/blog/2007/02/why-cant-programmers-program.html&quot;&gt;FizzBuzz&lt;/a&gt; in a test-driven manner, then showed off Dependency Injection and Mocking by adding text from my twitter feed. &lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://localhost:8080/articles/bootstrapping-quality/FizzBuzzInc.zip&quot;&gt;Download the source here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Note: I removed my twitter app authentication keys, so if you execute the program it won&amp;#39;t work. See the file Twit.cs and &lt;a href=&quot;https://dev.twitter.com/docs&quot;&gt;Twitter Development&lt;/a&gt; if you feel the need to resuscitate this.&lt;/p&gt;
+&lt;p&gt;Notes: &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I removed my twitter app authentication keys, so if you execute the program it won&amp;#39;t work. See the file Twit.cs and &lt;a href=&quot;https://dev.twitter.com/docs&quot;&gt;Twitter Development&lt;/a&gt; if you feel the need to resuscitate this.&lt;/li&gt;
+&lt;li&gt;I turned off the Azure VM that hosted the Jenkins instance referenced in the slides. It was costing me two cents an hour! That&amp;#39;s like a latte every week.&lt;/li&gt;
+&lt;/ol&gt;
 </description>
     </item>
     <item>
