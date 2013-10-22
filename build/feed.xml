@@ -5,9 +5,20 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Thu, 17 Oct 2013 17:00:00 -0700</pubDate>
+    <pubDate>Mon, 21 Oct 2013 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Quick Boot Camp Tip</title>
+      <link>http://localhost:8080/articles/quick-bootcamp-tip/</link>
+      <pubDate>Mon, 21 Oct 2013 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/quick-bootcamp-tip/</guid>
+      <author></author>
+      <description>&lt;p&gt;Thought I‘d leave this nugget in case it helps somebody. Yesterday my 6-month-old Lenovo ThinkPad W530 died, and my wife needed a new computer anyway, so I picked up a Mac Mini. It’s her computer, but will act as my emergency machine in case something like this happens again. Since I&amp;#39;m primarily a Windows developer, I set up a small partition with Boot Camp.&lt;/p&gt;
+&lt;p&gt;Here‘s what I’ve learned: If you&amp;#39;re attempting to install Windows 8.1 on a Mac Mini using Boot Camp, and you choose to download the drivers to a USB flash drive and then install from an external DVD drive, &lt;a href=&quot;http://support.apple.com/kb/TS4536&quot;&gt;you must remove the flash drive before rebooting into the Windows installer&lt;/a&gt;. Otherwise you‘ll just see a blank screen and nothing will happen and you’ll be scared and afraid for your brand new purchase.&lt;/p&gt;
+&lt;p&gt;Also, the “alt” key is your friend if you don&amp;#39;t have an Apple keyboard — hold it down on boot to see the boot options.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Bootstrapping Quality</title>
       <link>http://localhost:8080/articles/bootstrapping-quality/</link>
