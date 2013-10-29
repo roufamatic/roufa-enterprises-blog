@@ -10,7 +10,7 @@ My laptop returned with one bad RAM stick missing. While it was gone, I discover
 
 Microsoft introduced more changes under the hood, though, and a few programs stopped working. One was [Bins](http://www.1upindustries.com/Bins/default.aspx) which I use to keep my browsers together, but they had a [fix available](http://feedback.1upindustries.com/forums/103687-bugs/suggestions/4681319-windows-8-1-werfault-exe-error-upon-starting-bins).
 
-A more serious problem was the inability to launch the [Juniper Remote Desktop Client](http://www.eightforums.com/general-support/33644-upgrade-8-1-disaster.html). Without this, I was unable to complete my latest contract.
+A more serious problem was the [Juniper Remote Desktop Client](http://www.eightforums.com/general-support/33644-upgrade-8-1-disaster.html). Without this, I was unable to complete my latest contract.
 
 I saw two viable options: 
 
