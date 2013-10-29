@@ -4,11 +4,12 @@ view: none
 
 Hi, I'm Michael Roufa.
 
-I've spent the last 15 years working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I'm perfectly happy with Java, PHP, Javascript, MySQL, Postgres, Oracle... but I prefer the Microsoft stack.
+For the last 15 years, I've been working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I specialize in backend development and build/deploy automation, but I'm no JavaScript slouch either. I hold a Masters in Software Engineering from Seattle University.
 
-[StackOverflow][1] | [GitHub][2] | [Email][3] | [Twitter][4]
+[Email][1] | [Twitter][2] | [LinkedIn][3] | [StackOverflow][4] | [GitHub][5]
 
-[1]: http://stackoverflow.com/users/197860/roufamatic
-[2]: https://github.com/roufamatic
-[3]: mailto:mike@roufa.com
-[4]: https://twitter.com/roufamatic
+[1]: mailto:mike@roufa.com
+[2]: https://twitter.com/roufamatic
+[3]: http://www.linkedin.com/in/michaelroufa
+[4]: http://stackoverflow.com/users/197860/roufamatic
+[5]: https://github.com/roufamatic
