@@ -23,6 +23,24 @@
       <div class="content-wrap">
         <article class="article intro">
           <header>
+            <p class="date"><span>28. October 2013</span></p>
+            <h2><a href="/articles/modern-ie-saves-the-day/">Modern.IE saves the day!</a></h2>
+          </header>
+          <section class="content"><p>My laptop returned with one bad <span class="caps">RAM</span> stick missing. While it was gone, I discovered I prefer Windows 8.1 to its predecessor, especially the return of the start button and the improved start screen that installers cannot automatically colonize. I upgraded my laptop&nbsp;immediately.</p>
+<p>Microsoft introduced more changes under the hood, though, and a few programs stopped working. One was <a href="http://www.1upindustries.com/Bins/default.aspx">Bins</a> which I use to keep my browsers together, but they had a <a href="http://feedback.1upindustries.com/forums/103687-bugs/suggestions/4681319-windows-8-1-werfault-exe-error-upon-starting-bins">fix available</a>.</p>
+<p>A more serious problem was the inability to launch the <a href="http://www.eightforums.com/general-support/33644-upgrade-8-1-disaster.html">Juniper Remote Desktop Client</a>. Without this, I was unable to complete my latest&nbsp;contract.</p>
+<p>I saw two viable&nbsp;options: </p>
+<ol>
+<li>Rollback (noooo! not my new shiny&nbsp;toy!)</li>
+<li><span class="caps">VM</span></li>
+</ol>
+<p>Of course, #2 won. But I couldn&#39;t locate my Windows 8 installation disks, and was not about to fork over more cash just to run one program. The solution? <a href="http://modern.ie/">Modern.ie</a>! I grabbed a copy of <span class="caps">XP</span> with IE8, threw it into Hyper-V, and I&#39;m back in&nbsp;business. </p>
+<p>While it‘s intended to ease the pain of backwards-compatible web development, modern.ie is also a great resource for emergency backwards-compatible Windows development. Somebody reports a Vista bug? Grab a Vista image and test. Need to check something on Windows Server 2012? That’s there as well. The images have a 30 day grace period after which you need to purchase a license, so you cannot use the same <span class="caps">OS</span> indefinitely. But still, it&#39;s a very useful addition to my&nbsp;toolkit.</p>
+
+          </section>
+        </article>
+        <article class="article intro">
+          <header>
             <p class="date"><span>22. October 2013</span></p>
             <h2><a href="/articles/quick-bootcamp-tip/">Quick Boot Camp Tip</a></h2>
           </header>
@@ -49,26 +67,6 @@
 <li>I removed my twitter app authentication keys, so if you execute the program it won&#39;t work. See the file Twit.cs and <a href="https://dev.twitter.com/docs">Twitter Development</a> if you feel the need to resuscitate&nbsp;this.</li>
 <li>I turned off the Azure <span class="caps">VM</span> that hosted the Jenkins instance referenced in the slides. It was costing me two cents an hour! That&#39;s like a latte every&nbsp;week.</li>
 </ol>
-
-          </section>
-        </article>
-        <article class="article intro">
-          <header>
-            <p class="date"><span>14. October 2013</span></p>
-            <h2><a href="/articles/lovely-usage-wrapper-for-jasmine/">Lovely &quot;usage&quot; wrapper for jasmine data-driven tests</a></h2>
-          </header>
-          <section class="content"><p>I was looking for a way to do a bit of data-driven testing with <a href="http://pivotal.github.io/jasmine/">jasmine</a>, and <a href="http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests"><span class="caps">JP</span> nailed it</a>.</p>
-<pre><code class="lang-javascript">describe(<span class="string">"username validation"</span>, <span class="keyword">function</span>() {
-  using(<span class="string">"valid values"</span>, 
-    [<span class="string">"abc"</span>, <span class="string">"longusername"</span>, <span class="string">"john_doe"</span>], 
-    <span class="keyword">function</span>(value){
-      it(<span class="string">"should return true for valid usernames"</span>, <span class="keyword">function</span>() {
-        expect(validateUserName(value)).toBeTruthy();
-      });
-    });
-});</code></pre>
-<p>The gist is that you can simply wrap your <code>it()</code> calls in a function that iterates over an array and pass the data in with each loop. It works great with synchronous and asynchronous tests. The function integrates cleanly with the test runner so each spec gets its own descriptive row. Best of all, it has a very pleasing syntax that makes it clear what is going to happen when you use&nbsp;it.</p>
-<p>Check out <a href="http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests"><span class="caps">JP</span>&#39;s blog</a> for the&nbsp;source.</p>
 
           </section>
         </article>

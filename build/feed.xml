@@ -5,9 +5,27 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Mon, 21 Oct 2013 17:00:00 -0700</pubDate>
+    <pubDate>Sun, 27 Oct 2013 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Modern.IE saves the day!</title>
+      <link>http://localhost:8080/articles/modern-ie-saves-the-day/</link>
+      <pubDate>Sun, 27 Oct 2013 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/modern-ie-saves-the-day/</guid>
+      <author></author>
+      <description>&lt;p&gt;My laptop returned with one bad RAM stick missing. While it was gone, I discovered I prefer Windows 8.1 to its predecessor, especially the return of the start button and the improved start screen that installers cannot automatically colonize. I upgraded my laptop immediately.&lt;/p&gt;
+&lt;p&gt;Microsoft introduced more changes under the hood, though, and a few programs stopped working. One was &lt;a href=&quot;http://www.1upindustries.com/Bins/default.aspx&quot;&gt;Bins&lt;/a&gt; which I use to keep my browsers together, but they had a &lt;a href=&quot;http://feedback.1upindustries.com/forums/103687-bugs/suggestions/4681319-windows-8-1-werfault-exe-error-upon-starting-bins&quot;&gt;fix available&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A more serious problem was the inability to launch the &lt;a href=&quot;http://www.eightforums.com/general-support/33644-upgrade-8-1-disaster.html&quot;&gt;Juniper Remote Desktop Client&lt;/a&gt;. Without this, I was unable to complete my latest contract.&lt;/p&gt;
+&lt;p&gt;I saw two viable options: &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Rollback (noooo! not my new shiny toy!)&lt;/li&gt;
+&lt;li&gt;VM&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Of course, #2 won. But I couldn&amp;#39;t locate my Windows 8 installation disks, and was not about to fork over more cash just to run one program. The solution? &lt;a href=&quot;http://modern.ie/&quot;&gt;Modern.ie&lt;/a&gt;! I grabbed a copy of XP with IE8, threw it into Hyper-V, and I&amp;#39;m back in business. &lt;/p&gt;
+&lt;p&gt;While it‘s intended to ease the pain of backwards-compatible web development, modern.ie is also a great resource for emergency backwards-compatible Windows development. Somebody reports a Vista bug? Grab a Vista image and test. Need to check something on Windows Server 2012? That’s there as well. The images have a 30 day grace period after which you need to purchase a license, so you cannot use the same OS indefinitely. But still, it&amp;#39;s a very useful addition to my toolkit.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Quick Boot Camp Tip</title>
       <link>http://localhost:8080/articles/quick-bootcamp-tip/</link>
