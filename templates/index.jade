@@ -2,18 +2,24 @@ extends layout
 
 block content
   include author
+
+  script.
+    $(function() {
+      $('a.articleLink').attr('href', function() { return this.href + "?from=" + encodeURIComponent(location.pathname); } );
+    });
+
   each article in articles
     article.article.intro
       header
         p.date
           span= moment.utc(article.date).format('DD. MMMM YYYY')
         h2
-          a(href=article.url)= article.title
+          a.articleLink(href=article.url)= article.title
       section.content
         !{ typogr(article.intro).typogrify() }
         if article.hasMore
           p.more
-            a(href=article.url) more
+            a.articleLink(href=article.url) more
 
 block prepend footer
   div.nav

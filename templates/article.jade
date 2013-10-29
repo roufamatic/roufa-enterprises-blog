@@ -9,6 +9,30 @@ block prepend title
 
 block header
   include author
+
+  script.
+    $(function() {
+      var qsStr = location.search.substring(1);
+      var qs = {};
+      _.each(qsStr.split('&'), function(params) {
+         var hasEquals = params.indexOf('=') > -1
+         var k = (hasEquals ? params.split('=')[0] : params);
+         var v = (hasEquals ? decodeURIComponent(params.substring(params.indexOf('=')+1)) : "");
+         if (_.isUndefined(qs[k]) || qs[k] === null) qs[k] = v;
+         else qs[k] += "|" + v;
+       });
+      
+      if (qs['from']) {
+        var referrer = document.createElement('a');
+        referrer.href = document.referrer;
+        // if we are sure the user just came from our site, emulate the "back" button so we save the user's place.
+        if (referrer.host === location.host && referrer.pathname === qs['from']) {
+            $('div.nav a').attr('href', 'javascript:history.go(-1)');
+        }
+      }
+    });
+
+
   h1= page.title
   p.author
     mixin author(page.metadata.author + " - " + moment.utc(page.date).format('DD MMMM YYYY')) 

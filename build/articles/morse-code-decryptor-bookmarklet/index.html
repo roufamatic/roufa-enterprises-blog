@@ -9,10 +9,36 @@
     <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="Making Beautiful Things Work">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
     <link rel="stylesheet" href="/css/main.css">
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.2.1/lodash.min.js"></script>
   </head>
   <body class="article-detail">
     <header class="header">
       <div class="content-wrap">
+        <script>
+          $(function() {
+            var qsStr = location.search.substring(1);
+            var qs = {};
+            _.each(qsStr.split('&'), function(params) {
+               var hasEquals = params.indexOf('=') > -1
+               var k = (hasEquals ? params.split('=')[0] : params);
+               var v = (hasEquals ? decodeURIComponent(params.substring(params.indexOf('=')+1)) : "");
+               if (_.isUndefined(qs[k]) || qs[k] === null) qs[k] = v;
+               else qs[k] += "|" + v;
+            });
+            
+            if (qs['from']) {
+              var referrer = document.createElement('a');
+              referrer.href = document.referrer;
+              // if we are sure the user just came from our site, emulate the "back" button so we save the user's place.
+              if (referrer.host === location.host && referrer.pathname === qs['from']) {
+                  $('div.nav a').attr('href', 'javascript:history.go(-1)');
+              }
+            }
+          });
+          
+          
+        </script>
         <h1>Morse Code Decoder Bookmarklet</h1>
         <p class="author"><span class="author">Michael Roufa - 30 July 2013</span> 
         </p>
