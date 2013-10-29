@@ -9,7 +9,7 @@
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
-      <title>Modern.IE saves the day!</title>
+      <title>modern.IE saves the day!</title>
       <link>http://localhost:8080/articles/modern-ie-saves-the-day/</link>
       <pubDate>Sun, 27 Oct 2013 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://localhost:8080/articles/modern-ie-saves-the-day/</guid>
@@ -23,8 +23,8 @@
 &lt;li&gt;Rollback (noooo! not my new shiny toy!)&lt;/li&gt;
 &lt;li&gt;VM&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Of course, #2 won. But I couldn&amp;#39;t locate my Windows 8 installation disks, and was not about to fork over more cash just to run one program. The solution? &lt;a href=&quot;http://modern.ie/&quot;&gt;Modern.ie&lt;/a&gt;! I grabbed a copy of XP with IE8, threw it into Hyper-V, and I&amp;#39;m back in business. &lt;/p&gt;
-&lt;p&gt;While it‘s intended to ease the pain of backwards-compatible web development, modern.ie is also a great resource for emergency backwards-compatible Windows development. Somebody reports a Vista bug? Grab a Vista image and test. Need to check something on Windows Server 2012? That’s there as well. The images have a 30 day grace period after which you need to purchase a license, so you cannot use the same OS indefinitely. But still, it&amp;#39;s a very useful addition to my toolkit.&lt;/p&gt;
+&lt;p&gt;Of course, #2 won. But I couldn&amp;#39;t locate my Windows 8 installation disks, and was not about to fork over more cash just to run one program. The solution? &lt;a href=&quot;http://modern.ie/&quot;&gt;modern.IE&lt;/a&gt;! I grabbed a copy of XP with IE8, threw it into Hyper-V, and I&amp;#39;m back in business. &lt;/p&gt;
+&lt;p&gt;While it‘s intended to ease the pain of backwards-compatible web development, modern.IE is also a great resource for emergency backwards-compatible Windows development. Somebody reports a Vista bug? Grab a Vista image and test. Need to check something on Windows Server 2012? That’s there as well. The images have a 30 day grace period after which you need to purchase a license, so you cannot use the same OS indefinitely. But still, it&amp;#39;s a very useful addition to my toolkit.&lt;/p&gt;
 </description>
     </item>
     <item>

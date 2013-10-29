@@ -1,5 +1,5 @@
 ---
-title: Modern.IE saves the day!
+title: modern.IE saves the day!
 author: Michael Roufa
 date: 2013-10-28
 template: article.jade
@@ -17,6 +17,6 @@ I saw two viable options:
 1. Rollback (noooo! not my new shiny toy!)
 2. VM
 
-Of course, #2 won. But I couldn't locate my Windows 8 installation disks, and was not about to fork over more cash just to run one program. The solution? [Modern.ie](http://modern.ie)! I grabbed a copy of XP with IE8, threw it into Hyper-V, and I'm back in business. 
+Of course, #2 won. But I couldn't locate my Windows 8 installation disks, and was not about to fork over more cash just to run one program. The solution? [modern.IE](http://modern.ie)! I grabbed a copy of XP with IE8, threw it into Hyper-V, and I'm back in business. 
 
-While it's intended to ease the pain of backwards-compatible web development, modern.ie is also a great resource for emergency backwards-compatible Windows development. Somebody reports a Vista bug? Grab a Vista image and test. Need to check something on Windows Server 2012? That's there as well. The images have a 30 day grace period after which you need to purchase a license, so you cannot use the same OS indefinitely. But still, it's a very useful addition to my toolkit.
+While it's intended to ease the pain of backwards-compatible web development, modern.IE is also a great resource for emergency backwards-compatible Windows development. Somebody reports a Vista bug? Grab a Vista image and test. Need to check something on Windows Server 2012? That's there as well. The images have a 30 day grace period after which you need to purchase a license, so you cannot use the same OS indefinitely. But still, it's a very useful addition to my toolkit.
