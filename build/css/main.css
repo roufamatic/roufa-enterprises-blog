@@ -162,24 +162,9 @@ footer .about {
     background-color: #ccc;
 }
 
-footer .about div {
-    display: inline-block;
-    vertical-align: top;
-}
-
-footer .about div.headshot {
-    max-width: 25%;
-    padding: 5px 0 10px 15px;
-}
-footer .about div.headshot img {
-    width: 100%;
-    min-width: 1%
-}
-
-footer .about div.blurb {
-    width: 70%;
-    max-width: 70%;
-    padding-left: 15px;
+footer .about img {
+    float: left;
+    padding: 0 1em 0 0
 }
 
 footer .copy {

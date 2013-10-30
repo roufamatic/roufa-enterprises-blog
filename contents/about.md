@@ -2,6 +2,7 @@
 view: none
 ---
 
+![My handsome mug](/i/moi.jpeg)
 Hi, I'm Michael Roufa.
 
 For the last 15 years, I've been working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I specialize in backend development and build/deploy automation, but I'm no JavaScript slouch either. I hold a Masters in Software Engineering from Seattle University.

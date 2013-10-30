@@ -31,10 +31,7 @@ html(lang='en')
       div.content-wrap
         block footer
           section.about
-            div.headshot
-              img(src='/i/moi.jpeg')
-            div.blurb
-              !=contents['about.md'].html
+            !=contents['about.md'].html
           section.copy
             p &copy; #{ new Date().getFullYear() } #{ locals.owner } &mdash; powered by&nbsp;
               a(href='https://github.com/jnordberg/wintersmith') Wintersmith
