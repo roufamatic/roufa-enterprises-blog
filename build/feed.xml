@@ -5,9 +5,18 @@
     <atom:link href="http://www.roufa.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://www.roufa.com</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Sun, 27 Oct 2013 17:00:00 -0700</pubDate>
+    <pubDate>Tue, 29 Oct 2013 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Internet Famous?</title>
+      <link>http://www.roufa.com/articles/internet-famous/</link>
+      <pubDate>Tue, 29 Oct 2013 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://www.roufa.com/articles/internet-famous/</guid>
+      <author></author>
+      <description>&lt;p&gt;My coworking space, &lt;a href=&quot;http://www.worksprogressseattle.com/&quot;&gt;Works Progress&lt;/a&gt;, interviewed me on their blog! &lt;a href=&quot;http://www.worksprogressseattle.com/meet-mike-roufa/&quot;&gt;I&amp;#39;m famous… on the Internet.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>modern.IE saves the day!</title>
       <link>http://www.roufa.com/articles/modern-ie-saves-the-day/</link>
