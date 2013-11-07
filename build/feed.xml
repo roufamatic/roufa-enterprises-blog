@@ -15,7 +15,7 @@
       <guid isPermaLink="true">http://localhost:8080/articles/nhibernate-cant-short-circuit/</guid>
       <author></author>
       <description>&lt;p&gt;&lt;img src=&quot;http://localhost:8080/articles/nhibernate-cant-short-circuit/JohnnyFive.jpg&quot; alt=&quot;Johnny Five Is Alive&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Like EF, &lt;a href=&quot;http://nhforge.org/&quot;&gt;NHibernate&lt;/a&gt; has a LINQ provider that allows you to query your tables, saving you the trouble of having to learn HQL or Criteria to get data out of your database. &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://nhforge.org/&quot;&gt;NHibernate&lt;/a&gt; has a LINQ provider that allows you to query your tables, saving you the trouble of having to learn HQL or Criteria to get data out of your database. &lt;/p&gt;
 &lt;p&gt;While doing some refactoring on an NHibernate-driven site, I came across a nasty exception:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;System.ArgumentNullException: Value cannot be null. Parameter name: source 
 at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre&gt;

@@ -6,7 +6,7 @@ template: article.jade
 ---
 ![Johnny Five Is Alive](JohnnyFive.jpg)
 
-Like EF, [NHibernate](http://nhforge.org/) has a LINQ provider that allows you to query your tables, saving you the trouble of having to learn HQL or Criteria to get data out of your database. 
+[NHibernate](http://nhforge.org/) has a LINQ provider that allows you to query your tables, saving you the trouble of having to learn HQL or Criteria to get data out of your database. 
 
 While doing some refactoring on an NHibernate-driven site, I came across a nasty exception:
 
