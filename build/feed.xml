@@ -2,28 +2,64 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Roufa Enterprises, Inc.</title>
-    <atom:link href="http://www.roufa.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
-    <link>http://www.roufa.com</link>
+    <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://localhost:8080</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Tue, 29 Oct 2013 17:00:00 -0700</pubDate>
+    <pubDate>Wed, 06 Nov 2013 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
+      <title>NHibernate can't short-circuit</title>
+      <link>http://localhost:8080/articles/nhibernate-cant-short-circuit/</link>
+      <pubDate>Wed, 06 Nov 2013 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/nhibernate-cant-short-circuit/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;img src=&quot;http://localhost:8080/articles/nhibernate-cant-short-circuit/JohnnyFive.jpg&quot; alt=&quot;Johnny Five Is Alive&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Like EF, &lt;a href=&quot;http://nhforge.org/&quot;&gt;NHibernate&lt;/a&gt; has a LINQ provider that allows you to query your tables, saving you the trouble of having to learn HQL or Criteria to get data out of your database. &lt;/p&gt;
+&lt;p&gt;While doing some refactoring on an NHibernate-driven site, I came across a nasty exception:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;System.ArgumentNullException: Value cannot be null. Parameter name: source 
+at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This was a bit confusing at first. The code was already checking for null&amp;#39;s. What gives?&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-cs&quot;&gt;List&amp;lt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&amp;gt; list = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+&lt;span class=&quot;comment&quot;&gt;// ... something tries to populate the list ...&lt;/span&gt;
+&lt;span class=&quot;comment&quot;&gt;// If there's anything in the list, use that as a filter. &lt;/span&gt;
+&lt;span class=&quot;comment&quot;&gt;// Otherwise return everything.&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; q = Session.Query&amp;lt;Tbl&amp;gt;()
+               .Where(t =&amp;gt; list == &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt; || list.Contains(t.IntProp));&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Looking at the error message and the debugger it became clear that even though there the &lt;code&gt;list&lt;/code&gt; variable was being evaluated. That&amp;#39;s very unusual behavior in C# as the &lt;code&gt;||&lt;/code&gt; operator is supposed to “short-circuit:” when the first operand evaluates to &lt;code&gt;true&lt;/code&gt;, the second is not evaluated at all.&lt;/p&gt;
+&lt;p&gt;As it turns out, the parameter of the &lt;code&gt;Where&lt;/code&gt; clause is not really C#. It is, in fact, an Expression. NHibernate does not execute this expression directly. Instead, it uses it to generate SQL to run against the database. &lt;/p&gt;
+&lt;p&gt;To illustrate, suppose that there were no null check, and the list contained the values [1,2,3]. It might try to do something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-sql&quot;&gt;&lt;span class=&quot;operator&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SELECT&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt; Tbl &lt;span class=&quot;keyword&quot;&gt;WHERE&lt;/span&gt; IntProp &lt;span class=&quot;keyword&quot;&gt;IN&lt;/span&gt; (&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now let‘s assume the list is null, but there’s still no null-check in the expression. It would attempt to convert the list to its SQL equivalent and fail with the same exception as above.&lt;/p&gt;
+&lt;p&gt;Finally, we add the null check. Now NHibernate still is trying to generate a query. Perhaps it decides that “list IS NULL” is a perfectly reasonable SQL expression, or perhaps not. Regardless, &lt;em&gt;it still has to iterate over the list to generate the &lt;code&gt;IN&lt;/code&gt; clause&lt;/em&gt;, which it cannot do.&lt;/p&gt;
+&lt;p&gt;In essence, we are mixing a test that doesn‘t belong in a query with a test that does, but NHibernate simply cannot easily know that’s the case. The solution is to move the tests where they belong.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-cs&quot;&gt;List&amp;lt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&amp;gt; list = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+&lt;span class=&quot;comment&quot;&gt;// ... something tries to populate the list ...&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; q = Session.Query&amp;lt;Tbl&amp;gt;();
+&lt;span class=&quot;comment&quot;&gt;// If there's anything in the list, use that as a filter. &lt;/span&gt;
+&lt;span class=&quot;comment&quot;&gt;// Otherwise return everything.&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (list != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) {
+    q = q.Where(t =&amp;gt; list.Contains(t.IntProp));
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It&amp;#39;s a bit clumsier without the fluent interface to lean on, but it does have the side benefit of making the resultant SQL query cleaner.&lt;/p&gt;
+</description>
+    </item>
+    <item>
       <title>Internet Famous?</title>
-      <link>http://www.roufa.com/articles/internet-famous/</link>
+      <link>http://localhost:8080/articles/internet-famous/</link>
       <pubDate>Tue, 29 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://www.roufa.com/articles/internet-famous/</guid>
+      <guid isPermaLink="true">http://localhost:8080/articles/internet-famous/</guid>
       <author></author>
       <description>&lt;p&gt;My coworking space, &lt;a href=&quot;http://www.worksprogressseattle.com/&quot;&gt;Works Progress&lt;/a&gt;, interviewed me on their blog! &lt;a href=&quot;http://www.worksprogressseattle.com/meet-mike-roufa/&quot;&gt;I&amp;#39;m famous… on the Internet.&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     <item>
       <title>modern.IE saves the day!</title>
-      <link>http://www.roufa.com/articles/modern-ie-saves-the-day/</link>
+      <link>http://localhost:8080/articles/modern-ie-saves-the-day/</link>
       <pubDate>Sun, 27 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://www.roufa.com/articles/modern-ie-saves-the-day/</guid>
+      <guid isPermaLink="true">http://localhost:8080/articles/modern-ie-saves-the-day/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/modern-ie-saves-the-day/vms.png&quot; alt=&quot;Windows XP, never so pleased to see you!&quot;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&quot;http://localhost:8080/articles/modern-ie-saves-the-day/vms.png&quot; alt=&quot;Windows XP, never so pleased to see you!&quot;&gt;&lt;/p&gt;
 &lt;p&gt;My laptop returned with one bad RAM stick missing. While it was gone, I discovered I prefer Windows 8.1 to its predecessor, especially the return of the start button and the improved start screen that installers cannot automatically colonize. I upgraded my laptop immediately.&lt;/p&gt;
 &lt;p&gt;Microsoft introduced more changes under the hood, though, and a few programs stopped working. One was &lt;a href=&quot;http://www.1upindustries.com/Bins/default.aspx&quot;&gt;Bins&lt;/a&gt; which I use to keep my browsers together, but they had a &lt;a href=&quot;http://feedback.1upindustries.com/forums/103687-bugs/suggestions/4681319-windows-8-1-werfault-exe-error-upon-starting-bins&quot;&gt;fix available&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;A more serious problem was the &lt;a href=&quot;http://www.eightforums.com/general-support/33644-upgrade-8-1-disaster.html&quot;&gt;Juniper Remote Desktop Client&lt;/a&gt;. Without this, I was unable to complete my latest contract.&lt;/p&gt;
@@ -38,9 +74,9 @@
     </item>
     <item>
       <title>Quick Boot Camp Tip</title>
-      <link>http://www.roufa.com/articles/quick-bootcamp-tip/</link>
+      <link>http://localhost:8080/articles/quick-bootcamp-tip/</link>
       <pubDate>Mon, 21 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://www.roufa.com/articles/quick-bootcamp-tip/</guid>
+      <guid isPermaLink="true">http://localhost:8080/articles/quick-bootcamp-tip/</guid>
       <author></author>
       <description>&lt;p&gt;Thought I‘d leave this nugget in case it helps somebody. Yesterday my 6-month-old Lenovo ThinkPad W530 died, and my wife needed a new computer anyway, so I picked up a Mac Mini. It’s her computer, but will act as my emergency machine in case something like this happens again. Since I&amp;#39;m primarily a Windows developer, I set up a small partition with Boot Camp.&lt;/p&gt;
 &lt;p&gt;Here‘s what I’ve learned: If you&amp;#39;re attempting to install Windows 8.1 on a Mac Mini using Boot Camp, and you choose to download the drivers to a USB flash drive and then install from an external DVD drive, &lt;a href=&quot;http://support.apple.com/kb/TS4536&quot;&gt;you must remove the flash drive before rebooting into the Windows installer&lt;/a&gt;. Otherwise you‘ll just see a blank screen and nothing will happen and you’ll be scared and afraid for your brand new purchase.&lt;/p&gt;
@@ -49,9 +85,9 @@
     </item>
     <item>
       <title>Bootstrapping Quality</title>
-      <link>http://www.roufa.com/articles/bootstrapping-quality/</link>
+      <link>http://localhost:8080/articles/bootstrapping-quality/</link>
       <pubDate>Thu, 17 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://www.roufa.com/articles/bootstrapping-quality/</guid>
+      <guid isPermaLink="true">http://localhost:8080/articles/bootstrapping-quality/</guid>
       <author></author>
       <description>&lt;p&gt;I gave a talk to CompSci seniors at Seattle University today about Version Control Systems, Test-Driven Development and Continuous Integration. Here are the slides:&lt;/p&gt;
 &lt;div style=&quot;text-align:center&quot;&gt;
@@ -59,7 +95,7 @@
 &lt;/div&gt;
 
 &lt;p&gt;During the presentation I tried to demonstrate TDD by building &lt;a href=&quot;http://www.codinghorror.com/blog/2007/02/why-cant-programmers-program.html&quot;&gt;FizzBuzz&lt;/a&gt; in a test-driven manner, then showed off Dependency Injection and Mocking by adding text from my twitter feed. &lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.roufa.com/articles/bootstrapping-quality/FizzBuzzInc.zip&quot;&gt;Download the source here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://localhost:8080/articles/bootstrapping-quality/FizzBuzzInc.zip&quot;&gt;Download the source here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Notes: &lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;I removed my twitter app authentication keys, so if you execute the program it won&amp;#39;t work. See the file Twit.cs and &lt;a href=&quot;https://dev.twitter.com/docs&quot;&gt;Twitter Development&lt;/a&gt; if you feel the need to resuscitate this.&lt;/li&gt;
@@ -69,9 +105,9 @@
     </item>
     <item>
       <title>Lovely &quot;usage&quot; wrapper for jasmine data-driven tests</title>
-      <link>http://www.roufa.com/articles/lovely-usage-wrapper-for-jasmine/</link>
+      <link>http://localhost:8080/articles/lovely-usage-wrapper-for-jasmine/</link>
       <pubDate>Sun, 13 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://www.roufa.com/articles/lovely-usage-wrapper-for-jasmine/</guid>
+      <guid isPermaLink="true">http://localhost:8080/articles/lovely-usage-wrapper-for-jasmine/</guid>
       <author></author>
       <description>&lt;p&gt;I was looking for a way to do a bit of data-driven testing with &lt;a href=&quot;http://pivotal.github.io/jasmine/&quot;&gt;jasmine&lt;/a&gt;, and &lt;a href=&quot;http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests&quot;&gt;JP nailed it&lt;/a&gt;.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;describe(&lt;span class=&quot;string&quot;&gt;&quot;username validation&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;() {
@@ -89,9 +125,9 @@
     </item>
     <item>
       <title>The Worst API ever</title>
-      <link>http://www.roufa.com/articles/the-worst-api-ever/</link>
+      <link>http://localhost:8080/articles/the-worst-api-ever/</link>
       <pubDate>Wed, 09 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://www.roufa.com/articles/the-worst-api-ever/</guid>
+      <guid isPermaLink="true">http://localhost:8080/articles/the-worst-api-ever/</guid>
       <author></author>
       <description>&lt;p&gt;I&amp;#39;m integrating with what may be the worst API ever. Check this out!&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-xml&quot;&gt;&lt;span class=&quot;pi&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
@@ -123,9 +159,9 @@
     </item>
     <item>
       <title>wintersmith -- So far, so good</title>
-      <link>http://www.roufa.com/articles/wintersmith-so-far-so-good/</link>
+      <link>http://localhost:8080/articles/wintersmith-so-far-so-good/</link>
       <pubDate>Tue, 08 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://www.roufa.com/articles/wintersmith-so-far-so-good/</guid>
+      <guid isPermaLink="true">http://localhost:8080/articles/wintersmith-so-far-so-good/</guid>
       <author></author>
       <description>&lt;p&gt;After a very short period running &lt;a href=&quot;http://www.orchardproject.net/&quot;&gt;Orchard&lt;/a&gt; for my blog, I decided to reverse course and try out &lt;a href=&quot;http://wintersmith.io/&quot;&gt;wintersmith&lt;/a&gt; instead. &lt;/p&gt;
 &lt;p&gt;Orchard seemed like a natural fit for me when I started out. Open source, free, .NET-based, and installed with one click from Azure‘s dashboard. I figured I’d spend some time with it, tweak it a bit, make it my own… But then, I didn&amp;#39;t. I had zero desire to play with it. For my needs, it was far too heavyweight, like peeling a potato with a sword.&lt;/p&gt;
@@ -136,9 +172,9 @@
     </item>
     <item>
       <title>A few thoughts on Firebase</title>
-      <link>http://www.roufa.com/articles/a-few-thoughts-on-firebase/</link>
+      <link>http://localhost:8080/articles/a-few-thoughts-on-firebase/</link>
       <pubDate>Mon, 07 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://www.roufa.com/articles/a-few-thoughts-on-firebase/</guid>
+      <guid isPermaLink="true">http://localhost:8080/articles/a-few-thoughts-on-firebase/</guid>
       <author></author>
       <description>&lt;p&gt;&lt;a href=&quot;http://www.firebase.com/&quot;&gt;Firebase&lt;/a&gt; is a beautiful thing. Real-time updates? AngularJS bindings? No need for a database of your own? It‘s a compelling offering. When it comes to actually using it, though… it’s complicated.&lt;/p&gt;
 &lt;hr&gt;
@@ -153,11 +189,11 @@
     </item>
     <item>
       <title>FlywayDB -- super-simple forward-only raw SQL database migrations for Java</title>
-      <link>http://www.roufa.com/articles/flywaydb-super-simple-migrations/</link>
+      <link>http://localhost:8080/articles/flywaydb-super-simple-migrations/</link>
       <pubDate>Sun, 11  Aug 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://www.roufa.com/articles/flywaydb-super-simple-migrations/</guid>
+      <guid isPermaLink="true">http://localhost:8080/articles/flywaydb-super-simple-migrations/</guid>
       <author></author>
-      <description>&lt;p&gt;For a recent green-field Java project, I chose &lt;a href=&quot;http://flywaydb.org/&quot;&gt;Flyway&lt;/a&gt; to manage all our database scripts. This library is a gem&lt;a name=&quot;1up&quot;&gt;&lt;/a&gt;&lt;sup&gt;&lt;a href=&quot;http://www.roufa.com/articles/flywaydb-super-simple-migrations/#1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, and I highly recommend it for anybody building or maintaining relational databases in Java.&lt;/p&gt;
+      <description>&lt;p&gt;For a recent green-field Java project, I chose &lt;a href=&quot;http://flywaydb.org/&quot;&gt;Flyway&lt;/a&gt; to manage all our database scripts. This library is a gem&lt;a name=&quot;1up&quot;&gt;&lt;/a&gt;&lt;sup&gt;&lt;a href=&quot;http://localhost:8080/articles/flywaydb-super-simple-migrations/#1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, and I highly recommend it for anybody building or maintaining relational databases in Java.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;It‘s not for every project, of course. Before you commit to using it, you’ll need to be sure yours can adhere to the following guidelines:&lt;/p&gt;
 &lt;ol&gt;
@@ -180,9 +216,9 @@
     </item>
     <item>
       <title>Morse Code Decoder Bookmarklet</title>
-      <link>http://www.roufa.com/articles/morse-code-decryptor-bookmarklet/</link>
+      <link>http://localhost:8080/articles/morse-code-decryptor-bookmarklet/</link>
       <pubDate>Mon, 29 Jul 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://www.roufa.com/articles/morse-code-decryptor-bookmarklet/</guid>
+      <guid isPermaLink="true">http://localhost:8080/articles/morse-code-decryptor-bookmarklet/</guid>
       <author></author>
       <description>&lt;p&gt;Ever been to a web page where a clever person has left you some morse code? And you have to go to some other website to decrypt it for you? How pass&amp;eacute;! &lt;/p&gt;
 &lt;p&gt;Instead, try this useful bookmarklet!&lt;/p&gt;
