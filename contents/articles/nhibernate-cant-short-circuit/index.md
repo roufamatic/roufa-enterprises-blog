@@ -26,7 +26,7 @@ var q = Session.Query<Tbl>()
 
 Looking at the error message and the debugger it became clear that the `list.Contains` statement was being evaluated. That's very unusual behavior in C# as the `||` operator is supposed to "short-circuit:" when the first operand evaluates to `true`, the second is not evaluated at all.
 
-As it turns out, the parameter of the `Where` clause is actually an [expression tree](http://msdn.microsoft.com/en-us/library/vstudio/bb397951.aspx). NHibernate does not execute this expression directly. Instead, it parses it to generate a SQL statement it can against the database. 
+As it turns out, the parameter of the `Where` clause is actually an [expression tree](http://msdn.microsoft.com/en-us/library/vstudio/bb397951.aspx). NHibernate does not execute this expression directly. Instead, it parses it to generate a SQL statement it can run against the database. 
 
 To illustrate, suppose that there were no null check, and the list contained the values [1,2,3]. It might try to do something like this:
 
