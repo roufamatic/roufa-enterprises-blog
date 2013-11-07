@@ -38,7 +38,7 @@ Now let's assume the list is null, but there's still no null-check in the expres
 
 Finally, we add the null check. Now NHibernate still is trying to generate a query. Perhaps it decides that "list IS NULL" is a perfectly reasonable SQL expression, or perhaps not. Regardless, *it still has to iterate over the list to generate the `IN` clause*, which it cannot do.
 
-In essence, we are mixing a test that doesn't belong in a query with a test that does, but NHibernate simply cannot easily know that's the case. The solution is to move the tests where they belong.
+In essence, we are mixing a test that doesn't belong in a query with a test that does, but NHibernate does not know that's the case. The solution is to move the tests where they belong.
 
 ```cs
 List<int> list = null;
