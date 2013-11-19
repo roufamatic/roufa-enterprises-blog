@@ -48,8 +48,8 @@
       <div class="content-wrap">
         <article class="article">
           <section class="content"><p><img src="/articles/when-badimageformatexception-is-not-what-it-seems/BadImageFormatException.png" alt="I hate this exception"></p>
-<p>Another obnoxious exception that long-term C# developers are very familiar with is <code>BadImageFormatException</code>. When I see it, I think “there must be some kind of compilation mixup.” As in, a third-party <span class="caps">DLL</span> isn‘t compiled as AnyCPU. Or a .NET 2.0 site is referencing a .NET 4.0 library. Generally it’s an annoyance but easy to suss&nbsp;out.</p>
-<p>Today I received an error report from my colleague where the application was throwing this very exception. I couldn&#39;t reproduce the problem on my machine, but he assured it happened every time on his (a 32-bit workstation) and on the test server&nbsp;(64-bit). </p>
+<p>Another exception that long-term C# developers are very familiar with is <code>BadImageFormatException</code>. When I see it, I think “there must be some kind of compilation mixup.” As in, a third-party <span class="caps">DLL</span> isn‘t compiled as AnyCPU. Or a .NET 2.0 site is referencing a .NET 4.0 library. Generally it’s an annoyance but easy to suss&nbsp;out.</p>
+<p>Today I received an error report from my colleague where the application was throwing this very exception. I couldn&#39;t reproduce the problem on my machine, but he assured me it happened every time on his (a 32-bit workstation) and on the test server&nbsp;(64-bit). </p>
 <p>The stack trace ended inside a call like&nbsp;this.</p>
 <pre><code class="lang-cs">T CallWrapped&lt;T&gt;(IEnumerable&lt;Func&lt;T&gt;&gt; actions) {
     T output = <span class="keyword">default</span>(T);

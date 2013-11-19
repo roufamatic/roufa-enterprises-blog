@@ -15,8 +15,8 @@
       <guid isPermaLink="true">http://localhost:8080/articles/when-badimageformatexception-is-not-what-it-seems/</guid>
       <author></author>
       <description>&lt;p&gt;&lt;img src=&quot;http://localhost:8080/articles/when-badimageformatexception-is-not-what-it-seems/BadImageFormatException.png&quot; alt=&quot;I hate this exception&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Another obnoxious exception that long-term C# developers are very familiar with is &lt;code&gt;BadImageFormatException&lt;/code&gt;. When I see it, I think “there must be some kind of compilation mixup.” As in, a third-party DLL isn‘t compiled as AnyCPU. Or a .NET 2.0 site is referencing a .NET 4.0 library. Generally it’s an annoyance but easy to suss out.&lt;/p&gt;
-&lt;p&gt;Today I received an error report from my colleague where the application was throwing this very exception. I couldn&amp;#39;t reproduce the problem on my machine, but he assured it happened every time on his (a 32-bit workstation) and on the test server (64-bit). &lt;/p&gt;
+&lt;p&gt;Another exception that long-term C# developers are very familiar with is &lt;code&gt;BadImageFormatException&lt;/code&gt;. When I see it, I think “there must be some kind of compilation mixup.” As in, a third-party DLL isn‘t compiled as AnyCPU. Or a .NET 2.0 site is referencing a .NET 4.0 library. Generally it’s an annoyance but easy to suss out.&lt;/p&gt;
+&lt;p&gt;Today I received an error report from my colleague where the application was throwing this very exception. I couldn&amp;#39;t reproduce the problem on my machine, but he assured me it happened every time on his (a 32-bit workstation) and on the test server (64-bit). &lt;/p&gt;
 &lt;p&gt;The stack trace ended inside a call like this.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-cs&quot;&gt;T CallWrapped&amp;lt;T&amp;gt;(IEnumerable&amp;lt;Func&amp;lt;T&amp;gt;&amp;gt; actions) {
     T output = &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;(T);

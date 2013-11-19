@@ -6,9 +6,9 @@ template: article.jade
 ---
 ![I hate this exception](BadImageFormatException.png)
 
-Another obnoxious exception that long-term C# developers are very familiar with is `BadImageFormatException`. When I see it, I think "there must be some kind of compilation mixup." As in, a third-party DLL isn't compiled as AnyCPU. Or a .NET 2.0 site is referencing a .NET 4.0 library. Generally it's an annoyance but easy to suss out.
+Another exception that long-term C# developers are very familiar with is `BadImageFormatException`. When I see it, I think "there must be some kind of compilation mixup." As in, a third-party DLL isn't compiled as AnyCPU. Or a .NET 2.0 site is referencing a .NET 4.0 library. Generally it's an annoyance but easy to suss out.
 
-Today I received an error report from my colleague where the application was throwing this very exception. I couldn't reproduce the problem on my machine, but he assured it happened every time on his (a 32-bit workstation) and on the test server (64-bit). 
+Today I received an error report from my colleague where the application was throwing this very exception. I couldn't reproduce the problem on my machine, but he assured me it happened every time on his (a 32-bit workstation) and on the test server (64-bit). 
 
 The stack trace ended inside a call like this.
 
