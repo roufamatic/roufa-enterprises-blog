@@ -5,9 +5,60 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Wed, 06 Nov 2013 16:00:00 -0800</pubDate>
+    <pubDate>Sun, 17 Nov 2013 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>When BadImageFormatException Is Not What It Seems</title>
+      <link>http://localhost:8080/articles/when-badimageformatexception-is-not-what-it-seems/</link>
+      <pubDate>Sun, 17 Nov 2013 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/when-badimageformatexception-is-not-what-it-seems/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;img src=&quot;http://localhost:8080/articles/when-badimageformatexception-is-not-what-it-seems/BadImageFormatException.png&quot; alt=&quot;I hate this exception&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Another obnoxious exception that long-term C# developers are very familiar with is &lt;code&gt;BadImageFormatException&lt;/code&gt;. When I see it, I think “there must be some kind of compilation mixup.” As in, a third-party DLL isn‘t compiled as AnyCPU. Or a .NET 2.0 site is referencing a .NET 4.0 library. Generally it’s an annoyance but easy to suss out.&lt;/p&gt;
+&lt;p&gt;Today I received an error report from my colleague where the application was throwing this very exception. I couldn&amp;#39;t reproduce the problem on my machine, but he assured it happened every time on his (a 32-bit workstation) and on the test server (64-bit). &lt;/p&gt;
+&lt;p&gt;The stack trace ended inside a call like this.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-cs&quot;&gt;T CallWrapped&amp;lt;T&amp;gt;(IEnumerable&amp;lt;Func&amp;lt;T&amp;gt;&amp;gt; actions) {
+    T output = &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;(T);
+    &lt;span class=&quot;keyword&quot;&gt;foreach&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; action &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; actions) {
+        output = Combine(output, action());
+    }
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; output;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;On my machine, this executed fine. But on my colleague&amp;#39;s, it would fail at the second &lt;code&gt;action()&lt;/code&gt; call. The actions looked something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-cs&quot;&gt;TRetVal WrappedDelete(Entity entity) {
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; actions = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; [] {
+        () =&amp;gt; LogDelete(entity),
+        () =&amp;gt; &lt;span class=&quot;keyword&quot;&gt;base&lt;/span&gt;.Delete(entity)
+    };
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; CallWrapped&amp;lt;TRetVal&amp;gt;(actions);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I set a breakpoint on &lt;code&gt;base.Delete()&lt;/code&gt; to see what was going on and hit F5. The breakpoint wasn‘t hit. What? Visual Studio won’t step into native methods that fail (unless you ask it nicely), but I&amp;#39;d never seen it refuse to step into a managed method declared within the solution! I checked the Delete method just to see if there were any clues there…&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-cs&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;virtual&lt;/span&gt; TRetVal Delete(Entity entity) {
+    &lt;span class=&quot;comment&quot;&gt;// simple NHibernate stuff in here, nothing worth mentioning!&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;… but it was all perfectly &lt;a href=&quot;http://en.wiktionary.org/wiki/cromulent&quot;&gt;cromulent&lt;/a&gt; code that would have caused fury among users if it actually had any problems.&lt;/p&gt;
+&lt;p&gt;After numerous Google searches that went nowhere (&amp;quot;Make sure you&amp;#39;re targeting the right platform!&amp;quot; shutupshutup), I finally &lt;a href=&quot;http://stackoverflow.com/questions/5290559/using-base-keyword-in-delegate-causes-system-badimageformatexception&quot;&gt;located the answer on StackOverflow&lt;/a&gt;. It turns to be a &lt;a href=&quot;https://connect.microsoft.com/VisualStudio/feedback/details/626550/badimageformatexception-on-simple-program-using-generics-and-lambdas&quot;&gt;bug in the C# 4.0 compiler&lt;/a&gt;. To reproduce it:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Write a lambda (anonymous method, delegate, what have you)…&lt;/li&gt;
+&lt;li&gt;that calls a &lt;code&gt;base&lt;/code&gt; method…&lt;/li&gt;
+&lt;li&gt;that is declared &lt;code&gt;virtual&lt;/code&gt;…&lt;/li&gt;
+&lt;li&gt;while running VS 2010 or below, or compiling with the C# 4.0 compiler&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A workaround is to wrap the base method call in its own method, like so:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-cs&quot;&gt;TRetVal WrappedDelete(Entity entity) {
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; actions = {
+        () =&amp;gt; LogDelete(entity),
+        () =&amp;gt; DoDelete(entity)
+    };
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; CallWrapped&amp;lt;TRetVal&amp;gt;(actions);
+}
+
+&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; TRetVal DoDelete(Entity entity) {
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;base&lt;/span&gt;.Delete(entity);
+}&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     <item>
       <title>NHibernate can't short-circuit</title>
       <link>http://localhost:8080/articles/nhibernate-cant-short-circuit/</link>

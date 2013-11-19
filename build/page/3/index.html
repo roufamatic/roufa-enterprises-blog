@@ -31,6 +31,26 @@
         </script>
         <article class="article intro">
           <header>
+            <p class="date"><span>14. October 2013</span></p>
+            <h2><a href="/articles/lovely-usage-wrapper-for-jasmine/" class="articleLink">Lovely &quot;usage&quot; wrapper for jasmine data-driven tests</a></h2>
+          </header>
+          <section class="content"><p>I was looking for a way to do a bit of data-driven testing with <a href="http://pivotal.github.io/jasmine/">jasmine</a>, and <a href="http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests"><span class="caps">JP</span> nailed it</a>.</p>
+<pre><code class="lang-javascript">describe(<span class="string">"username validation"</span>, <span class="keyword">function</span>() {
+  using(<span class="string">"valid values"</span>, 
+    [<span class="string">"abc"</span>, <span class="string">"longusername"</span>, <span class="string">"john_doe"</span>], 
+    <span class="keyword">function</span>(value){
+      it(<span class="string">"should return true for valid usernames"</span>, <span class="keyword">function</span>() {
+        expect(validateUserName(value)).toBeTruthy();
+      });
+    });
+});</code></pre>
+<p>The gist is that you can simply wrap your <code>it()</code> calls in a function that iterates over an array and pass the data in with each loop. It works great with synchronous and asynchronous tests. The function integrates cleanly with the test runner so each spec gets its own descriptive row. Best of all, it has a very pleasing syntax that makes it clear what is going to happen when you use&nbsp;it.</p>
+<p>Check out <a href="http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests"><span class="caps">JP</span>&#39;s blog</a> for the&nbsp;source.</p>
+
+          </section>
+        </article>
+        <article class="article intro">
+          <header>
             <p class="date"><span>10. October 2013</span></p>
             <h2><a href="/articles/the-worst-api-ever/" class="articleLink">The Worst API ever</a></h2>
           </header>
@@ -72,16 +92,6 @@
 <p>Orchard seemed like a natural fit for me when I started out. Open source, free, .<span class="caps">NET</span>-based, and installed with one click from Azure‘s dashboard. I figured I’d spend some time with it, tweak it a bit, make it my own… But then, I didn&#39;t. I had zero desire to play with it. For my needs, it was far too heavyweight, like peeling a potato with a&nbsp;sword.</p>
 
             <p class="more"><a href="/articles/wintersmith-so-far-so-good/" class="articleLink">more</a></p>
-          </section>
-        </article>
-        <article class="article intro">
-          <header>
-            <p class="date"><span>08. October 2013</span></p>
-            <h2><a href="/articles/a-few-thoughts-on-firebase/" class="articleLink">A few thoughts on Firebase</a></h2>
-          </header>
-          <section class="content"><p><a href="http://www.firebase.com/">Firebase</a> is a beautiful thing. Real-time updates? AngularJS bindings? No need for a database of your own? It‘s a compelling offering. When it comes to actually using it, though… it’s&nbsp;complicated.</p>
-
-            <p class="more"><a href="/articles/a-few-thoughts-on-firebase/" class="articleLink">more</a></p>
           </section>
         </article>
       </div>
