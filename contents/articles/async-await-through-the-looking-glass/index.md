@@ -22,8 +22,9 @@ It all looks very synchronous and saves a lot of mental unwinding that would hap
 But as I learned today, once you do hit the `await` statement, you are still leaving the stack. And when the `await` returns, the place you come back to may not be identical to the place you left, depending on how it got there. Here's a contrived example.
 
     public async Task<Stuff> GetStuffAsync(string someRelativeFolder) {
-        FireOffTheExecutable();
-        string completionFile = HttpContext.Current.Server.MapPath(Path.Combine(someRelativeFolder, "file.txt"))
+        string completionFile = 
+            HttpContext.Current.Server.MapPath(
+                Path.Combine(someRelativeFolder, "file.txt"))
         await VerifyFileExists(completionFile);
         
         string absolutePath = HttpContext.Current.Server.MapPath(
