@@ -5,9 +5,56 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Sun, 17 Nov 2013 16:00:00 -0800</pubDate>
+    <pubDate>Mon, 16 Dec 2013 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Async/Await -- Through the Looking Glass</title>
+      <link>http://localhost:8080/articles/async-await-through-the-looking-glass/</link>
+      <pubDate>Mon, 16 Dec 2013 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/async-await-through-the-looking-glass/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;img src=&quot;http://localhost:8080/articles/async-await-through-the-looking-glass/ttlg.jpg&quot; alt=&quot;Alice entering the Looking-glass World (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I finally had a chance to try out the no longer very new &lt;code&gt;async/await&lt;/code&gt; paradigm for asynchronous programming in .NET. My goal: make a long-running MVC4 action asynchronous to prevent thread starvation in ASP.NET.&lt;/p&gt;
+&lt;p&gt;When the call is made, the action fires off an executable to perform some work. This executable returns immediately and offers few hooks, so the only way I can be certain that the operation has completed is to watch for the appearance of a particular zero-byte file that it creates when it has finished.&lt;/p&gt;
+&lt;p&gt;The beauty of &lt;code&gt;async/await&lt;/code&gt; is how it does away with the traditional async callback method. Instead of Begin/End pairs, or Async/Complete, or even callback events, you get code that looks something like this.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public async Task&amp;lt;Stuff&amp;gt; GetStuffAsync() {
+    Stuff stuff = await DoTheAsyncThing();
+    return stuff;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It all looks very synchronous and saves a lot of mental unwinding that would happen otherwise.&lt;/p&gt;
+&lt;p&gt;But as I learned today, once you do hit the “await” statement, you are still going to a different part of the stack. And this stack may not be identical to the place you left, depending on how it got there. Here&amp;#39;s a contrived example.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public async Task&amp;lt;Stuff&amp;gt; GetStuffAsync(string someRelativeFolder) {
+    FireOffTheExecutable();
+    string completionFile = HttpContext.Current.Server.MapPath(Path.Combine(someRelativeFolder, &amp;quot;file.txt&amp;quot;))
+    await VerifyFileExists(completionFile);
+
+    string absolutePath = HttpContext.Current.Server.MapPath(
+        Path.Combine(someRelativeFolder, &amp;quot;anotherfile.xml&amp;quot;));
+
+    return LoadStuffFromAbsolutePath(absolutePath);
+}
+
+public async Task VerifyFileExists(string path) {
+    if (File.Exists(path)) return Task.FromResult(true);
+    var tsc = new TaskCompletionSource&amp;lt;bool&amp;gt;();
+    var fsw = new FileSystemWatcher(Path.GetDirectoryName(path));
+    FileSystemEventHandler createdHandler = null;
+    createdHandler = (s, e) =&amp;gt; {
+        if (e.Name == Path.GetFileName(path)) {
+            tcs.SetResult(true);
+            watcher.Created -= createdHandler;
+            watcher.Dispose();
+        }
+    }
+    watcher.Created += createdHandler;
+    watcher.EnableRaisingEvents = true;
+    return tcs.Task;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This throws a &lt;code&gt;NullReferenceException&lt;/code&gt; the &lt;strong&gt;second&lt;/strong&gt; time that you try to access &lt;code&gt;HttpContext.Current&lt;/code&gt;. Why? The &lt;code&gt;fsw.Created&lt;/code&gt; handler is called on a different thread than the one you just came from. That&amp;#39;s a pretty well-known fact and is why the &lt;code&gt;FileSystemWatcher&lt;/code&gt; has a &lt;code&gt;SynchronizingObject&lt;/code&gt; property to help WinForms programmers navigate their way back to the UI thread. &lt;/p&gt;
+&lt;p&gt;But it also exposes the “through the looking glass” nature of &lt;code&gt;async/await&lt;/code&gt;. The simplified syntax obscures the true nature of the code — in one method, the same object goes from having a value to having no value. Watch out!&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>When BadImageFormatException Is Not What It Seems</title>
       <link>http://localhost:8080/articles/when-badimageformatexception-is-not-what-it-seems/</link>

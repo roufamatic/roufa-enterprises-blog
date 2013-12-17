@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Roufa Enterprises, Inc.
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="Making Beautiful Things Work">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.2.1/lodash.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="content-wrap">
+        <div class="logo">
+          <h1><a href="http://localhost:8080">Roufa Enterprises, Inc.</a></h1>
+          <p class="description">Making Beautiful Things Work</p>
+        </div>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <script>
+          $(function() {
+            $('a.articleLink').attr('href', function() { return this.href + "?from=" + encodeURIComponent(location.pathname); } );
+          });
+          
+        </script>
+        <article class="article intro">
+          <header>
+            <p class="date"><span>30. July 2013</span></p>
+            <h2><a href="/articles/morse-code-decryptor-bookmarklet/" class="articleLink">Morse Code Decoder Bookmarklet</a></h2>
+          </header>
+          <section class="content"><p>Ever been to a web page where a clever person has left you some morse code? And you have to go to some other website to decrypt it for you? How&nbsp;pass&eacute;! </p>
+<p>Instead, try this useful&nbsp;bookmarklet!</p>
+
+            <p class="more"><a href="/articles/morse-code-decryptor-bookmarklet/" class="articleLink">more</a></p>
+          </section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/page/4/">« Newer</a>
+        </div>
+        <section class="about"><p><img src="/i/moi.jpeg" alt="My handsome mug">
+Hi, I&#39;m Michael Roufa.</p>
+<p>For the last 15 years, I‘ve been working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I specialize in backend development and build/deploy automation, but I’m no JavaScript slouch either. I hold a Masters in Software Engineering from Seattle University.</p>
+<p><a href="mailto:mike@roufa.com">Email</a> | <a href="https://twitter.com/roufamatic">Twitter</a> | <a href="http://www.linkedin.com/in/michaelroufa">LinkedIn</a> | <a href="http://stackoverflow.com/users/197860/roufamatic">StackOverflow</a> | <a href="https://github.com/roufamatic">GitHub</a></p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2013 Michael Roufa &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>

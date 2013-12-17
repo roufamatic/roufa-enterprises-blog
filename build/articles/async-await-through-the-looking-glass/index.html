@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Async/Await -- Through the Looking Glass - Roufa Enterprises, Inc.
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="Making Beautiful Things Work">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.2.1/lodash.min.js"></script>
+  </head>
+  <body class="article-detail">
+    <header class="header">
+      <div class="content-wrap">
+        <script>
+          $(function() {
+            var qsStr = location.search.substring(1);
+            var qs = {};
+            _.each(qsStr.split('&'), function(params) {
+               var hasEquals = params.indexOf('=') > -1
+               var k = (hasEquals ? params.split('=')[0] : params);
+               var v = (hasEquals ? decodeURIComponent(params.substring(params.indexOf('=')+1)) : "");
+               if (_.isUndefined(qs[k]) || qs[k] === null) qs[k] = v;
+               else qs[k] += "|" + v;
+            });
+            
+            if (qs['from']) {
+              var referrer = document.createElement('a');
+              referrer.href = document.referrer;
+              // if we are sure the user just came from our site, emulate the "back" button so we save the user's place.
+              if (referrer.host === location.host && referrer.pathname === qs['from']) {
+                  $('div.nav a').attr('href', 'javascript:history.go(-1)');
+              }
+            }
+          });
+          
+          
+        </script>
+        <h1>Async/Await -- Through the Looking Glass</h1>
+        <p class="author"><span class="author">Michael Roufa - 17 December 2013</span> 
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><p><img src="/articles/async-await-through-the-looking-glass/ttlg.jpg" alt="Alice entering the Looking-glass World (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)"></p>
+<p>I finally had a chance to try out the no longer very new <code>async/await</code> paradigm for asynchronous programming in .<span class="caps">NET</span>. My goal: make a long-running MVC4 action asynchronous to prevent thread starvation in&nbsp;ASP.NET.</p>
+<p>When the call is made, the action fires off an executable to perform some work. This executable returns immediately and offers few hooks, so the only way I can be certain that the operation has completed is to watch for the appearance of a particular zero-byte file that it creates when it has&nbsp;finished.</p>
+<p>The beauty of <code>async/await</code> is how it does away with the traditional async callback method. Instead of Begin/End pairs, or Async/Complete, or even callback events, you get code that looks something like&nbsp;this.</p>
+<pre><code>public async Task&lt;Stuff&gt; GetStuffAsync() {
+    Stuff stuff = await DoTheAsyncThing();
+    return stuff;
+}</code></pre>
+<p>It all looks very synchronous and saves a lot of mental unwinding that would happen&nbsp;otherwise.</p>
+<p>But as I learned today, once you do hit the “await” statement, you are still going to a different part of the stack. And this stack may not be identical to the place you left, depending on how it got there. Here&#39;s a contrived&nbsp;example.</p>
+<pre><code>public async Task&lt;Stuff&gt; GetStuffAsync(string someRelativeFolder) {
+    FireOffTheExecutable();
+    string completionFile = HttpContext.Current.Server.MapPath(Path.Combine(someRelativeFolder, &quot;file.txt&quot;))
+    await VerifyFileExists(completionFile);
+
+    string absolutePath = HttpContext.Current.Server.MapPath(
+        Path.Combine(someRelativeFolder, &quot;anotherfile.xml&quot;));
+
+    return LoadStuffFromAbsolutePath(absolutePath);
+}
+
+public async Task VerifyFileExists(string path) {
+    if (File.Exists(path)) return Task.FromResult(true);
+    var tsc = new TaskCompletionSource&lt;bool&gt;();
+    var fsw = new FileSystemWatcher(Path.GetDirectoryName(path));
+    FileSystemEventHandler createdHandler = null;
+    createdHandler = (s, e) =&gt; {
+        if (e.Name == Path.GetFileName(path)) {
+            tcs.SetResult(true);
+            watcher.Created -= createdHandler;
+            watcher.Dispose();
+        }
+    }
+    watcher.Created += createdHandler;
+    watcher.EnableRaisingEvents = true;
+    return tcs.Task;
+}</code></pre>
+<p>This throws a <code>NullReferenceException</code> the <strong>second</strong> time that you try to access <code>HttpContext.Current</code>. Why? The <code>fsw.Created</code> handler is called on a different thread than the one you just came from. That&#39;s a pretty well-known fact and is why the <code>FileSystemWatcher</code> has a <code>SynchronizingObject</code> property to help WinForms programmers navigate their way back to the <span class="caps">UI</span>&nbsp;thread. </p>
+<p>But it also exposes the “through the looking glass” nature of <code>async/await</code>. The simplified syntax obscures the true nature of the code — in one method, the same object goes from having a value to having no value. Watch&nbsp;out!</p>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">« Full blog</a></div>
+        <section class="about"><p><img src="/i/moi.jpeg" alt="My handsome mug">
+Hi, I&#39;m Michael Roufa.</p>
+<p>For the last 15 years, I‘ve been working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I specialize in backend development and build/deploy automation, but I’m no JavaScript slouch either. I hold a Masters in Software Engineering from Seattle University.</p>
+<p><a href="mailto:mike@roufa.com">Email</a> | <a href="https://twitter.com/roufamatic">Twitter</a> | <a href="http://www.linkedin.com/in/michaelroufa">LinkedIn</a> | <a href="http://stackoverflow.com/users/197860/roufamatic">StackOverflow</a> | <a href="https://github.com/roufamatic">GitHub</a></p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2013 Michael Roufa &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>
