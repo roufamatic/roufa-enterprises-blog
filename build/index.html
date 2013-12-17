@@ -35,9 +35,9 @@
             <h2><a href="/articles/async-await-through-the-looking-glass/" class="articleLink">Async/Await -- Through the Looking Glass</a></h2>
           </header>
           <section class="content"><p><img src="/articles/async-await-through-the-looking-glass/ttlg.jpg" alt="Alice entering the Looking-glass World (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)"></p>
-<p>I finally had a chance to try out the no longer very new <code>async/await</code> paradigm for asynchronous programming in .<span class="caps">NET</span>. My goal: make a long-running MVC4 action asynchronous to prevent thread starvation in&nbsp;ASP.NET.</p>
+<p>I finally had a chance to try out the no longer very new <em>async/await</em> paradigm for asynchronous programming in .<span class="caps">NET</span>. My goal: make a long-running MVC4 action asynchronous to prevent thread starvation in&nbsp;ASP.NET.</p>
 <p>When the call is made, the action fires off an executable to perform some work. This executable returns immediately and offers few hooks, so the only way I can be certain that the operation has completed is to watch for the appearance of a particular zero-byte file that it creates when it has&nbsp;finished.</p>
-<p>The beauty of <code>async/await</code> is how it does away with the traditional async callback method. Instead of Begin/End pairs, or Async/Complete, or even callback events, you get code that looks something like&nbsp;this.</p>
+<p>The beauty of <em>async/await</em> is how it does away with the traditional async callback method. Instead of Begin/End pairs, or Async/Complete, or even callback events, you get code that looks something like&nbsp;this.</p>
 <pre><code>public async Task&lt;Stuff&gt; GetStuffAsync() {
     Stuff stuff = await DoTheAsyncThing();
     return stuff;
@@ -72,7 +72,7 @@ public async Task VerifyFileExists(string path) {
     return tcs.Task;
 }</code></pre>
 <p>This throws a <code>NullReferenceException</code> the <strong>second</strong> time that you try to access <code>HttpContext.Current</code>. Why? The <code>fsw.Created</code> handler is called on a different thread than the one you just came from. That&#39;s a pretty well-known fact and is why the <code>FileSystemWatcher</code> has a <code>SynchronizingObject</code> property to help WinForms programmers navigate their way back to the <span class="caps">UI</span>&nbsp;thread. </p>
-<p>But it also exposes the “through the looking glass” nature of <code>async/await</code>. The simplified syntax obscures the true nature of the code — in one method, the same object goes from having a value to having no value. Watch&nbsp;out!</p>
+<p>But it also exposes the “through the looking glass” nature of <em>async/await</em>. The simplified syntax obscures the true nature of the code — in one method, the same object goes from having a value to having no value. Watch&nbsp;out!</p>
 
           </section>
         </article>
