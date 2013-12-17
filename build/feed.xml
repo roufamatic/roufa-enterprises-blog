@@ -23,7 +23,7 @@
     return stuff;
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;It all looks very synchronous and saves a lot of mental unwinding that would happen otherwise.&lt;/p&gt;
-&lt;p&gt;But as I learned today, once you do hit the “await” statement, you are still leaving the stack. And when the await returns, the place you come back to may not be identical to the place you left, depending on how it got there. Here&amp;#39;s a contrived example.&lt;/p&gt;
+&lt;p&gt;But as I learned today, once you do hit the &lt;code&gt;await&lt;/code&gt; statement, you are still leaving the stack. And when the &lt;code&gt;await&lt;/code&gt; returns, the place you come back to may not be identical to the place you left, depending on how it got there. Here&amp;#39;s a contrived example.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public async Task&amp;lt;Stuff&amp;gt; GetStuffAsync(string someRelativeFolder) {
     FireOffTheExecutable();
     string completionFile = HttpContext.Current.Server.MapPath(Path.Combine(someRelativeFolder, &amp;quot;file.txt&amp;quot;))
