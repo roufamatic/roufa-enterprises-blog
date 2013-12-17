@@ -19,7 +19,7 @@ The beauty of `async/await` is how it does away with the traditional async callb
 
 It all looks very synchronous and saves a lot of mental unwinding that would happen otherwise.
 
-But as I learned today, once you do hit the "await" statement, you are still going to a different part of the stack. And this stack may not be identical to the place you left, depending on how it got there. Here's a contrived example.
+But as I learned today, once you do hit the "await" statement, you are still leaving stack. And when the await returns, the place you come back to may not be identical to the place you left, depending on how it got there. Here's a contrived example.
 
     public async Task<Stuff> GetStuffAsync(string someRelativeFolder) {
         FireOffTheExecutable();
