@@ -31,6 +31,40 @@
         </script>
         <article class="article intro">
           <header>
+            <p class="date"><span>10. October 2013</span></p>
+            <h2><a href="/articles/the-worst-api-ever/" class="articleLink">The Worst API ever</a></h2>
+          </header>
+          <section class="content"><p>I&#39;m integrating with what may be the worst <span class="caps">API</span> ever. Check this&nbsp;out!</p>
+<pre><code class="lang-xml"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="tag">&lt;<span class="title">soap:Envelope</span> <span class="attribute">xmlns:soap</span>=<span class="value">"http://schemas.xmlsoap.org/soap/envelope/"</span> 
+               <span class="attribute">xmlns:xsi</span>=<span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span> 
+               <span class="attribute">xmlns:xsd</span>=<span class="value">"http://www.w3.org/2001/XMLSchema"</span>&gt;</span>
+ <span class="tag">&lt;<span class="title">soap:Body</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">Create</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.<span class="caps">REDACTED</span>.com/api/"</span>&gt;</span>
+   <span class="tag">&lt;<span class="title">data</span>&gt;</span>
+    ["{\"type\":\"<span class="caps">REDACTED</span>\",\"data\":\"{ParentType: 'REDACTED', ParentId: '1', ActionEntityType: '2', ActionEntityId: '3', SegmentId: '0' }\",\"normalize\":false}"]
+   <span class="tag">&lt;/<span class="title">data</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">Create</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">soap:Body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">soap:Envelope</span>&gt;</span></code></pre>
+<p>So much wrong in so little space. Here we&nbsp;have:</p>
+<ul>
+<li>a <span class="caps">SOAP</span>&nbsp;message…</li>
+<li>… with a “data”&nbsp;parameter…</li>
+<li>… containing a <span class="caps">JSON</span>&nbsp;array…</li>
+<li>… of a single&nbsp;string</li>
+<li>… of <span class="caps">JSON</span> (string-escaped, of&nbsp;course)…</li>
+<li>… that itself contains “data”&nbsp;parameter…</li>
+<li>… which is again a&nbsp;string….</li>
+<li>… of improperly formatted&nbsp;<span class="caps">JSON</span>!</li>
+</ul>
+<p>I suspect the last improper formatting is to reduce the amount of quote-escaping needed given that you are now in double-escape territory. Oh, and lest you think it&#39;s just being permissive — if you attempt to properly <span class="caps">JSON</span>-encode the inner data parameter, the call fails with &quot;unable to parse&nbsp;JSON!&quot; </p>
+<p>This. Is. A. Maz.&nbsp;Ing.</p>
+
+          </section>
+        </article>
+        <article class="article intro">
+          <header>
             <p class="date"><span>09. October 2013</span></p>
             <h2><a href="/articles/wintersmith-so-far-so-good/" class="articleLink">wintersmith -- So far, so good</a></h2>
           </header>
@@ -48,16 +82,6 @@
           <section class="content"><p><a href="http://www.firebase.com/">Firebase</a> is a beautiful thing. Real-time updates? AngularJS bindings? No need for a database of your own? It‘s a compelling offering. When it comes to actually using it, though… it’s&nbsp;complicated.</p>
 
             <p class="more"><a href="/articles/a-few-thoughts-on-firebase/" class="articleLink">more</a></p>
-          </section>
-        </article>
-        <article class="article intro">
-          <header>
-            <p class="date"><span>12. August 2013</span></p>
-            <h2><a href="/articles/flywaydb-super-simple-migrations/" class="articleLink">FlywayDB -- super-simple forward-only raw SQL database migrations for Java</a></h2>
-          </header>
-          <section class="content"><p>For a recent green-field Java project, I chose <a href="http://flywaydb.org/">Flyway</a> to manage all our database scripts. This library is a gem<a name="1up"></a><sup><a href="/articles/flywaydb-super-simple-migrations/#1">1</a></sup>, and I highly recommend it for anybody building or maintaining relational databases in&nbsp;Java.</p>
-
-            <p class="more"><a href="/articles/flywaydb-super-simple-migrations/" class="articleLink">more</a></p>
           </section>
         </article>
       </div>

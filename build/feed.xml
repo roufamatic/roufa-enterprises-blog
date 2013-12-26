@@ -5,9 +5,22 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Mon, 16 Dec 2013 16:00:00 -0800</pubDate>
+    <pubDate>Wed, 25 Dec 2013 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>The 2013 Holiday Card</title>
+      <link>http://localhost:8080/articles/happy-holidays-2013/</link>
+      <pubDate>Wed, 25 Dec 2013 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/happy-holidays-2013/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;a href=&quot;http://localhost:8080/articles/happy-holidays-2013/card.jpg&quot;&gt;&lt;img src=&quot;http://localhost:8080/articles/happy-holidays-2013/card.jpg&quot; alt=&quot;My 2013 holiday card&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I had a blast butting this together. Thanks to my friend &lt;a href=&quot;http://www.flickr.com/photos/russellelbert&quot;&gt;Russell Williams&lt;/a&gt; for
+the photography and photoshopping!&lt;/p&gt;
+&lt;p&gt;Russell also put together this big-headed version of the same. It was a tough call but I decided to play it straight for the physical cards. Enjoy!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://localhost:8080/articles/happy-holidays-2013/bigheads.jpg&quot;&gt;&lt;img src=&quot;http://localhost:8080/articles/happy-holidays-2013/bigheads.jpg&quot; alt=&quot;Look at the big heads!&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Async/Await -- Through the Looking Glass</title>
       <link>http://localhost:8080/articles/async-await-through-the-looking-glass/</link>

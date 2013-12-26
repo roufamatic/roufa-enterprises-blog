@@ -31,6 +31,19 @@
         </script>
         <article class="article intro">
           <header>
+            <p class="date"><span>26. December 2013</span></p>
+            <h2><a href="/articles/happy-holidays-2013/" class="articleLink">The 2013 Holiday Card</a></h2>
+          </header>
+          <section class="content"><p><a href="/articles/happy-holidays-2013/card.jpg"><img src="/articles/happy-holidays-2013/card.jpg" alt="My 2013 holiday card"></a></p>
+<p>I had a blast butting this together. Thanks to my friend <a href="http://www.flickr.com/photos/russellelbert">Russell Williams</a> for
+the photography and&nbsp;photoshopping!</p>
+<p>Russell also put together this big-headed version of the same. It was a tough call but I decided to play it straight for the physical cards.&nbsp;Enjoy!</p>
+<p><a href="/articles/happy-holidays-2013/bigheads.jpg"><img src="/articles/happy-holidays-2013/bigheads.jpg" alt="Look at the big heads!"></a></p>
+
+          </section>
+        </article>
+        <article class="article intro">
+          <header>
             <p class="date"><span>17. December 2013</span></p>
             <h2><a href="/articles/async-await-through-the-looking-glass/" class="articleLink">Async/Await -- Through the Looking Glass</a></h2>
           </header>
@@ -125,41 +138,6 @@ public async Task VerifyFileExists(string path) {
 <span class="keyword">private</span> TRetVal DoDelete(Entity entity) {
     <span class="keyword">return</span> <span class="keyword">base</span>.Delete(entity);
 }</code></pre>
-
-          </section>
-        </article>
-        <article class="article intro">
-          <header>
-            <p class="date"><span>07. November 2013</span></p>
-            <h2><a href="/articles/nhibernate-cant-short-circuit/" class="articleLink">NHibernate can't short-circuit</a></h2>
-          </header>
-          <section class="content"><p><img src="/articles/nhibernate-cant-short-circuit/JohnnyFive.jpg" alt="Johnny Five Is Alive"></p>
-<p>While doing some refactoring on an NHibernate-driven site, I came across a nasty&nbsp;exception:</p>
-<pre><code>System.ArgumentNullException: Value cannot be null. Parameter name: source 
-at System.Linq.Enumerable.Cast[TResult](IEnumerable source)</code></pre>
-<p>This was a bit confusing at first. The code was already checking for null&#39;s. What&nbsp;gives?</p>
-<pre><code class="lang-cs">List&lt;<span class="keyword">int</span>&gt; list = <span class="keyword">null</span>;
-<span class="comment">// ... something tries to populate the list ...</span>
-<span class="comment">// If there's anything in the list, use that as a filter. </span>
-<span class="comment">// Otherwise return everything.</span>
-<span class="keyword">var</span> q = Session.Query&lt;Tbl&gt;()
-               .Where(t =&gt; list == <span class="keyword">null</span> || list.Contains(t.IntProp));</code></pre>
-<p>Looking at the error message and the debugger it became clear that the <code>list.Contains</code> statement was being evaluated. That&#39;s very unusual behavior in C# as the <code>||</code> operator is supposed to “short-circuit:” when the first operand evaluates to <code>true</code>, the second is not evaluated at&nbsp;all.</p>
-<p>As it turns out, the parameter of the <code>Where</code> clause is actually an <a href="http://msdn.microsoft.com/en-us/library/vstudio/bb397951.aspx">expression tree</a>. NHibernate does not execute this expression directly. Instead, it parses it to generate a <span class="caps">SQL</span> statement it can run against the&nbsp;database. </p>
-<p>To illustrate, suppose that there were no null check, and the list contained the values [1,2,3]. It might try to do something like&nbsp;this:</p>
-<pre><code class="lang-sql"><span class="operator"><span class="keyword"><span class="caps">SELECT</span></span> * <span class="keyword"><span class="caps">FROM</span></span> Tbl <span class="keyword"><span class="caps">WHERE</span></span> IntProp <span class="keyword"><span class="caps">IN</span></span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</code></pre>
-<p>Now let‘s assume the list is null, but there’s still no null-check in the expression. It would attempt to convert the list to its <span class="caps">SQL</span> equivalent and fail with the same exception as&nbsp;above.</p>
-<p>Finally, we add the null check. Now NHibernate still is trying to generate a query. Perhaps it decides that “list <span class="caps">IS</span> NULL” is a perfectly reasonable SQL expression, or perhaps not. Regardless, <em>it still has to iterate over the list to generate the <code>IN</code> clause</em>, which it cannot&nbsp;do.</p>
-<p>In essence, we are mixing a test that doesn‘t belong in a query with a test that does, but NHibernate does not know that’s the case. The solution is to move the tests where they&nbsp;belong.</p>
-<pre><code class="lang-cs">List&lt;<span class="keyword">int</span>&gt; list = <span class="keyword">null</span>;
-<span class="comment">// ... something tries to populate the list ...</span>
-<span class="keyword">var</span> q = Session.Query&lt;Tbl&gt;();
-<span class="comment">// If there's anything in the list, use that as a filter. </span>
-<span class="comment">// Otherwise return everything.</span>
-<span class="keyword">if</span> (list != <span class="keyword">null</span>) {
-    q = q.Where(t =&gt; list.Contains(t.IntProp));
-}</code></pre>
-<p>It&#39;s a bit clumsier without the fluent interface to lean on, but it does have the side benefit of making the resultant <span class="caps">SQL</span> query&nbsp;cleaner.</p>
 
           </section>
         </article>
