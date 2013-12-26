@@ -4,7 +4,7 @@ author: Michael Roufa
 date: 2013-12-26
 template: article.jade
 ---
-[![My 2013 holiday card](card.jpg)](card.jpg)
+[![My 2013 holiday card](card-1024.jpg)](card.jpg)
 
 I had a blast butting this together. Thanks to my friend [Russell Williams](http://www.flickr.com/photos/russellelbert) for
 the photography and photoshopping!
