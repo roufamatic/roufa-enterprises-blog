@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Roufa Enterprises, Inc.</title>
-    <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
-    <link>http://localhost:8080</link>
+    <atom:link href="http://www.roufa.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://www.roufa.com</link>
     <description>Making Beautiful Things Work</description>
     <pubDate>Wed, 25 Dec 2013 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
       <title>The 2013 Holiday Card</title>
-      <link>http://localhost:8080/articles/happy-holidays-2013/</link>
+      <link>http://www.roufa.com/articles/happy-holidays-2013/</link>
       <pubDate>Wed, 25 Dec 2013 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/happy-holidays-2013/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/happy-holidays-2013/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;a href=&quot;http://localhost:8080/articles/happy-holidays-2013/card.jpg&quot;&gt;&lt;img src=&quot;http://localhost:8080/articles/happy-holidays-2013/card-1024.jpg&quot; alt=&quot;My 2013 holiday card&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&quot;http://www.roufa.com/articles/happy-holidays-2013/card.jpg&quot;&gt;&lt;img src=&quot;http://www.roufa.com/articles/happy-holidays-2013/card-1024.jpg&quot; alt=&quot;My 2013 holiday card&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I had a blast butting this together. Thanks to my friend &lt;a href=&quot;http://www.flickr.com/photos/russellelbert&quot;&gt;Russell Williams&lt;/a&gt; for
 the photography and photoshopping!&lt;/p&gt;
 &lt;p&gt;Russell also put together this big-headed version of the same. It was a tough call but I decided to play it straight for the physical cards. Enjoy!&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://localhost:8080/articles/happy-holidays-2013/bigheads.jpg&quot;&gt;&lt;img src=&quot;http://localhost:8080/articles/happy-holidays-2013/bigheads.jpg&quot; alt=&quot;Look at the big heads!&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.roufa.com/articles/happy-holidays-2013/bigheads.jpg&quot;&gt;&lt;img src=&quot;http://www.roufa.com/articles/happy-holidays-2013/bigheads.jpg&quot; alt=&quot;Look at the big heads!&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     <item>
       <title>Async/Await -- Through the Looking Glass</title>
-      <link>http://localhost:8080/articles/async-await-through-the-looking-glass/</link>
+      <link>http://www.roufa.com/articles/async-await-through-the-looking-glass/</link>
       <pubDate>Mon, 16 Dec 2013 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/async-await-through-the-looking-glass/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/async-await-through-the-looking-glass/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;img src=&quot;http://localhost:8080/articles/async-await-through-the-looking-glass/ttlg.jpg&quot; alt=&quot;Alice entering the Looking-glass World (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)&quot;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/async-await-through-the-looking-glass/ttlg.jpg&quot; alt=&quot;Alice entering the Looking-glass World (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)&quot;&gt;&lt;/p&gt;
 &lt;p&gt;I finally had a chance to try out the no longer very new &lt;em&gt;async/await&lt;/em&gt; paradigm for asynchronous programming in .NET. My goal: make a long-running MVC4 action asynchronous to prevent thread starvation in ASP.NET.&lt;/p&gt;
 &lt;p&gt;When the call is made, the action fires off an executable to perform some work. This executable returns immediately and offers few hooks, so the only way I can be certain that the operation has completed is to watch for the appearance of a particular zero-byte file that it creates when it has finished.&lt;/p&gt;
 &lt;p&gt;The beauty of &lt;em&gt;async/await&lt;/em&gt; is how it does away with the traditional async callback method. Instead of Begin/End pairs, or Async/Complete, or even callback events, you get code that looks something like this.&lt;/p&gt;
@@ -71,11 +71,11 @@ public async Task VerifyFileExists(string path) {
     </item>
     <item>
       <title>When BadImageFormatException Is Not What It Seems</title>
-      <link>http://localhost:8080/articles/when-badimageformatexception-is-not-what-it-seems/</link>
+      <link>http://www.roufa.com/articles/when-badimageformatexception-is-not-what-it-seems/</link>
       <pubDate>Sun, 17 Nov 2013 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/when-badimageformatexception-is-not-what-it-seems/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/when-badimageformatexception-is-not-what-it-seems/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;img src=&quot;http://localhost:8080/articles/when-badimageformatexception-is-not-what-it-seems/BadImageFormatException.png&quot; alt=&quot;I hate this exception&quot;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/when-badimageformatexception-is-not-what-it-seems/BadImageFormatException.png&quot; alt=&quot;I hate this exception&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Another exception that long-term C# developers are very familiar with is &lt;code&gt;BadImageFormatException&lt;/code&gt;. When I see it, I think “there must be some kind of compilation mixup.” As in, a third-party DLL isn‘t compiled as AnyCPU. Or a .NET 2.0 site is referencing a .NET 4.0 library. Generally it’s an annoyance but easy to suss out.&lt;/p&gt;
 &lt;p&gt;Today I received an error report from my colleague where the application was throwing this very exception. I couldn&amp;#39;t reproduce the problem on my machine, but he assured me it happened every time on his (a 32-bit workstation) and on the test server (64-bit). &lt;/p&gt;
 &lt;p&gt;The stack trace ended inside a call like this.&lt;/p&gt;
@@ -122,11 +122,11 @@ public async Task VerifyFileExists(string path) {
     </item>
     <item>
       <title>NHibernate can't short-circuit</title>
-      <link>http://localhost:8080/articles/nhibernate-cant-short-circuit/</link>
+      <link>http://www.roufa.com/articles/nhibernate-cant-short-circuit/</link>
       <pubDate>Wed, 06 Nov 2013 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/nhibernate-cant-short-circuit/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/nhibernate-cant-short-circuit/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;img src=&quot;http://localhost:8080/articles/nhibernate-cant-short-circuit/JohnnyFive.jpg&quot; alt=&quot;Johnny Five Is Alive&quot;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/nhibernate-cant-short-circuit/JohnnyFive.jpg&quot; alt=&quot;Johnny Five Is Alive&quot;&gt;&lt;/p&gt;
 &lt;p&gt;While doing some refactoring on an NHibernate-driven site, I came across a nasty exception:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;System.ArgumentNullException: Value cannot be null. Parameter name: source 
 at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre&gt;
@@ -157,20 +157,20 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
     </item>
     <item>
       <title>Internet Famous?</title>
-      <link>http://localhost:8080/articles/internet-famous/</link>
+      <link>http://www.roufa.com/articles/internet-famous/</link>
       <pubDate>Tue, 29 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/internet-famous/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/internet-famous/</guid>
       <author></author>
       <description>&lt;p&gt;My coworking space, &lt;a href=&quot;http://www.worksprogressseattle.com/&quot;&gt;Works Progress&lt;/a&gt;, interviewed me on their blog! &lt;a href=&quot;http://www.worksprogressseattle.com/meet-mike-roufa/&quot;&gt;I&amp;#39;m famous… on the Internet.&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     <item>
       <title>modern.IE saves the day!</title>
-      <link>http://localhost:8080/articles/modern-ie-saves-the-day/</link>
+      <link>http://www.roufa.com/articles/modern-ie-saves-the-day/</link>
       <pubDate>Sun, 27 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/modern-ie-saves-the-day/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/modern-ie-saves-the-day/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;img src=&quot;http://localhost:8080/articles/modern-ie-saves-the-day/vms.png&quot; alt=&quot;Windows XP, never so pleased to see you!&quot;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/modern-ie-saves-the-day/vms.png&quot; alt=&quot;Windows XP, never so pleased to see you!&quot;&gt;&lt;/p&gt;
 &lt;p&gt;My laptop returned with one bad RAM stick missing. While it was gone, I discovered I prefer Windows 8.1 to its predecessor, especially the return of the start button and the improved start screen that installers cannot automatically colonize. I upgraded my laptop immediately.&lt;/p&gt;
 &lt;p&gt;Microsoft introduced more changes under the hood, though, and a few programs stopped working. One was &lt;a href=&quot;http://www.1upindustries.com/Bins/default.aspx&quot;&gt;Bins&lt;/a&gt; which I use to keep my browsers together, but they had a &lt;a href=&quot;http://feedback.1upindustries.com/forums/103687-bugs/suggestions/4681319-windows-8-1-werfault-exe-error-upon-starting-bins&quot;&gt;fix available&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;A more serious problem was the &lt;a href=&quot;http://www.eightforums.com/general-support/33644-upgrade-8-1-disaster.html&quot;&gt;Juniper Remote Desktop Client&lt;/a&gt;. Without this, I was unable to complete my latest contract.&lt;/p&gt;
@@ -185,9 +185,9 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
     </item>
     <item>
       <title>Quick Boot Camp Tip</title>
-      <link>http://localhost:8080/articles/quick-bootcamp-tip/</link>
+      <link>http://www.roufa.com/articles/quick-bootcamp-tip/</link>
       <pubDate>Mon, 21 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/quick-bootcamp-tip/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/quick-bootcamp-tip/</guid>
       <author></author>
       <description>&lt;p&gt;Thought I‘d leave this nugget in case it helps somebody. Yesterday my 6-month-old Lenovo ThinkPad W530 died, and my wife needed a new computer anyway, so I picked up a Mac Mini. It’s her computer, but will act as my emergency machine in case something like this happens again. Since I&amp;#39;m primarily a Windows developer, I set up a small partition with Boot Camp.&lt;/p&gt;
 &lt;p&gt;Here‘s what I’ve learned: If you&amp;#39;re attempting to install Windows 8.1 on a Mac Mini using Boot Camp, and you choose to download the drivers to a USB flash drive and then install from an external DVD drive, &lt;a href=&quot;http://support.apple.com/kb/TS4536&quot;&gt;you must remove the flash drive before rebooting into the Windows installer&lt;/a&gt;. Otherwise you‘ll just see a blank screen and nothing will happen and you’ll be scared and afraid for your brand new purchase.&lt;/p&gt;
@@ -196,9 +196,9 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
     </item>
     <item>
       <title>Bootstrapping Quality</title>
-      <link>http://localhost:8080/articles/bootstrapping-quality/</link>
+      <link>http://www.roufa.com/articles/bootstrapping-quality/</link>
       <pubDate>Thu, 17 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/bootstrapping-quality/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/bootstrapping-quality/</guid>
       <author></author>
       <description>&lt;p&gt;I gave a talk to CompSci seniors at Seattle University today about Version Control Systems, Test-Driven Development and Continuous Integration. Here are the slides:&lt;/p&gt;
 &lt;div style=&quot;text-align:center&quot;&gt;
@@ -206,7 +206,7 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
 &lt;/div&gt;
 
 &lt;p&gt;During the presentation I tried to demonstrate TDD by building &lt;a href=&quot;http://www.codinghorror.com/blog/2007/02/why-cant-programmers-program.html&quot;&gt;FizzBuzz&lt;/a&gt; in a test-driven manner, then showed off Dependency Injection and Mocking by adding text from my twitter feed. &lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://localhost:8080/articles/bootstrapping-quality/FizzBuzzInc.zip&quot;&gt;Download the source here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.roufa.com/articles/bootstrapping-quality/FizzBuzzInc.zip&quot;&gt;Download the source here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Notes: &lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;I removed my twitter app authentication keys, so if you execute the program it won&amp;#39;t work. See the file Twit.cs and &lt;a href=&quot;https://dev.twitter.com/docs&quot;&gt;Twitter Development&lt;/a&gt; if you feel the need to resuscitate this.&lt;/li&gt;
@@ -216,9 +216,9 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
     </item>
     <item>
       <title>Lovely &quot;usage&quot; wrapper for jasmine data-driven tests</title>
-      <link>http://localhost:8080/articles/lovely-usage-wrapper-for-jasmine/</link>
+      <link>http://www.roufa.com/articles/lovely-usage-wrapper-for-jasmine/</link>
       <pubDate>Sun, 13 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/lovely-usage-wrapper-for-jasmine/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/lovely-usage-wrapper-for-jasmine/</guid>
       <author></author>
       <description>&lt;p&gt;I was looking for a way to do a bit of data-driven testing with &lt;a href=&quot;http://pivotal.github.io/jasmine/&quot;&gt;jasmine&lt;/a&gt;, and &lt;a href=&quot;http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests&quot;&gt;JP nailed it&lt;/a&gt;.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;describe(&lt;span class=&quot;string&quot;&gt;&quot;username validation&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;() {
@@ -236,9 +236,9 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
     </item>
     <item>
       <title>The Worst API ever</title>
-      <link>http://localhost:8080/articles/the-worst-api-ever/</link>
+      <link>http://www.roufa.com/articles/the-worst-api-ever/</link>
       <pubDate>Wed, 09 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/the-worst-api-ever/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/the-worst-api-ever/</guid>
       <author></author>
       <description>&lt;p&gt;I&amp;#39;m integrating with what may be the worst API ever. Check this out!&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-xml&quot;&gt;&lt;span class=&quot;pi&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
@@ -270,9 +270,9 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
     </item>
     <item>
       <title>wintersmith -- So far, so good</title>
-      <link>http://localhost:8080/articles/wintersmith-so-far-so-good/</link>
+      <link>http://www.roufa.com/articles/wintersmith-so-far-so-good/</link>
       <pubDate>Tue, 08 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/wintersmith-so-far-so-good/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/wintersmith-so-far-so-good/</guid>
       <author></author>
       <description>&lt;p&gt;After a very short period running &lt;a href=&quot;http://www.orchardproject.net/&quot;&gt;Orchard&lt;/a&gt; for my blog, I decided to reverse course and try out &lt;a href=&quot;http://wintersmith.io/&quot;&gt;wintersmith&lt;/a&gt; instead. &lt;/p&gt;
 &lt;p&gt;Orchard seemed like a natural fit for me when I started out. Open source, free, .NET-based, and installed with one click from Azure‘s dashboard. I figured I’d spend some time with it, tweak it a bit, make it my own… But then, I didn&amp;#39;t. I had zero desire to play with it. For my needs, it was far too heavyweight, like peeling a potato with a sword.&lt;/p&gt;
@@ -283,9 +283,9 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
     </item>
     <item>
       <title>A few thoughts on Firebase</title>
-      <link>http://localhost:8080/articles/a-few-thoughts-on-firebase/</link>
+      <link>http://www.roufa.com/articles/a-few-thoughts-on-firebase/</link>
       <pubDate>Mon, 07 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/a-few-thoughts-on-firebase/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/a-few-thoughts-on-firebase/</guid>
       <author></author>
       <description>&lt;p&gt;&lt;a href=&quot;http://www.firebase.com/&quot;&gt;Firebase&lt;/a&gt; is a beautiful thing. Real-time updates? AngularJS bindings? No need for a database of your own? It‘s a compelling offering. When it comes to actually using it, though… it’s complicated.&lt;/p&gt;
 &lt;hr&gt;
@@ -300,11 +300,11 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
     </item>
     <item>
       <title>FlywayDB -- super-simple forward-only raw SQL database migrations for Java</title>
-      <link>http://localhost:8080/articles/flywaydb-super-simple-migrations/</link>
+      <link>http://www.roufa.com/articles/flywaydb-super-simple-migrations/</link>
       <pubDate>Sun, 11  Aug 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/flywaydb-super-simple-migrations/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/flywaydb-super-simple-migrations/</guid>
       <author></author>
-      <description>&lt;p&gt;For a recent green-field Java project, I chose &lt;a href=&quot;http://flywaydb.org/&quot;&gt;Flyway&lt;/a&gt; to manage all our database scripts. This library is a gem&lt;a name=&quot;1up&quot;&gt;&lt;/a&gt;&lt;sup&gt;&lt;a href=&quot;http://localhost:8080/articles/flywaydb-super-simple-migrations/#1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, and I highly recommend it for anybody building or maintaining relational databases in Java.&lt;/p&gt;
+      <description>&lt;p&gt;For a recent green-field Java project, I chose &lt;a href=&quot;http://flywaydb.org/&quot;&gt;Flyway&lt;/a&gt; to manage all our database scripts. This library is a gem&lt;a name=&quot;1up&quot;&gt;&lt;/a&gt;&lt;sup&gt;&lt;a href=&quot;http://www.roufa.com/articles/flywaydb-super-simple-migrations/#1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, and I highly recommend it for anybody building or maintaining relational databases in Java.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;It‘s not for every project, of course. Before you commit to using it, you’ll need to be sure yours can adhere to the following guidelines:&lt;/p&gt;
 &lt;ol&gt;
@@ -327,9 +327,9 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
     </item>
     <item>
       <title>Morse Code Decoder Bookmarklet</title>
-      <link>http://localhost:8080/articles/morse-code-decryptor-bookmarklet/</link>
+      <link>http://www.roufa.com/articles/morse-code-decryptor-bookmarklet/</link>
       <pubDate>Mon, 29 Jul 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/morse-code-decryptor-bookmarklet/</guid>
+      <guid isPermaLink="true">http://www.roufa.com/articles/morse-code-decryptor-bookmarklet/</guid>
       <author></author>
       <description>&lt;p&gt;Ever been to a web page where a clever person has left you some morse code? And you have to go to some other website to decrypt it for you? How pass&amp;eacute;! &lt;/p&gt;
 &lt;p&gt;Instead, try this useful bookmarklet!&lt;/p&gt;
