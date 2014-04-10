@@ -5,9 +5,26 @@
     <atom:link href="http://www.roufa.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://www.roufa.com</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Wed, 25 Dec 2013 16:00:00 -0800</pubDate>
+    <pubDate>Wed, 09 Apr 2014 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Async-Await Apologia</title>
+      <link>http://www.roufa.com/articles/async-await-apologia/</link>
+      <pubDate>Wed, 09 Apr 2014 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://www.roufa.com/articles/async-await-apologia/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/async-await-apologia/apologies.jpg&quot; alt=&quot;Work in progress -- by Alexander Baxevanis: https://www.flickr.com/photos/futureshape/4000128011/ (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)&quot;&gt;&lt;/p&gt;
+&lt;p&gt;This update is long overdue. &lt;a href=&quot;http://www.roufa.com/articles/async-await-through-the-looking-glass/&quot;&gt;Previously&lt;/a&gt;, I wrote: &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;But as I learned today, once you do hit the &lt;code&gt;await&lt;/code&gt; statement, you are still leaving the stack. And when the &lt;code&gt;await&lt;/code&gt; returns, the place you come back to may not be identical to the place you left, depending on how it got there.&lt;/p&gt;
+&lt;p&gt;…&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;fsw.Created&lt;/code&gt; handler is called on a different thread than the one you just came from. That&amp;#39;s a pretty well-known fact and is why the &lt;code&gt;FileSystemWatcher&lt;/code&gt; has a &lt;code&gt;SynchronizingObject&lt;/code&gt; property to help WinForms programmers navigate their way back to the UI thread. &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Well, it turns out my analysis was completely wrong. Actually, my application was modifying files in a folder that belonged to an ASP.NET website. Modifying folders inside of ASP.NET can &lt;a href=&quot;http://stackoverflow.com/questions/2248825/asp-net-restarts-when-a-folder-is-created-renamed-or-deleted&quot;&gt;cause application restarts&lt;/a&gt;. Though I&amp;#39;ve moved on from this project, I now believe that the behavior I was seeing had to do with the timing of the ASP.NET restart, and had nothing whatsoever to do with crossing thread boundaries. Since async/await uses continuations, any differences I was seeing between where I came from and where I got to had to occur outside of the bounds of my program.&lt;/p&gt;
+&lt;p&gt;We live, we learn.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>The 2013 Holiday Card</title>
       <link>http://www.roufa.com/articles/happy-holidays-2013/</link>
@@ -27,7 +44,9 @@ the photography and photoshopping!&lt;/p&gt;
       <pubDate>Mon, 16 Dec 2013 16:00:00 -0800</pubDate>
       <guid isPermaLink="true">http://www.roufa.com/articles/async-await-through-the-looking-glass/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/async-await-through-the-looking-glass/ttlg.jpg&quot; alt=&quot;Alice entering the Looking-glass World (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)&quot;&gt;&lt;/p&gt;
+      <description>&lt;p class=&quot;callout&quot;&gt;&lt;strong&gt;Update 2014-04-10&lt;/strong&gt;: &lt;a href=&quot;http://www.roufa.com/articles/async-await-apologia/&quot;&gt;I wouldn&amp;#39;t read too much into my conclusion below.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/async-await-through-the-looking-glass/ttlg.jpg&quot; alt=&quot;Alice entering the Looking-glass World (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)&quot;&gt;&lt;/p&gt;
 &lt;p&gt;I finally had a chance to try out the no longer very new &lt;em&gt;async/await&lt;/em&gt; paradigm for asynchronous programming in .NET. My goal: make a long-running MVC4 action asynchronous to prevent thread starvation in ASP.NET.&lt;/p&gt;
 &lt;p&gt;When the call is made, the action fires off an executable to perform some work. This executable returns immediately and offers few hooks, so the only way I can be certain that the operation has completed is to watch for the appearance of a particular zero-byte file that it creates when it has finished.&lt;/p&gt;
 &lt;p&gt;The beauty of &lt;em&gt;async/await&lt;/em&gt; is how it does away with the traditional async callback method. Instead of Begin/End pairs, or Async/Complete, or even callback events, you get code that looks something like this.&lt;/p&gt;

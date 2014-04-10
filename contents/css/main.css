@@ -385,6 +385,14 @@ code.lang-markdown .bullet {
   color: #8959a8;
 }
 
+.callout {
+    border: dashed black 2px;
+    margin: 1em;
+    padding: 1em;
+    background-color: #ccc
+}
+
+
 /* media queries */
 
 @media (min-width: 1600px) {
@@ -443,5 +451,6 @@ code.lang-markdown .bullet {
   footer .about p {
     margin-bottom: 1em;
   }
+
 }
 

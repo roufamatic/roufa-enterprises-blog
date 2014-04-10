@@ -31,6 +31,57 @@
         </script>
         <article class="article intro">
           <header>
+            <p class="date"><span>18. November 2013</span></p>
+            <h2><a href="/articles/when-badimageformatexception-is-not-what-it-seems/" class="articleLink">When BadImageFormatException Is Not What It Seems</a></h2>
+          </header>
+          <section class="content"><p><img src="/articles/when-badimageformatexception-is-not-what-it-seems/BadImageFormatException.png" alt="I hate this exception"></p>
+<p>Another exception that long-term C# developers are very familiar with is <code>BadImageFormatException</code>. When I see it, I think “there must be some kind of compilation mixup.” As in, a third-party <span class="caps">DLL</span> isn‘t compiled as AnyCPU. Or a .NET 2.0 site is referencing a .NET 4.0 library. Generally it’s an annoyance but easy to suss&nbsp;out.</p>
+<p>Today I received an error report from my colleague where the application was throwing this very exception. I couldn&#39;t reproduce the problem on my machine, but he assured me it happened every time on his (a 32-bit workstation) and on the test server&nbsp;(64-bit). </p>
+<p>The stack trace ended inside a call like&nbsp;this.</p>
+<pre><code class="lang-cs">T CallWrapped&lt;T&gt;(IEnumerable&lt;Func&lt;T&gt;&gt; actions) {
+    T output = <span class="keyword">default</span>(T);
+    <span class="keyword">foreach</span> (<span class="keyword">var</span> action <span class="keyword">in</span> actions) {
+        output = Combine(output, action());
+    }
+    <span class="keyword">return</span> output;
+}</code></pre>
+<p>On my machine, this executed fine. But on my colleague&#39;s, it would fail at the second <code>action()</code> call. The actions looked something like&nbsp;this:</p>
+<pre><code class="lang-cs">TRetVal WrappedDelete(Entity entity) {
+    <span class="keyword">var</span> actions = <span class="keyword">new</span> [] {
+        () =&gt; LogDelete(entity),
+        () =&gt; <span class="keyword">base</span>.Delete(entity)
+    };
+    <span class="keyword">return</span> CallWrapped&lt;TRetVal&gt;(actions);
+}</code></pre>
+<p>I set a breakpoint on <code>base.Delete()</code> to see what was going on and hit F5. The breakpoint wasn‘t hit. What? Visual Studio won’t step into native methods that fail (unless you ask it nicely), but I&#39;d never seen it refuse to step into a managed method declared within the solution! I checked the Delete method just to see if there were any clues&nbsp;there…</p>
+<pre><code class="lang-cs"><span class="keyword">public</span> <span class="keyword">virtual</span> TRetVal Delete(Entity entity) {
+    <span class="comment">// simple NHibernate stuff in here, nothing worth mentioning!</span>
+}</code></pre>
+<p>… but it was all perfectly <a href="http://en.wiktionary.org/wiki/cromulent">cromulent</a> code that would have caused fury among users if it actually had any&nbsp;problems.</p>
+<p>After numerous Google searches that went nowhere (&quot;Make sure you&#39;re targeting the right platform!&quot; shutupshutup), I finally <a href="http://stackoverflow.com/questions/5290559/using-base-keyword-in-delegate-causes-system-badimageformatexception">located the answer on StackOverflow</a>. It turns to be a <a href="https://connect.microsoft.com/VisualStudio/feedback/details/626550/badimageformatexception-on-simple-program-using-generics-and-lambdas">bug in the C# 4.0 compiler</a>. To reproduce&nbsp;it:</p>
+<ul>
+<li>Write a lambda (anonymous method, delegate, what have&nbsp;you)…</li>
+<li>that calls a <code>base</code> method…</li>
+<li>that is declared <code>virtual</code>…</li>
+<li>while running <span class="caps">VS</span> 2010 or below, or compiling with the C# 4.0&nbsp;compiler</li>
+</ul>
+<p>A workaround is to wrap the base method call in its own method, like&nbsp;so:</p>
+<pre><code class="lang-cs">TRetVal WrappedDelete(Entity entity) {
+    <span class="keyword">var</span> actions = {
+        () =&gt; LogDelete(entity),
+        () =&gt; DoDelete(entity)
+    };
+    <span class="keyword">return</span> CallWrapped&lt;TRetVal&gt;(actions);
+}
+
+<span class="keyword">private</span> TRetVal DoDelete(Entity entity) {
+    <span class="keyword">return</span> <span class="keyword">base</span>.Delete(entity);
+}</code></pre>
+
+          </section>
+        </article>
+        <article class="article intro">
+          <header>
             <p class="date"><span>07. November 2013</span></p>
             <h2><a href="/articles/nhibernate-cant-short-circuit/" class="articleLink">NHibernate can't short-circuit</a></h2>
           </header>
@@ -70,25 +121,6 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)</code></pre>
             <h2><a href="/articles/internet-famous/" class="articleLink">Internet Famous?</a></h2>
           </header>
           <section class="content"><p>My coworking space, <a href="http://www.worksprogressseattle.com/">Works Progress</a>, interviewed me on their blog! <a href="http://www.worksprogressseattle.com/meet-mike-roufa/">I&#39;m famous… on the&nbsp;Internet.</a></p>
-
-          </section>
-        </article>
-        <article class="article intro">
-          <header>
-            <p class="date"><span>28. October 2013</span></p>
-            <h2><a href="/articles/modern-ie-saves-the-day/" class="articleLink">modern.IE saves the day!</a></h2>
-          </header>
-          <section class="content"><p><img src="/articles/modern-ie-saves-the-day/vms.png" alt="Windows XP, never so pleased to see you!"></p>
-<p>My laptop returned with one bad <span class="caps">RAM</span> stick missing. While it was gone, I discovered I prefer Windows 8.1 to its predecessor, especially the return of the start button and the improved start screen that installers cannot automatically colonize. I upgraded my laptop&nbsp;immediately.</p>
-<p>Microsoft introduced more changes under the hood, though, and a few programs stopped working. One was <a href="http://www.1upindustries.com/Bins/default.aspx">Bins</a> which I use to keep my browsers together, but they had a <a href="http://feedback.1upindustries.com/forums/103687-bugs/suggestions/4681319-windows-8-1-werfault-exe-error-upon-starting-bins">fix available</a>.</p>
-<p>A more serious problem was the <a href="http://www.eightforums.com/general-support/33644-upgrade-8-1-disaster.html">Juniper Remote Desktop Client</a>. Without this, I was unable to complete my latest&nbsp;contract.</p>
-<p>I saw two viable&nbsp;options: </p>
-<ol>
-<li>Rollback (noooo! not my new shiny&nbsp;toy!)</li>
-<li><span class="caps">VM</span></li>
-</ol>
-<p>Of course, #2 won. But I couldn&#39;t locate my Windows 8 installation disks, and was not about to fork over more cash just to run one program. The solution? <a href="http://modern.ie/">modern.<span class="caps">IE</span></a>! I grabbed a copy of <span class="caps">XP</span> with IE8, threw it into Hyper-V, and I&#39;m back in&nbsp;business. </p>
-<p>While it‘s intended to ease the pain of backwards-compatible web development, modern.<span class="caps">IE</span> is also a great resource for emergency backwards-compatible Windows development. Somebody reports a Vista bug? Grab a Vista image and test. Need to check something on Windows Server 2012? That’s there as well. The images have a 30 day grace period after which you need to purchase a license, so you cannot use the same OS indefinitely. But still, it&#39;s a very useful addition to my&nbsp;toolkit.</p>
 
           </section>
         </article>

@@ -47,7 +47,9 @@
     <div id="content">
       <div class="content-wrap">
         <article class="article">
-          <section class="content"><p><img src="/articles/async-await-through-the-looking-glass/ttlg.jpg" alt="Alice entering the Looking-glass World (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)"></p>
+          <section class="content"><p class="callout"><strong>Update 2014-04-10</strong>: <a href="/articles/async-await-apologia/">I wouldn&#39;t read too much into my conclusion&nbsp;below.</a></p>
+
+<p><img src="/articles/async-await-through-the-looking-glass/ttlg.jpg" alt="Alice entering the Looking-glass World (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)"></p>
 <p>I finally had a chance to try out the no longer very new <em>async/await</em> paradigm for asynchronous programming in .<span class="caps">NET</span>. My goal: make a long-running MVC4 action asynchronous to prevent thread starvation in&nbsp;ASP.NET.</p>
 <p>When the call is made, the action fires off an executable to perform some work. This executable returns immediately and offers few hooks, so the only way I can be certain that the operation has completed is to watch for the appearance of a particular zero-byte file that it creates when it has&nbsp;finished.</p>
 <p>The beauty of <em>async/await</em> is how it does away with the traditional async callback method. Instead of Begin/End pairs, or Async/Complete, or even callback events, you get code that looks something like&nbsp;this.</p>

@@ -4,6 +4,8 @@ author: Michael Roufa
 date: 2013-12-17
 template: article.jade
 ---
+<p class="callout">**Update 2014-04-10**: [I wouldn't read too much into my conclusion below.](/articles/async-await-apologia/)</p>
+
 ![Alice entering the Looking-glass World (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)](ttlg.jpg)
 
 I finally had a chance to try out the no longer very new *async/await* paradigm for asynchronous programming in .NET. My goal: make a long-running MVC4 action asynchronous to prevent thread starvation in ASP.NET.
