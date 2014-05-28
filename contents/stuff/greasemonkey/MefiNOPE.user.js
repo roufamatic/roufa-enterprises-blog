@@ -1,13 +1,14 @@
 ﻿// ==UserScript==
-// @name       MeFi NOPE!
-// @namespace  http://www.roufa.com/mefiNope
-// @version    0.21
-// @description  Sometimes people post things that you don't want to click on. Click "NOPE!" instead to vanquish the post to oblivion.
-// @match      http://www.metafilter.com/
-// @match      http://www.metafilter.com/index.cfm*
-// @copyright  2014+, Michael Roufa
-// @require    http://code.jquery.com/jquery-latest.js
-// @updateURL http://www.roufa.com/stuff/greasemonkey/MefiNOPE.user.js
+// @name        MeFi NOPE!
+// @namespace   http://www.roufa.com/mefiNope
+// @version     0.30
+// @description Sometimes people post things that you don't want to click on. Click "NOPE!" instead to vanquish the post to oblivion.
+// @match       http://www.metafilter.com/
+// @match       http://www.metafilter.com/index.cfm*
+// @copyright   2014+, Michael Roufa
+// @require     http://code.jquery.com/jquery-latest.js
+// @downloadURL http://www.roufa.com/stuff/greasemonkey/MefiNOPE.user.js
+// @updateURL   http://www.roufa.com/stuff/greasemonkey/MefiNOPE.user.js
 // ==/UserScript==
 
 jQuery(function () {
