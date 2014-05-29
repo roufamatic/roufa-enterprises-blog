@@ -5,9 +5,45 @@
     <atom:link href="http://www.roufa.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://www.roufa.com</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Wed, 09 Apr 2014 17:00:00 -0700</pubDate>
+    <pubDate>Wed, 28 May 2014 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>VB - The Good Parts (for C# peeps)</title>
+      <link>http://www.roufa.com/articles/vb-the-good-parts/</link>
+      <pubDate>Wed, 28 May 2014 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://www.roufa.com/articles/vb-the-good-parts/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/vb-the-good-parts/gwbasic.png&quot; alt=&quot;GW Basic. Remember it? -- from WikiPedia: (http://en.wikipedia.org/wiki/File:GW-BASIC_3.23.png)&quot;&gt;&lt;/p&gt;
+&lt;p&gt;There&amp;#39;s a great book on JavaScript called &lt;a href=&quot;http://shop.oreilly.com/product/9780596517748.do&quot;&gt;JavaScript: The Good Parts&lt;/a&gt; that every frontend developer should own. It does a great job of highlighting both the bad and good facets of the language. In that vein, here are some handy tips about VB to help you, intrepid C# programmer, find success.&lt;/p&gt;
+&lt;p&gt;1) Ignore the logical operators &lt;code&gt;And&lt;/code&gt; and &lt;code&gt;Or&lt;/code&gt;. These operators do not short-circuit, so an expression like &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;If a IsNot Nothing and a.Foo &amp;gt; 3 Then Debug.WriteLine(&amp;quot;booo&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;will give you a NullReferenceException. Instead use &lt;code&gt;AndAlso&lt;/code&gt; / &lt;code&gt;OrElse&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;If a IsNot Nothing AndAlso a.Foo &amp;gt; 3 Then Debug.WriteLine(&amp;quot;yay&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2) &lt;code&gt;IsNot&lt;/code&gt; adds a touch of readability. Compare:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;If Not a Is Nothing Then ...&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;vs.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;If a IsNot Nothing Then ...&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It‘s more like natural language, which is VB’s appeal after all.&lt;/p&gt;
+&lt;p&gt;3) Avoid &lt;code&gt;IIf()&lt;/code&gt; for ternaries. Instead, use &lt;code&gt;If()&lt;/code&gt;. The former is not a part of the core language so much as a built-in function, and all of its arguments are evaluated:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Dim x as Integer = IIf(a IsNot Nothing, a.Foo, 0) &amp;#39; NullReferenceException because a.Foo is evaluated&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The latter, added in VB 9, maps to the same ternary operator that &lt;code&gt;?:&lt;/code&gt; does in C#.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Dim x as Integer = If(a IsNot Nothing, a.Foo, 0) &amp;#39; Proper short-circuiting = no problem!&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;4) &lt;code&gt;Nothing&lt;/code&gt; is not null — it&amp;#39;s &lt;code&gt;default(T)&lt;/code&gt;. &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Dim str as String = Nothing &amp;#39; This is null.
+Dim lng as Long = Nothing &amp;#39; This is 0.
+Dim dt as DateTime = Nothing &amp;#39; This is DateTime.MinValue.
+Dim dt as DateTime? = Nothing &amp;#39; This is null again!&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Personally, I&amp;#39;d only use &lt;code&gt;Nothing&lt;/code&gt; as a synonym for &lt;code&gt;null&lt;/code&gt; and avoid the other usages. &lt;/p&gt;
+&lt;p&gt;5) Remember, &lt;code&gt;Is&lt;/code&gt; is for comparing object types, while &lt;code&gt;=&lt;/code&gt; is for comparing value types. &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Dim obj as Object
+If obj = Nothing Then Debug.WriteLine(&amp;quot;boo&amp;quot;) &amp;#39; Error: obj is an object
+If obj Is Nothing Then Debug.WriteLine(&amp;quot;yay&amp;quot;) &amp;#39; Will work
+Dim dt as DateTime
+if dt = Nothing Then Debug.WriteLine(&amp;quot;oy&amp;quot;) &amp;#39; Also will work... but didn&amp;#39;t I just say to not do this?
+if dt = DateTime.MinValue Then Debug.WriteLine(&amp;quot;you&amp;#39;re learning!&amp;quot;) &amp;#39; Much better&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     <item>
       <title>Async-Await Apologia</title>
       <link>http://www.roufa.com/articles/async-await-apologia/</link>
