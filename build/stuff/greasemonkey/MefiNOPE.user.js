@@ -1,18 +1,18 @@
 ﻿// ==UserScript==
 // @name        MeFi NOPE!
 // @namespace   http://www.roufa.com/mefiNope
-// @version     0.30
+// @version     0.32
 // @description Sometimes people post things that you don't want to click on. Click "NOPE!" instead to vanquish the post to oblivion.
-// @match       http://www.metafilter.com/
-// @match       http://www.metafilter.com/index.cfm*
+// @match       *://www.metafilter.com/
+// @match       *://www.metafilter.com/index.cfm*
 // @copyright   2014+, Michael Roufa
 // @require     http://code.jquery.com/jquery-latest.js
-// @downloadURL http://www.roufa.com/stuff/greasemonkey/MefiNOPE.user.js
-// @updateURL   http://www.roufa.com/stuff/greasemonkey/MefiNOPE.user.js
 // ==/UserScript==
 
+
 jQuery(function () {
-    var noped = JSON.parse(localStorage.getItem('noped')) || [];
+    var noped = JSON.parse(GM_getValue('noped', '[]'));
+    console.log("Loaded noped", noped);
     var nopeId = 0;
 
     var nope = function (el, save) {
@@ -28,8 +28,10 @@ jQuery(function () {
         p2.addClass('nopeUrlContainer-' + nopeId);
         if (save) {
             // Grab that URL for eternal noping.
-            var url = jQuery('a', p2).attr('href');
-            noped.push(url);
+            var linkAnchor = jQuery('a', p2)[0];
+            var linkPath = linkAnchor.pathname;
+            console.log('Noping forever', linkPath);
+            noped.push(linkPath);
             saveNoped();
         }
         var p3 = p2.prev('br');
@@ -39,11 +41,7 @@ jQuery(function () {
         p1.before('<div class="copy"><small><em>[One item noped. <a href="#" onclick="return false" data-id="' + nopeId + '" class="unnope">unnope</a>]</em></small></div>');
     };
 
-    var els = jQuery('span.smallcopy:contains("posted by")');
-    for (var i = 0; i < els.length; i++) {
-        els[i].innerHTML += '&nbsp;[<a href="#" class="nope" onclick="return false;">NOPE!</a>]';
-    }
-    jQuery('.nope').click(function (event) {
+    jQuery(document).on('click', '.nope', function (event) {
         nope(jQuery(event.target).parents('div.copy'), true);
     });
     jQuery(document).on('click', '.unnope', function (event) {
@@ -61,9 +59,13 @@ jQuery(function () {
         }
     });
 
+    var els = jQuery('span.smallcopy:contains("posted by")');
+    for (var i = 0; i < els.length; i++) {
+        els[i].innerHTML += '&nbsp;[<a href="#" class="nope" onclick="return false;">NOPE!</a>]';
+    }
     for (var i = 0; i < noped.length; i++) {
         var hrf = noped[i];
-        var anc = jQuery("a[href='" + hrf + "']:not('.more')");
+        var anc = jQuery("a[href$='" + hrf + "']:not('.more')");
         if (anc.length === 0) continue;
         console.log(hrf + " -- NOPE!!!!");
         var startEl = anc.parents('div.posttitle').next('div.copy');
@@ -71,7 +73,7 @@ jQuery(function () {
     }
 
     var saveNoped = function () {
-        localStorage.setItem('noped', JSON.stringify(noped));
+        GM_setValue('noped', JSON.stringify(noped));
     };
 
 });
