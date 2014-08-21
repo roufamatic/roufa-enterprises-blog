@@ -5,9 +5,23 @@
     <atom:link href="http://www.roufa.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://www.roufa.com</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Wed, 28 May 2014 17:00:00 -0700</pubDate>
+    <pubDate>Wed, 20  Aug 2014 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Todo.txt JavaScript parser</title>
+      <link>http://www.roufa.com/articles/todo-txt-js/</link>
+      <pubDate>Wed, 20  Aug 2014 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://www.roufa.com/articles/todo-txt-js/</guid>
+      <author></author>
+      <description>&lt;div class=&quot;github-widget&quot; data-repo=&quot;roufamatic/todo-txt-js&quot; style=&quot;padding-bottom:20px&quot;&gt;&lt;/div&gt;
+
+&lt;p&gt;My current todo list is a simple text file using the popular &lt;em&gt;&lt;a href=&quot;https://github.com/ginatrapani/todo.txt-cli/wiki/The-Todo.txt-Format&quot;&gt;todo.txt&lt;/a&gt;&lt;/em&gt; format. Along with the Android app, I&amp;#39;m able to keep track of my tasks in a simple format that I can access on the go. &lt;/p&gt;
+&lt;p&gt;Lately, I&amp;#39;ve been hard at work on a new project that I hope to announce in the not-too-distant future. The project involves showing todos in a Chrome extension, and I wanted to be able to support &lt;em&gt;todo.txt&lt;/em&gt; files as well as plain old text files. &lt;/p&gt;
+&lt;p&gt;This isn&amp;#39;t the only Javascript implementation of the spec, but it was such a nice, contained project that it seemed like a good chance to &lt;a href=&quot;http://blog.codinghorror.com/dont-reinvent-the-wheel-unless-you-plan-on-learning-more-about-wheels/&quot;&gt;reinvent the wheel&lt;/a&gt;. The result is pure JavaScript using lessons gleaned from the classic &lt;em&gt;&lt;a href=&quot;http://shop.oreilly.com/product/9780596517748.do&quot;&gt;JavaScript: The Good Parts&lt;/a&gt;&lt;/em&gt;, and was developed TDD-style using &lt;a href=&quot;http://jasmine.github.io/&quot;&gt;Jasmine&lt;/a&gt; and &lt;a href=&quot;http://karma-runner.github.io/&quot;&gt;Karma&lt;/a&gt;. Enjoy!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/roufamatic/todo-txt-js&quot;&gt;todo-txt-js on GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>VB - The Good Parts (for C# peeps)</title>
       <link>http://www.roufa.com/articles/vb-the-good-parts/</link>

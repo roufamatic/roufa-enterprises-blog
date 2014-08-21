@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.2.1/lodash.min.js"></script>
+    <script src="/lib/jquery.githubRepoWidget.min.js"></script>
   </head>
   <body>
     <header class="header">
@@ -29,6 +30,20 @@
           });
           
         </script>
+        <article class="article intro">
+          <header>
+            <p class="date"><span>21. August 2014</span></p>
+            <h2><a href="/articles/todo-txt-js/" class="articleLink">Todo.txt JavaScript parser</a></h2>
+          </header>
+          <section class="content"><div class="github-widget" data-repo="roufamatic/todo-txt-js" style="padding-bottom:20px"></div>
+
+<p>My current todo list is a simple text file using the popular <em><a href="https://github.com/ginatrapani/todo.txt-cli/wiki/The-Todo.txt-Format">todo.txt</a></em> format. Along with the Android app, I&#39;m able to keep track of my tasks in a simple format that I can access on the&nbsp;go. </p>
+<p>Lately, I&#39;ve been hard at work on a new project that I hope to announce in the not-too-distant future. The project involves showing todos in a Chrome extension, and I wanted to be able to support <em>todo.txt</em> files as well as plain old text&nbsp;files. </p>
+<p>This isn&#39;t the only Javascript implementation of the spec, but it was such a nice, contained project that it seemed like a good chance to <a href="http://blog.codinghorror.com/dont-reinvent-the-wheel-unless-you-plan-on-learning-more-about-wheels/">reinvent the wheel</a>. The result is pure JavaScript using lessons gleaned from the classic <em><a href="http://shop.oreilly.com/product/9780596517748.do">JavaScript: The Good Parts</a></em>, and was developed <span class="caps">TDD</span>-style using <a href="http://jasmine.github.io/">Jasmine</a> and <a href="http://karma-runner.github.io/">Karma</a>.&nbsp;Enjoy!</p>
+<p><a href="https://github.com/roufamatic/todo-txt-js">todo-txt-js on&nbsp;GitHub</a></p>
+
+          </section>
+        </article>
         <article class="article intro">
           <header>
             <p class="date"><span>29. May 2014</span></p>
@@ -79,19 +94,6 @@ if dt = DateTime.MinValue Then Debug.WriteLine(&quot;you&#39;re learning!&quot;)
 </blockquote>
 <p>Well, it turns out my analysis was completely wrong. Actually, my application was modifying files in a folder that belonged to an <span class="caps">ASP</span>.NET website. Modifying folders inside of ASP.NET can <a href="http://stackoverflow.com/questions/2248825/asp-net-restarts-when-a-folder-is-created-renamed-or-deleted">cause application restarts</a>. Though I&#39;ve moved on from this project, I now believe that the behavior I was seeing had to do with the timing of the <span class="caps">ASP</span>.NET restart, and had nothing whatsoever to do with crossing thread boundaries. Since async/await uses continuations, any differences I was seeing between where I came from and where I got to had to occur outside of the bounds of my&nbsp;program.</p>
 <p>We live, we&nbsp;learn.</p>
-
-          </section>
-        </article>
-        <article class="article intro">
-          <header>
-            <p class="date"><span>26. December 2013</span></p>
-            <h2><a href="/articles/happy-holidays-2013/" class="articleLink">The 2013 Holiday Card</a></h2>
-          </header>
-          <section class="content"><p><a href="/articles/happy-holidays-2013/card.jpg"><img src="/articles/happy-holidays-2013/card-1024.jpg" alt="My 2013 holiday card"></a></p>
-<p>I had a blast putting this together. Thanks to my friend <a href="http://www.flickr.com/photos/russellelbert">Russell Williams</a> for
-the photography and&nbsp;photoshopping!</p>
-<p>Russell also put together this big-headed version of the same. It was a tough call but I decided to play it straight for the physical cards.&nbsp;Enjoy!</p>
-<p><a href="/articles/happy-holidays-2013/bigheads.jpg"><img src="/articles/happy-holidays-2013/bigheads.jpg" alt="Look at the big heads!"></a></p>
 
           </section>
         </article>

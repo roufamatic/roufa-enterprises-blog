@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
-    <title>Async-Await Apologia - Roufa Enterprises, Inc.
+    <title>Todo.txt JavaScript parser - Roufa Enterprises, Inc.
     </title>
     <link rel="alternate" href="http://www.roufa.com/feed.xml" type="application/rss+xml" title="Making Beautiful Things Work">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
@@ -40,23 +40,20 @@
           
           
         </script>
-        <h1>Async-Await Apologia</h1>
-        <p class="author"><span class="author">Michael Roufa - 10 April 2014</span> 
+        <h1>Todo.txt JavaScript parser</h1>
+        <p class="author"><span class="author">Michael Roufa - 21 August 2014</span> 
         </p>
       </div>
     </header>
     <div id="content">
       <div class="content-wrap">
         <article class="article">
-          <section class="content"><p><img src="/articles/async-await-apologia/apologies.jpg" alt="Work in progress -- by Alexander Baxevanis: https://www.flickr.com/photos/futureshape/4000128011/ (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)"></p>
-<p>This update is long overdue. <a href="/articles/async-await-through-the-looking-glass/">Previously</a>, I&nbsp;wrote: </p>
-<blockquote>
-<p>But as I learned today, once you do hit the <code>await</code> statement, you are still leaving the stack. And when the <code>await</code> returns, the place you come back to may not be identical to the place you left, depending on how it got&nbsp;there.</p>
-<p>…</p>
-<p>The <code>fsw.Created</code> handler is called on a different thread than the one you just came from. That&#39;s a pretty well-known fact and is why the <code>FileSystemWatcher</code> has a <code>SynchronizingObject</code> property to help WinForms programmers navigate their way back to the <span class="caps">UI</span>&nbsp;thread. </p>
-</blockquote>
-<p>Well, it turns out my analysis was completely wrong. Actually, my application was modifying files in a folder that belonged to an <span class="caps">ASP</span>.NET website. Modifying folders inside of ASP.NET can <a href="http://stackoverflow.com/questions/2248825/asp-net-restarts-when-a-folder-is-created-renamed-or-deleted">cause application restarts</a>. Though I&#39;ve moved on from this project, I now believe that the behavior I was seeing had to do with the timing of the <span class="caps">ASP</span>.NET restart, and had nothing whatsoever to do with crossing thread boundaries. Since async/await uses continuations, any differences I was seeing between where I came from and where I got to had to occur outside of the bounds of my&nbsp;program.</p>
-<p>We live, we&nbsp;learn.</p>
+          <section class="content"><div class="github-widget" data-repo="roufamatic/todo-txt-js" style="padding-bottom:20px"></div>
+
+<p>My current todo list is a simple text file using the popular <em><a href="https://github.com/ginatrapani/todo.txt-cli/wiki/The-Todo.txt-Format">todo.txt</a></em> format. Along with the Android app, I&#39;m able to keep track of my tasks in a simple format that I can access on the&nbsp;go. </p>
+<p>Lately, I&#39;ve been hard at work on a new project that I hope to announce in the not-too-distant future. The project involves showing todos in a Chrome extension, and I wanted to be able to support <em>todo.txt</em> files as well as plain old text&nbsp;files. </p>
+<p>This isn&#39;t the only Javascript implementation of the spec, but it was such a nice, contained project that it seemed like a good chance to <a href="http://blog.codinghorror.com/dont-reinvent-the-wheel-unless-you-plan-on-learning-more-about-wheels/">reinvent the wheel</a>. The result is pure JavaScript using lessons gleaned from the classic <em><a href="http://shop.oreilly.com/product/9780596517748.do">JavaScript: The Good Parts</a></em>, and was developed <span class="caps">TDD</span>-style using <a href="http://jasmine.github.io/">Jasmine</a> and <a href="http://karma-runner.github.io/">Karma</a>.&nbsp;Enjoy!</p>
+<p><a href="https://github.com/roufamatic/todo-txt-js">todo-txt-js on&nbsp;GitHub</a></p>
 </section>
         </article>
       </div>
