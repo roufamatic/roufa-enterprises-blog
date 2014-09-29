@@ -3,6 +3,8 @@ title: When BadImageFormatException Is Not What It Seems
 author: Michael Roufa
 date: 2013-11-18
 template: article.jade
+disqusId: when-badimageformatexception-is-not-what-it-seems
+disqusUrl: http://www.roufa.com/articles/when-badimageformatexception-is-not-what-it-seems
 ---
 ![I hate this exception](BadImageFormatException.png)
 

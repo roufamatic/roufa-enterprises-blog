@@ -3,6 +3,8 @@ title: modern.IE saves the day!
 author: Michael Roufa
 date: 2013-10-28
 template: article.jade
+disqusId: modern-ie-saves-the-day
+disqusUrl: http://www.roufa.com/articles/modern-ie-saves-the-day
 ---
 ![Windows XP, never so pleased to see you!](vms.png)
 

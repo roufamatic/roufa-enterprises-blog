@@ -3,6 +3,8 @@ title: Quick Boot Camp Tip
 author: Michael Roufa
 date: 2013-10-22
 template: article.jade
+disqusId: quick-bootcamp-tip
+disqusUrl: http://www.roufa.com/articles/quick-bootcamp-tip
 ---
 
 Thought I'd leave this nugget in case it helps somebody. Yesterday my 6-month-old Lenovo ThinkPad W530 died, and my wife needed a new computer anyway, so I picked up a Mac Mini. It's her computer, but will act as my emergency machine in case something like this happens again. Since I'm primarily a Windows developer, I set up a small partition with Boot Camp.

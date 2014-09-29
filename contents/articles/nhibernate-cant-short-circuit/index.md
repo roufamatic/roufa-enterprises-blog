@@ -3,6 +3,8 @@ title: NHibernate can't short-circuit
 author: Michael Roufa
 date: 2013-11-07
 template: article.jade
+disqusId: nhibernate-cant-short-circuit
+disqusUrl: http://www.roufa.com/articles/nhibernate-cant-short-circuit
 ---
 ![Johnny Five Is Alive](JohnnyFive.jpg)
 

@@ -26,33 +26,97 @@
       <div class="content-wrap">
         <script>
           $(function() {
-            $('a.articleLink').attr('href', function() { return this.href + "?from=" + encodeURIComponent(location.pathname); } );
+            $('a.articleLink').attr('href', function() { 
+              var bits = this.href.split('#');
+              var output = bits[0] + "?from=" + encodeURIComponent(location.pathname); 
+              if (bits[1]) output += '#' + bits[1];
+              return output;
+            } );
           });
           
         </script>
         <article class="article intro">
           <header>
+            <p class="date"><span>18. November 2013</span></p>
+            <h2><a href="/articles/when-badimageformatexception-is-not-what-it-seems/" class="articleLink">When BadImageFormatException Is Not What It Seems</a></h2>
+            <p style="text-align:center;font-size:smaller"><a href="/articles/when-badimageformatexception-is-not-what-it-seems/#disqus_thread" data-disqus-identifier="when-badimageformatexception-is-not-what-it-seems" class="articleLink">Comments</a></p>
+          </header>
+          <section class="content"><p><img src="/articles/when-badimageformatexception-is-not-what-it-seems/BadImageFormatException.png" alt="I hate this exception"></p>
+<p>Another exception that long-term C# developers are very familiar with is <code>BadImageFormatException</code>. When I see it, I think “there must be some kind of compilation mixup.” As in, a third-party <span class="caps">DLL</span> isn’t compiled as AnyCPU. Or a .NET 2.0 site is referencing a .NET 4.0 library. Generally it’s an annoyance but easy to suss&nbsp;out.</p>
+<p>Today I received an error report from my colleague where the application was throwing this very exception. I couldn’t reproduce the problem on my machine, but he assured me it happened every time on his (a 32-bit workstation) and on the test server&nbsp;(64-bit). </p>
+<p>The stack trace ended inside a call like&nbsp;this.</p>
+<pre><code class="lang-cs">T CallWrapped&lt;T&gt;(IEnumerable&lt;Func&lt;T&gt;&gt; actions) {
+    T output = <span class="keyword">default</span>(T);
+    <span class="keyword">foreach</span> (<span class="keyword">var</span> action <span class="keyword">in</span> actions) {
+        output = Combine(output, action());
+    }
+    <span class="keyword">return</span> output;
+}
+</code></pre>
+<p>On my machine, this executed fine. But on my colleague’s, it would fail at the second <code>action()</code> call. The actions looked something like&nbsp;this:</p>
+<pre><code class="lang-cs">TRetVal WrappedDelete(Entity entity) {
+    <span class="keyword">var</span> actions = <span class="keyword">new</span> [] {
+        () =&gt; LogDelete(entity),
+        () =&gt; <span class="keyword">base</span>.Delete(entity)
+    };
+    <span class="keyword">return</span> CallWrapped&lt;TRetVal&gt;(actions);
+}
+</code></pre>
+<p>I set a breakpoint on <code>base.Delete()</code> to see what was going on and hit F5. The breakpoint wasn’t hit. What? Visual Studio won’t step into native methods that fail (unless you ask it nicely), but I’d never seen it refuse to step into a managed method declared within the solution! I checked the Delete method just to see if there were any clues&nbsp;there…</p>
+<pre><code class="lang-cs"><span class="keyword">public</span> <span class="keyword">virtual</span> TRetVal <span class="title">Delete</span>(Entity entity) {
+    <span class="comment">// simple NHibernate stuff in here, nothing worth mentioning!</span>
+}
+</code></pre>
+<p>… but it was all perfectly <a href="http://en.wiktionary.org/wiki/cromulent">cromulent</a> code that would have caused fury among users if it actually had any&nbsp;problems.</p>
+<p>After numerous Google searches that went nowhere (“Make sure you’re targeting the right platform!” shutupshutup), I finally <a href="http://stackoverflow.com/questions/5290559/using-base-keyword-in-delegate-causes-system-badimageformatexception">located the answer on StackOverflow</a>. It turns to be a <a href="https://connect.microsoft.com/VisualStudio/feedback/details/626550/badimageformatexception-on-simple-program-using-generics-and-lambdas">bug in the C# 4.0 compiler</a>. To reproduce&nbsp;it:</p>
+<ul>
+<li>Write a lambda (anonymous method, delegate, what have&nbsp;you)…</li>
+<li>that calls a <code>base</code> method…</li>
+<li>that is declared <code>virtual</code>…</li>
+<li>while running <span class="caps">VS</span> 2010 or below, or compiling with the C# 4.0&nbsp;compiler</li>
+</ul>
+<p>A workaround is to wrap the base method call in its own method, like&nbsp;so:</p>
+<pre><code class="lang-cs">TRetVal WrappedDelete(Entity entity) {
+    <span class="keyword">var</span> actions = {
+        () =&gt; LogDelete(entity),
+        () =&gt; DoDelete(entity)
+    };
+    <span class="keyword">return</span> CallWrapped&lt;TRetVal&gt;(actions);
+}
+
+<span class="keyword">private</span> TRetVal <span class="title">DoDelete</span>(Entity entity) {
+    <span class="keyword">return</span> <span class="keyword">base</span>.Delete(entity);
+}
+</code></pre>
+
+          </section>
+        </article>
+        <article class="article intro">
+          <header>
             <p class="date"><span>07. November 2013</span></p>
             <h2><a href="/articles/nhibernate-cant-short-circuit/" class="articleLink">NHibernate can't short-circuit</a></h2>
+            <p style="text-align:center;font-size:smaller"><a href="/articles/nhibernate-cant-short-circuit/#disqus_thread" data-disqus-identifier="nhibernate-cant-short-circuit" class="articleLink">Comments</a></p>
           </header>
           <section class="content"><p><img src="/articles/nhibernate-cant-short-circuit/JohnnyFive.jpg" alt="Johnny Five Is Alive"></p>
 <p>While doing some refactoring on an NHibernate-driven site, I came across a nasty&nbsp;exception:</p>
 <pre><code>System.ArgumentNullException: Value cannot be null. Parameter name: source 
-at System.Linq.Enumerable.Cast[TResult](IEnumerable source)</code></pre>
-<p>This was a bit confusing at first. The code was already checking for null&#39;s. What&nbsp;gives?</p>
+at System.Linq.Enumerable.Cast[TResult](IEnumerable source)
+</code></pre><p>This was a bit confusing at first. The code was already checking for null’s. What&nbsp;gives?</p>
 <pre><code class="lang-cs">List&lt;<span class="keyword">int</span>&gt; list = <span class="keyword">null</span>;
 <span class="comment">// ... something tries to populate the list ...</span>
 <span class="comment">// If there's anything in the list, use that as a filter. </span>
 <span class="comment">// Otherwise return everything.</span>
 <span class="keyword">var</span> q = Session.Query&lt;Tbl&gt;()
-               .Where(t =&gt; list == <span class="keyword">null</span> || list.Contains(t.IntProp));</code></pre>
-<p>Looking at the error message and the debugger it became clear that the <code>list.Contains</code> statement was being evaluated. That&#39;s very unusual behavior in C# as the <code>||</code> operator is supposed to “short-circuit:” when the first operand evaluates to <code>true</code>, the second is not evaluated at&nbsp;all.</p>
+               .Where(t =&gt; list == <span class="keyword">null</span> || list.Contains(t.IntProp));
+</code></pre>
+<p>Looking at the error message and the debugger it became clear that the <code>list.Contains</code> statement was being evaluated. That’s very unusual behavior in C# as the <code>||</code> operator is supposed to “short-circuit:” when the first operand evaluates to <code>true</code>, the second is not evaluated at&nbsp;all.</p>
 <p>As it turns out, the parameter of the <code>Where</code> clause is actually an <a href="http://msdn.microsoft.com/en-us/library/vstudio/bb397951.aspx">expression tree</a>. NHibernate does not execute this expression directly. Instead, it parses it to generate a <span class="caps">SQL</span> statement it can run against the&nbsp;database. </p>
 <p>To illustrate, suppose that there were no null check, and the list contained the values [1,2,3]. It might try to do something like&nbsp;this:</p>
-<pre><code class="lang-sql"><span class="operator"><span class="keyword"><span class="caps">SELECT</span></span> * <span class="keyword"><span class="caps">FROM</span></span> Tbl <span class="keyword"><span class="caps">WHERE</span></span> IntProp <span class="keyword"><span class="caps">IN</span></span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</code></pre>
-<p>Now let‘s assume the list is null, but there’s still no null-check in the expression. It would attempt to convert the list to its <span class="caps">SQL</span> equivalent and fail with the same exception as&nbsp;above.</p>
+<pre><code class="lang-sql"><span class="operator"><span class="keyword"><span class="caps">SELECT</span></span> * <span class="keyword"><span class="caps">FROM</span></span> Tbl <span class="keyword"><span class="caps">WHERE</span></span> IntProp <span class="keyword"><span class="caps">IN</span></span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span>
+</code></pre>
+<p>Now let’s assume the list is null, but there’s still no null-check in the expression. It would attempt to convert the list to its <span class="caps">SQL</span> equivalent and fail with the same exception as&nbsp;above.</p>
 <p>Finally, we add the null check. Now NHibernate still is trying to generate a query. Perhaps it decides that “list <span class="caps">IS</span> NULL” is a perfectly reasonable SQL expression, or perhaps not. Regardless, <em>it still has to iterate over the list to generate the <code>IN</code> clause</em>, which it cannot&nbsp;do.</p>
-<p>In essence, we are mixing a test that doesn‘t belong in a query with a test that does, but NHibernate does not know that’s the case. The solution is to move the tests where they&nbsp;belong.</p>
+<p>In essence, we are mixing a test that doesn’t belong in a query with a test that does, but NHibernate does not know that’s the case. The solution is to move the tests where they&nbsp;belong.</p>
 <pre><code class="lang-cs">List&lt;<span class="keyword">int</span>&gt; list = <span class="keyword">null</span>;
 <span class="comment">// ... something tries to populate the list ...</span>
 <span class="keyword">var</span> q = Session.Query&lt;Tbl&gt;();
@@ -60,8 +124,9 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)</code></pre>
 <span class="comment">// Otherwise return everything.</span>
 <span class="keyword">if</span> (list != <span class="keyword">null</span>) {
     q = q.Where(t =&gt; list.Contains(t.IntProp));
-}</code></pre>
-<p>It&#39;s a bit clumsier without the fluent interface to lean on, but it does have the side benefit of making the resultant <span class="caps">SQL</span> query&nbsp;cleaner.</p>
+}
+</code></pre>
+<p>It’s a bit clumsier without the fluent interface to lean on, but it does have the side benefit of making the resultant <span class="caps">SQL</span> query&nbsp;cleaner.</p>
 
           </section>
         </article>
@@ -69,27 +134,9 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)</code></pre>
           <header>
             <p class="date"><span>30. October 2013</span></p>
             <h2><a href="/articles/internet-famous/" class="articleLink">Internet Famous?</a></h2>
+            <p style="text-align:center;font-size:smaller"><a href="/articles/internet-famous/#disqus_thread" data-disqus-identifier="internet-famous" class="articleLink">Comments</a></p>
           </header>
-          <section class="content"><p>My coworking space, <a href="http://www.worksprogressseattle.com/">Works Progress</a>, interviewed me on their blog! <a href="http://www.worksprogressseattle.com/meet-mike-roufa/">I&#39;m famous… on the&nbsp;Internet.</a></p>
-
-          </section>
-        </article>
-        <article class="article intro">
-          <header>
-            <p class="date"><span>28. October 2013</span></p>
-            <h2><a href="/articles/modern-ie-saves-the-day/" class="articleLink">modern.IE saves the day!</a></h2>
-          </header>
-          <section class="content"><p><img src="/articles/modern-ie-saves-the-day/vms.png" alt="Windows XP, never so pleased to see you!"></p>
-<p>My laptop returned with one bad <span class="caps">RAM</span> stick missing. While it was gone, I discovered I prefer Windows 8.1 to its predecessor, especially the return of the start button and the improved start screen that installers cannot automatically colonize. I upgraded my laptop&nbsp;immediately.</p>
-<p>Microsoft introduced more changes under the hood, though, and a few programs stopped working. One was <a href="http://www.1upindustries.com/Bins/default.aspx">Bins</a> which I use to keep my browsers together, but they had a <a href="http://feedback.1upindustries.com/forums/103687-bugs/suggestions/4681319-windows-8-1-werfault-exe-error-upon-starting-bins">fix available</a>.</p>
-<p>A more serious problem was the <a href="http://www.eightforums.com/general-support/33644-upgrade-8-1-disaster.html">Juniper Remote Desktop Client</a>. Without this, I was unable to complete my latest&nbsp;contract.</p>
-<p>I saw two viable&nbsp;options: </p>
-<ol>
-<li>Rollback (noooo! not my new shiny&nbsp;toy!)</li>
-<li><span class="caps">VM</span></li>
-</ol>
-<p>Of course, #2 won. But I couldn&#39;t locate my Windows 8 installation disks, and was not about to fork over more cash just to run one program. The solution? <a href="http://modern.ie/">modern.<span class="caps">IE</span></a>! I grabbed a copy of <span class="caps">XP</span> with IE8, threw it into Hyper-V, and I&#39;m back in&nbsp;business. </p>
-<p>While it‘s intended to ease the pain of backwards-compatible web development, modern.<span class="caps">IE</span> is also a great resource for emergency backwards-compatible Windows development. Somebody reports a Vista bug? Grab a Vista image and test. Need to check something on Windows Server 2012? That’s there as well. The images have a 30 day grace period after which you need to purchase a license, so you cannot use the same OS indefinitely. But still, it&#39;s a very useful addition to my&nbsp;toolkit.</p>
+          <section class="content"><p>My coworking space, <a href="http://www.worksprogressseattle.com">Works Progress</a>, interviewed me on their blog! <a href="http://www.worksprogressseattle.com/meet-mike-roufa/">I’m famous… on the&nbsp;Internet.</a></p>
 
           </section>
         </article>
@@ -100,8 +147,8 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)</code></pre>
         <div class="nav"><a href="/page/2/">« Newer</a><a href="/page/4/">Next page »</a>
         </div>
         <section class="about"><p><img src="/i/moi.jpeg" alt="My handsome mug">
-Hi, I&#39;m Michael Roufa.</p>
-<p>For the last 15 years, I‘ve been working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I specialize in backend development and build/deploy automation, but I’m no JavaScript slouch either. I hold a Masters in Software Engineering from Seattle University.</p>
+Hi, I’m Michael Roufa.</p>
+<p>For the last 15 years, I’ve been working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I specialize in backend development and build/deploy automation, but I’m no JavaScript slouch either. I hold a Masters in Software Engineering from Seattle University.</p>
 <p><a href="mailto:mike@roufa.com">Email</a> | <a href="https://twitter.com/roufamatic">Twitter</a> | <a href="http://www.linkedin.com/in/michaelroufa">LinkedIn</a> | <a href="http://stackoverflow.com/users/197860/roufamatic">StackOverflow</a> | <a href="https://github.com/roufamatic">GitHub</a></p>
 
         </section>
@@ -109,6 +156,19 @@ Hi, I&#39;m Michael Roufa.</p>
           <p>&copy; 2014 Michael Roufa &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
           </p>
         </section>
+        <script>
+          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+          var disqus_shortname = 'roufa'; // required: replace example with your forum shortname
+          
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function () {
+              var s = document.createElement('script'); s.async = true;
+              s.type = 'text/javascript';
+              s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+              (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+          }());
+          
+        </script>
       </div>
     </footer>
   </body>

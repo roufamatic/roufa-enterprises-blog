@@ -3,6 +3,8 @@ title: Bootstrapping Quality
 author: Michael Roufa
 date: 2013-10-18
 template: article.jade
+disqusId: bootstrapping-quality
+disqusUrl: http://www.roufa.com/articles/bootstrapping-quality
 ---
 
 I gave a talk to CompSci seniors at Seattle University today about Version Control Systems, Test-Driven Development and Continuous Integration. Here are the slides:

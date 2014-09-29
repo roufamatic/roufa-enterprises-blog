@@ -3,6 +3,8 @@ title: FlywayDB -- super-simple forward-only raw SQL database migrations for Jav
 author: Michael Roufa
 date: 2013-08-12
 template: article.jade
+disqusId: flywaydb-super-simple-migrations
+disqusUrl: http://www.roufa.com/articles/flywaydb-super-simple-migrations
 ---
 
 For a recent green-field Java project, I chose [Flyway](http://flywaydb.org/) to manage all our database scripts. This library is a gem<a name="1up"></a><sup>[1](#1)</sup>, and I highly recommend it for anybody building or maintaining relational databases in Java.

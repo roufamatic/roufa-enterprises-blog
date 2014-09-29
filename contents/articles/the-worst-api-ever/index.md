@@ -3,6 +3,8 @@ title: The Worst API ever
 author: Michael Roufa
 date: 2013-10-10
 template: article.jade
+disqusId: the-worst-api-ever
+disqusUrl: http://www.roufa.com/articles/the-worst-api-ever
 ---
 
 I'm integrating with what may be the worst API ever. Check this out!

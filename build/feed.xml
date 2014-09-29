@@ -5,9 +5,33 @@
     <atom:link href="http://www.roufa.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://www.roufa.com</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Wed, 20  Aug 2014 17:00:00 -0700</pubDate>
+    <pubDate>Sun, 28 Sep 2014 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Pay the Piper</title>
+      <link>http://www.roufa.com/articles/pay-the-piper/</link>
+      <pubDate>Sun, 28 Sep 2014 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://www.roufa.com/articles/pay-the-piper/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;img src=&quot;/articles/pay-the-piper/screenshot-youtube.png&quot; alt=&quot;Pay the Piper&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Today, I’m announcing the general availability of &lt;strong&gt;&lt;a href=&quot;https://chrome.google.com/webstore/detail/pay-the-piper/iiepcdnmdcdplpmckjlaefajphcbelcm&quot;&gt;Pay the Piper&lt;/a&gt;&lt;/strong&gt;, the Google Chrome Extension that puts your todo’s to work.&lt;/p&gt;
+&lt;p&gt;If you’re at all like me, you probably keep a task list somewhere. There are phone calls to make, books to drop off at the library, emails to send — nothing terribly difficult. You also on occasion find yourself idly surfing the web. Just taking a break from your work. &lt;/p&gt;
+&lt;p&gt;Somehow, when it’s time to go home, you realize that none of your small tasks got done. How is this possible? How did you choose to look at just one more cat video instead of crossing just one small thing off that list?&lt;/p&gt;
+&lt;p&gt;Wouldn’t it be great if, at the moment you were about to be distracted, you could be reminded to look at your todo list? Even better, wouldn’t it be great if you could just see the next thing you were supposed to get done?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pay the Piper keeps you productive by making you “pay” to visit distracting sites. The cost? One completed task from your task list.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pay the Piper&lt;/strong&gt; protects you from your own bad habits by keeping you away from sites you know are distracting and focusing you back on your task list. Like a web blocker, you decide what sites are distractions to you, and Pay the Piper prevents you from viewing them. Unlike those other blockers, &lt;strong&gt;Pay the Piper&lt;/strong&gt; replaces the distraction with a task from your task list. Completing any of your tasks grants you a few minutes to browse the distracting site. Hey, you’ve earned it!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pay the Piper&lt;/strong&gt; was built to augment the power of the &lt;a href=&quot;http://todotxt.com/&quot;&gt;todo.txt&lt;/a&gt; system and its Android/iOS apps. If you are a todo.txt user and your files are stored on Dropbox, &lt;strong&gt;Pay the Piper&lt;/strong&gt; can use that task list as its source. But don’t worry if you don’t store your tasks there — you can also create your own list inside of Chrome. Thanks to the power of Google Chrome Sync, all of your logged in Chrome browsers will share the same task list.&lt;/p&gt;
+&lt;p&gt;“I got things done this weekend that I didn’t think I would have!” — Jessie Rymph, founder, &lt;a href=&quot;http://www.worksprogressseattle.com&quot;&gt;Works Progress Seattle&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;videoWrapper&quot;&gt;
+&lt;!-- Copy &amp; Pasted from YouTube --&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/uXgfPZEgIhg?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;br&gt;
+&amp;rsaquo; &lt;a href=&quot;https://chrome.google.com/webstore/detail/pay-the-piper/iiepcdnmdcdplpmckjlaefajphcbelcm&quot;&gt;&lt;strong&gt;Pay the Piper&lt;/strong&gt; on the Google Chrome Web Store&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Todo.txt JavaScript parser</title>
       <link>http://www.roufa.com/articles/todo-txt-js/</link>
@@ -16,9 +40,9 @@
       <author></author>
       <description>&lt;div class=&quot;github-widget&quot; data-repo=&quot;roufamatic/todo-txt-js&quot; style=&quot;padding-bottom:20px&quot;&gt;&lt;/div&gt;
 
-&lt;p&gt;My current todo list is a simple text file using the popular &lt;em&gt;&lt;a href=&quot;https://github.com/ginatrapani/todo.txt-cli/wiki/The-Todo.txt-Format&quot;&gt;todo.txt&lt;/a&gt;&lt;/em&gt; format. Along with the Android app, I&amp;#39;m able to keep track of my tasks in a simple format that I can access on the go. &lt;/p&gt;
-&lt;p&gt;Lately, I&amp;#39;ve been hard at work on a new project that I hope to announce in the not-too-distant future. The project involves showing todos in a Chrome extension, and I wanted to be able to support &lt;em&gt;todo.txt&lt;/em&gt; files as well as plain old text files. &lt;/p&gt;
-&lt;p&gt;This isn&amp;#39;t the only Javascript implementation of the spec, but it was such a nice, contained project that it seemed like a good chance to &lt;a href=&quot;http://blog.codinghorror.com/dont-reinvent-the-wheel-unless-you-plan-on-learning-more-about-wheels/&quot;&gt;reinvent the wheel&lt;/a&gt;. The result is pure JavaScript using lessons gleaned from the classic &lt;em&gt;&lt;a href=&quot;http://shop.oreilly.com/product/9780596517748.do&quot;&gt;JavaScript: The Good Parts&lt;/a&gt;&lt;/em&gt;, and was developed TDD-style using &lt;a href=&quot;http://jasmine.github.io/&quot;&gt;Jasmine&lt;/a&gt; and &lt;a href=&quot;http://karma-runner.github.io/&quot;&gt;Karma&lt;/a&gt;. Enjoy!&lt;/p&gt;
+&lt;p&gt;My current todo list is a simple text file using the popular &lt;em&gt;&lt;a href=&quot;https://github.com/ginatrapani/todo.txt-cli/wiki/The-Todo.txt-Format&quot;&gt;todo.txt&lt;/a&gt;&lt;/em&gt; format. Along with the Android app, I’m able to keep track of my tasks in a simple format that I can access on the go. &lt;/p&gt;
+&lt;p&gt;Lately, I’ve been hard at work on a new project that I hope to announce in the not-too-distant future. The project involves showing todos in a Chrome extension, and I wanted to be able to support &lt;em&gt;todo.txt&lt;/em&gt; files as well as plain old text files. &lt;/p&gt;
+&lt;p&gt;This isn’t the only Javascript implementation of the spec, but it was such a nice, contained project that it seemed like a good chance to &lt;a href=&quot;http://blog.codinghorror.com/dont-reinvent-the-wheel-unless-you-plan-on-learning-more-about-wheels/&quot;&gt;reinvent the wheel&lt;/a&gt;. The result is pure JavaScript using lessons gleaned from the classic &lt;em&gt;&lt;a href=&quot;http://shop.oreilly.com/product/9780596517748.do&quot;&gt;JavaScript: The Good Parts&lt;/a&gt;&lt;/em&gt;, and was developed TDD-style using &lt;a href=&quot;http://jasmine.github.io/&quot;&gt;Jasmine&lt;/a&gt; and &lt;a href=&quot;http://karma-runner.github.io/&quot;&gt;Karma&lt;/a&gt;. Enjoy!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/roufamatic/todo-txt-js&quot;&gt;todo-txt-js on GitHub&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
@@ -28,35 +52,35 @@
       <pubDate>Wed, 28 May 2014 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://www.roufa.com/articles/vb-the-good-parts/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/vb-the-good-parts/gwbasic.png&quot; alt=&quot;GW Basic. Remember it? -- from WikiPedia: (http://en.wikipedia.org/wiki/File:GW-BASIC_3.23.png)&quot;&gt;&lt;/p&gt;
-&lt;p&gt;There&amp;#39;s a great book on JavaScript called &lt;a href=&quot;http://shop.oreilly.com/product/9780596517748.do&quot;&gt;JavaScript: The Good Parts&lt;/a&gt; that every frontend developer should own. It does a great job of highlighting both the bad and good facets of the language. In that vein, here are some handy tips about VB to help you, intrepid C# programmer, find success.&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&quot;/articles/vb-the-good-parts/gwbasic.png&quot; alt=&quot;GW Basic. Remember it? -- from WikiPedia: (http://en.wikipedia.org/wiki/File:GW-BASIC_3.23.png)&quot;&gt;&lt;/p&gt;
+&lt;p&gt;There’s a great book on JavaScript called &lt;a href=&quot;http://shop.oreilly.com/product/9780596517748.do&quot;&gt;JavaScript: The Good Parts&lt;/a&gt; that every frontend developer should own. It does a great job of highlighting both the bad and good facets of the language. In that vein, here are some handy tips about VB to help you, intrepid C# programmer, find success.&lt;/p&gt;
 &lt;p&gt;1) Ignore the logical operators &lt;code&gt;And&lt;/code&gt; and &lt;code&gt;Or&lt;/code&gt;. These operators do not short-circuit, so an expression like &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;If a IsNot Nothing and a.Foo &amp;gt; 3 Then Debug.WriteLine(&amp;quot;booo&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;will give you a NullReferenceException. Instead use &lt;code&gt;AndAlso&lt;/code&gt; / &lt;code&gt;OrElse&lt;/code&gt;.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;If a IsNot Nothing AndAlso a.Foo &amp;gt; 3 Then Debug.WriteLine(&amp;quot;yay&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;2) &lt;code&gt;IsNot&lt;/code&gt; adds a touch of readability. Compare:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;If Not a Is Nothing Then ...&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;vs.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;If a IsNot Nothing Then ...&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It‘s more like natural language, which is VB’s appeal after all.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;If a IsNot Nothing and a.Foo &amp;gt; 3 Then Debug.WriteLine(&amp;quot;booo&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;will give you a NullReferenceException. Instead use &lt;code&gt;AndAlso&lt;/code&gt; / &lt;code&gt;OrElse&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;If a IsNot Nothing AndAlso a.Foo &amp;gt; 3 Then Debug.WriteLine(&amp;quot;yay&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2) &lt;code&gt;IsNot&lt;/code&gt; adds a touch of readability. Compare:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;If Not a Is Nothing Then ...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;vs.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;If a IsNot Nothing Then ...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It’s more like natural language, which is VB’s appeal after all.&lt;/p&gt;
 &lt;p&gt;3) Avoid &lt;code&gt;IIf()&lt;/code&gt; for ternaries. Instead, use &lt;code&gt;If()&lt;/code&gt;. The former is not a part of the core language so much as a built-in function, and all of its arguments are evaluated:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Dim x as Integer = IIf(a IsNot Nothing, a.Foo, 0) &amp;#39; NullReferenceException because a.Foo is evaluated&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The latter, added in VB 9, maps to the same ternary operator that &lt;code&gt;?:&lt;/code&gt; does in C#.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Dim x as Integer = If(a IsNot Nothing, a.Foo, 0) &amp;#39; Proper short-circuiting = no problem!&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;4) &lt;code&gt;Nothing&lt;/code&gt; is not null — it&amp;#39;s &lt;code&gt;default(T)&lt;/code&gt;. &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Dim x as Integer = IIf(a IsNot Nothing, a.Foo, 0) &amp;#39; NullReferenceException because a.Foo is evaluated
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The latter, added in VB 9, maps to the same ternary operator that &lt;code&gt;?:&lt;/code&gt; does in C#.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Dim x as Integer = If(a IsNot Nothing, a.Foo, 0) &amp;#39; Proper short-circuiting = no problem!
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;4) &lt;code&gt;Nothing&lt;/code&gt; is not null — it’s &lt;code&gt;default(T)&lt;/code&gt;. &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Dim str as String = Nothing &amp;#39; This is null.
 Dim lng as Long = Nothing &amp;#39; This is 0.
 Dim dt as DateTime = Nothing &amp;#39; This is DateTime.MinValue.
-Dim dt as DateTime? = Nothing &amp;#39; This is null again!&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Personally, I&amp;#39;d only use &lt;code&gt;Nothing&lt;/code&gt; as a synonym for &lt;code&gt;null&lt;/code&gt; and avoid the other usages. &lt;/p&gt;
+Dim dt as DateTime? = Nothing &amp;#39; This is null again!
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Personally, I’d only use &lt;code&gt;Nothing&lt;/code&gt; as a synonym for &lt;code&gt;null&lt;/code&gt; and avoid the other usages. &lt;/p&gt;
 &lt;p&gt;5) Remember, &lt;code&gt;Is&lt;/code&gt; is for comparing object types, while &lt;code&gt;=&lt;/code&gt; is for comparing value types. &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Dim obj as Object
 If obj = Nothing Then Debug.WriteLine(&amp;quot;boo&amp;quot;) &amp;#39; Error: obj is an object
 If obj Is Nothing Then Debug.WriteLine(&amp;quot;yay&amp;quot;) &amp;#39; Will work
 Dim dt as DateTime
 if dt = Nothing Then Debug.WriteLine(&amp;quot;oy&amp;quot;) &amp;#39; Also will work... but didn&amp;#39;t I just say to not do this?
-if dt = DateTime.MinValue Then Debug.WriteLine(&amp;quot;you&amp;#39;re learning!&amp;quot;) &amp;#39; Much better&lt;/code&gt;&lt;/pre&gt;
-</description>
+if dt = DateTime.MinValue Then Debug.WriteLine(&amp;quot;you&amp;#39;re learning!&amp;quot;) &amp;#39; Much better
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>Async-Await Apologia</title>
@@ -64,14 +88,14 @@ if dt = DateTime.MinValue Then Debug.WriteLine(&amp;quot;you&amp;#39;re learning
       <pubDate>Wed, 09 Apr 2014 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://www.roufa.com/articles/async-await-apologia/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/async-await-apologia/apologies.jpg&quot; alt=&quot;Work in progress -- by Alexander Baxevanis: https://www.flickr.com/photos/futureshape/4000128011/ (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)&quot;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&quot;/articles/async-await-apologia/apologies.jpg&quot; alt=&quot;Work in progress -- by Alexander Baxevanis: https://www.flickr.com/photos/futureshape/4000128011/ (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)&quot;&gt;&lt;/p&gt;
 &lt;p&gt;This update is long overdue. &lt;a href=&quot;http://www.roufa.com/articles/async-await-through-the-looking-glass/&quot;&gt;Previously&lt;/a&gt;, I wrote: &lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;But as I learned today, once you do hit the &lt;code&gt;await&lt;/code&gt; statement, you are still leaving the stack. And when the &lt;code&gt;await&lt;/code&gt; returns, the place you come back to may not be identical to the place you left, depending on how it got there.&lt;/p&gt;
 &lt;p&gt;…&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;fsw.Created&lt;/code&gt; handler is called on a different thread than the one you just came from. That&amp;#39;s a pretty well-known fact and is why the &lt;code&gt;FileSystemWatcher&lt;/code&gt; has a &lt;code&gt;SynchronizingObject&lt;/code&gt; property to help WinForms programmers navigate their way back to the UI thread. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;fsw.Created&lt;/code&gt; handler is called on a different thread than the one you just came from. That’s a pretty well-known fact and is why the &lt;code&gt;FileSystemWatcher&lt;/code&gt; has a &lt;code&gt;SynchronizingObject&lt;/code&gt; property to help WinForms programmers navigate their way back to the UI thread. &lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Well, it turns out my analysis was completely wrong. Actually, my application was modifying files in a folder that belonged to an ASP.NET website. Modifying folders inside of ASP.NET can &lt;a href=&quot;http://stackoverflow.com/questions/2248825/asp-net-restarts-when-a-folder-is-created-renamed-or-deleted&quot;&gt;cause application restarts&lt;/a&gt;. Though I&amp;#39;ve moved on from this project, I now believe that the behavior I was seeing had to do with the timing of the ASP.NET restart, and had nothing whatsoever to do with crossing thread boundaries. Since async/await uses continuations, any differences I was seeing between where I came from and where I got to had to occur outside of the bounds of my program.&lt;/p&gt;
+&lt;p&gt;Well, it turns out my analysis was completely wrong. Actually, my application was modifying files in a folder that belonged to an ASP.NET website. Modifying folders inside of ASP.NET can &lt;a href=&quot;http://stackoverflow.com/questions/2248825/asp-net-restarts-when-a-folder-is-created-renamed-or-deleted&quot;&gt;cause application restarts&lt;/a&gt;. Though I’ve moved on from this project, I now believe that the behavior I was seeing had to do with the timing of the ASP.NET restart, and had nothing whatsoever to do with crossing thread boundaries. Since async/await uses continuations, any differences I was seeing between where I came from and where I got to had to occur outside of the bounds of my program.&lt;/p&gt;
 &lt;p&gt;We live, we learn.&lt;/p&gt;
 </description>
     </item>
@@ -81,11 +105,11 @@ if dt = DateTime.MinValue Then Debug.WriteLine(&amp;quot;you&amp;#39;re learning
       <pubDate>Wed, 25 Dec 2013 16:00:00 -0800</pubDate>
       <guid isPermaLink="true">http://www.roufa.com/articles/happy-holidays-2013/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;a href=&quot;http://www.roufa.com/articles/happy-holidays-2013/card.jpg&quot;&gt;&lt;img src=&quot;http://www.roufa.com/articles/happy-holidays-2013/card-1024.jpg&quot; alt=&quot;My 2013 holiday card&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&quot;/articles/happy-holidays-2013/card.jpg&quot;&gt;&lt;img src=&quot;/articles/happy-holidays-2013/card-1024.jpg&quot; alt=&quot;My 2013 holiday card&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I had a blast putting this together. Thanks to my friend &lt;a href=&quot;http://www.flickr.com/photos/russellelbert&quot;&gt;Russell Williams&lt;/a&gt; for
 the photography and photoshopping!&lt;/p&gt;
 &lt;p&gt;Russell also put together this big-headed version of the same. It was a tough call but I decided to play it straight for the physical cards. Enjoy!&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.roufa.com/articles/happy-holidays-2013/bigheads.jpg&quot;&gt;&lt;img src=&quot;http://www.roufa.com/articles/happy-holidays-2013/bigheads.jpg&quot; alt=&quot;Look at the big heads!&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/articles/happy-holidays-2013/bigheads.jpg&quot;&gt;&lt;img src=&quot;/articles/happy-holidays-2013/bigheads.jpg&quot; alt=&quot;Look at the big heads!&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     <item>
@@ -94,18 +118,18 @@ the photography and photoshopping!&lt;/p&gt;
       <pubDate>Mon, 16 Dec 2013 16:00:00 -0800</pubDate>
       <guid isPermaLink="true">http://www.roufa.com/articles/async-await-through-the-looking-glass/</guid>
       <author></author>
-      <description>&lt;p class=&quot;callout&quot;&gt;&lt;strong&gt;Update 2014-04-10&lt;/strong&gt;: &lt;a href=&quot;http://www.roufa.com/articles/async-await-apologia/&quot;&gt;I wouldn&amp;#39;t read too much into my conclusion below.&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p class=&quot;callout&quot;&gt;&lt;strong&gt;Update 2014-04-10&lt;/strong&gt;: &lt;a href=&quot;http://www.roufa.com/articles/async-await-apologia/&quot;&gt;I wouldn’t read too much into my conclusion below.&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/async-await-through-the-looking-glass/ttlg.jpg&quot; alt=&quot;Alice entering the Looking-glass World (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/async-await-through-the-looking-glass/ttlg.jpg&quot; alt=&quot;Alice entering the Looking-glass World (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)&quot;&gt;&lt;/p&gt;
 &lt;p&gt;I finally had a chance to try out the no longer very new &lt;em&gt;async/await&lt;/em&gt; paradigm for asynchronous programming in .NET. My goal: make a long-running MVC4 action asynchronous to prevent thread starvation in ASP.NET.&lt;/p&gt;
 &lt;p&gt;When the call is made, the action fires off an executable to perform some work. This executable returns immediately and offers few hooks, so the only way I can be certain that the operation has completed is to watch for the appearance of a particular zero-byte file that it creates when it has finished.&lt;/p&gt;
 &lt;p&gt;The beauty of &lt;em&gt;async/await&lt;/em&gt; is how it does away with the traditional async callback method. Instead of Begin/End pairs, or Async/Complete, or even callback events, you get code that looks something like this.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public async Task&amp;lt;Stuff&amp;gt; GetStuffAsync() {
     Stuff stuff = await DoTheAsyncThing();
     return stuff;
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It all looks very synchronous and saves a lot of mental unwinding that would happen otherwise.&lt;/p&gt;
-&lt;p&gt;But as I learned today, once you do hit the &lt;code&gt;await&lt;/code&gt; statement, you are still leaving the stack. And when the &lt;code&gt;await&lt;/code&gt; returns, the place you come back to may not be identical to the place you left, depending on how it got there. Here&amp;#39;s a contrived example.&lt;/p&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It all looks very synchronous and saves a lot of mental unwinding that would happen otherwise.&lt;/p&gt;
+&lt;p&gt;But as I learned today, once you do hit the &lt;code&gt;await&lt;/code&gt; statement, you are still leaving the stack. And when the &lt;code&gt;await&lt;/code&gt; returns, the place you come back to may not be identical to the place you left, depending on how it got there. Here’s a contrived example.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public async Task&amp;lt;Stuff&amp;gt; GetStuffAsync(string someRelativeFolder) {
     string completionFile = 
         HttpContext.Current.Server.MapPath(
@@ -133,8 +157,8 @@ public async Task VerifyFileExists(string path) {
     watcher.Created += createdHandler;
     watcher.EnableRaisingEvents = true;
     return tcs.Task;
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This throws a &lt;code&gt;NullReferenceException&lt;/code&gt; the &lt;strong&gt;second&lt;/strong&gt; time that you try to access &lt;code&gt;HttpContext.Current&lt;/code&gt;. Why? The &lt;code&gt;fsw.Created&lt;/code&gt; handler is called on a different thread than the one you just came from. That&amp;#39;s a pretty well-known fact and is why the &lt;code&gt;FileSystemWatcher&lt;/code&gt; has a &lt;code&gt;SynchronizingObject&lt;/code&gt; property to help WinForms programmers navigate their way back to the UI thread. &lt;/p&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This throws a &lt;code&gt;NullReferenceException&lt;/code&gt; the &lt;strong&gt;second&lt;/strong&gt; time that you try to access &lt;code&gt;HttpContext.Current&lt;/code&gt;. Why? The &lt;code&gt;fsw.Created&lt;/code&gt; handler is called on a different thread than the one you just came from. That’s a pretty well-known fact and is why the &lt;code&gt;FileSystemWatcher&lt;/code&gt; has a &lt;code&gt;SynchronizingObject&lt;/code&gt; property to help WinForms programmers navigate their way back to the UI thread. &lt;/p&gt;
 &lt;p&gt;But it also exposes the “through the looking glass” nature of &lt;em&gt;async/await&lt;/em&gt;. The simplified syntax obscures the true nature of the code — in one method, the same object goes from having a value to having no value. Watch out!&lt;/p&gt;
 </description>
     </item>
@@ -144,9 +168,9 @@ public async Task VerifyFileExists(string path) {
       <pubDate>Sun, 17 Nov 2013 16:00:00 -0800</pubDate>
       <guid isPermaLink="true">http://www.roufa.com/articles/when-badimageformatexception-is-not-what-it-seems/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/when-badimageformatexception-is-not-what-it-seems/BadImageFormatException.png&quot; alt=&quot;I hate this exception&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Another exception that long-term C# developers are very familiar with is &lt;code&gt;BadImageFormatException&lt;/code&gt;. When I see it, I think “there must be some kind of compilation mixup.” As in, a third-party DLL isn‘t compiled as AnyCPU. Or a .NET 2.0 site is referencing a .NET 4.0 library. Generally it’s an annoyance but easy to suss out.&lt;/p&gt;
-&lt;p&gt;Today I received an error report from my colleague where the application was throwing this very exception. I couldn&amp;#39;t reproduce the problem on my machine, but he assured me it happened every time on his (a 32-bit workstation) and on the test server (64-bit). &lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&quot;/articles/when-badimageformatexception-is-not-what-it-seems/BadImageFormatException.png&quot; alt=&quot;I hate this exception&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Another exception that long-term C# developers are very familiar with is &lt;code&gt;BadImageFormatException&lt;/code&gt;. When I see it, I think “there must be some kind of compilation mixup.” As in, a third-party DLL isn’t compiled as AnyCPU. Or a .NET 2.0 site is referencing a .NET 4.0 library. Generally it’s an annoyance but easy to suss out.&lt;/p&gt;
+&lt;p&gt;Today I received an error report from my colleague where the application was throwing this very exception. I couldn’t reproduce the problem on my machine, but he assured me it happened every time on his (a 32-bit workstation) and on the test server (64-bit). &lt;/p&gt;
 &lt;p&gt;The stack trace ended inside a call like this.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-cs&quot;&gt;T CallWrapped&amp;lt;T&amp;gt;(IEnumerable&amp;lt;Func&amp;lt;T&amp;gt;&amp;gt; actions) {
     T output = &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;(T);
@@ -154,21 +178,24 @@ public async Task VerifyFileExists(string path) {
         output = Combine(output, action());
     }
     &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; output;
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;On my machine, this executed fine. But on my colleague&amp;#39;s, it would fail at the second &lt;code&gt;action()&lt;/code&gt; call. The actions looked something like this:&lt;/p&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;On my machine, this executed fine. But on my colleague’s, it would fail at the second &lt;code&gt;action()&lt;/code&gt; call. The actions looked something like this:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-cs&quot;&gt;TRetVal WrappedDelete(Entity entity) {
     &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; actions = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; [] {
         () =&amp;gt; LogDelete(entity),
         () =&amp;gt; &lt;span class=&quot;keyword&quot;&gt;base&lt;/span&gt;.Delete(entity)
     };
     &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; CallWrapped&amp;lt;TRetVal&amp;gt;(actions);
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;I set a breakpoint on &lt;code&gt;base.Delete()&lt;/code&gt; to see what was going on and hit F5. The breakpoint wasn‘t hit. What? Visual Studio won’t step into native methods that fail (unless you ask it nicely), but I&amp;#39;d never seen it refuse to step into a managed method declared within the solution! I checked the Delete method just to see if there were any clues there…&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-cs&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;virtual&lt;/span&gt; TRetVal Delete(Entity entity) {
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I set a breakpoint on &lt;code&gt;base.Delete()&lt;/code&gt; to see what was going on and hit F5. The breakpoint wasn’t hit. What? Visual Studio won’t step into native methods that fail (unless you ask it nicely), but I’d never seen it refuse to step into a managed method declared within the solution! I checked the Delete method just to see if there were any clues there…&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-cs&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;virtual&lt;/span&gt; TRetVal &lt;span class=&quot;title&quot;&gt;Delete&lt;/span&gt;(Entity entity) {
     &lt;span class=&quot;comment&quot;&gt;// simple NHibernate stuff in here, nothing worth mentioning!&lt;/span&gt;
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;… but it was all perfectly &lt;a href=&quot;http://en.wiktionary.org/wiki/cromulent&quot;&gt;cromulent&lt;/a&gt; code that would have caused fury among users if it actually had any problems.&lt;/p&gt;
-&lt;p&gt;After numerous Google searches that went nowhere (&amp;quot;Make sure you&amp;#39;re targeting the right platform!&amp;quot; shutupshutup), I finally &lt;a href=&quot;http://stackoverflow.com/questions/5290559/using-base-keyword-in-delegate-causes-system-badimageformatexception&quot;&gt;located the answer on StackOverflow&lt;/a&gt;. It turns to be a &lt;a href=&quot;https://connect.microsoft.com/VisualStudio/feedback/details/626550/badimageformatexception-on-simple-program-using-generics-and-lambdas&quot;&gt;bug in the C# 4.0 compiler&lt;/a&gt;. To reproduce it:&lt;/p&gt;
+&lt;p&gt;After numerous Google searches that went nowhere (“Make sure you’re targeting the right platform!” shutupshutup), I finally &lt;a href=&quot;http://stackoverflow.com/questions/5290559/using-base-keyword-in-delegate-causes-system-badimageformatexception&quot;&gt;located the answer on StackOverflow&lt;/a&gt;. It turns to be a &lt;a href=&quot;https://connect.microsoft.com/VisualStudio/feedback/details/626550/badimageformatexception-on-simple-program-using-generics-and-lambdas&quot;&gt;bug in the C# 4.0 compiler&lt;/a&gt;. To reproduce it:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Write a lambda (anonymous method, delegate, what have you)…&lt;/li&gt;
 &lt;li&gt;that calls a &lt;code&gt;base&lt;/code&gt; method…&lt;/li&gt;
@@ -184,9 +211,10 @@ public async Task VerifyFileExists(string path) {
     &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; CallWrapped&amp;lt;TRetVal&amp;gt;(actions);
 }
 
-&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; TRetVal DoDelete(Entity entity) {
+&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; TRetVal &lt;span class=&quot;title&quot;&gt;DoDelete&lt;/span&gt;(Entity entity) {
     &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;base&lt;/span&gt;.Delete(entity);
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     <item>
@@ -195,24 +223,26 @@ public async Task VerifyFileExists(string path) {
       <pubDate>Wed, 06 Nov 2013 16:00:00 -0800</pubDate>
       <guid isPermaLink="true">http://www.roufa.com/articles/nhibernate-cant-short-circuit/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/nhibernate-cant-short-circuit/JohnnyFive.jpg&quot; alt=&quot;Johnny Five Is Alive&quot;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&quot;/articles/nhibernate-cant-short-circuit/JohnnyFive.jpg&quot; alt=&quot;Johnny Five Is Alive&quot;&gt;&lt;/p&gt;
 &lt;p&gt;While doing some refactoring on an NHibernate-driven site, I came across a nasty exception:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;System.ArgumentNullException: Value cannot be null. Parameter name: source 
-at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This was a bit confusing at first. The code was already checking for null&amp;#39;s. What gives?&lt;/p&gt;
+at System.Linq.Enumerable.Cast[TResult](IEnumerable source)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This was a bit confusing at first. The code was already checking for null’s. What gives?&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-cs&quot;&gt;List&amp;lt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&amp;gt; list = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
 &lt;span class=&quot;comment&quot;&gt;// ... something tries to populate the list ...&lt;/span&gt;
 &lt;span class=&quot;comment&quot;&gt;// If there's anything in the list, use that as a filter. &lt;/span&gt;
 &lt;span class=&quot;comment&quot;&gt;// Otherwise return everything.&lt;/span&gt;
 &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; q = Session.Query&amp;lt;Tbl&amp;gt;()
-               .Where(t =&amp;gt; list == &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt; || list.Contains(t.IntProp));&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Looking at the error message and the debugger it became clear that the &lt;code&gt;list.Contains&lt;/code&gt; statement was being evaluated. That&amp;#39;s very unusual behavior in C# as the &lt;code&gt;||&lt;/code&gt; operator is supposed to “short-circuit:” when the first operand evaluates to &lt;code&gt;true&lt;/code&gt;, the second is not evaluated at all.&lt;/p&gt;
+               .Where(t =&amp;gt; list == &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt; || list.Contains(t.IntProp));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Looking at the error message and the debugger it became clear that the &lt;code&gt;list.Contains&lt;/code&gt; statement was being evaluated. That’s very unusual behavior in C# as the &lt;code&gt;||&lt;/code&gt; operator is supposed to “short-circuit:” when the first operand evaluates to &lt;code&gt;true&lt;/code&gt;, the second is not evaluated at all.&lt;/p&gt;
 &lt;p&gt;As it turns out, the parameter of the &lt;code&gt;Where&lt;/code&gt; clause is actually an &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/bb397951.aspx&quot;&gt;expression tree&lt;/a&gt;. NHibernate does not execute this expression directly. Instead, it parses it to generate a SQL statement it can run against the database. &lt;/p&gt;
 &lt;p&gt;To illustrate, suppose that there were no null check, and the list contained the values [1,2,3]. It might try to do something like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-sql&quot;&gt;&lt;span class=&quot;operator&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SELECT&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt; Tbl &lt;span class=&quot;keyword&quot;&gt;WHERE&lt;/span&gt; IntProp &lt;span class=&quot;keyword&quot;&gt;IN&lt;/span&gt; (&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now let‘s assume the list is null, but there’s still no null-check in the expression. It would attempt to convert the list to its SQL equivalent and fail with the same exception as above.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-sql&quot;&gt;&lt;span class=&quot;operator&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SELECT&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt; Tbl &lt;span class=&quot;keyword&quot;&gt;WHERE&lt;/span&gt; IntProp &lt;span class=&quot;keyword&quot;&gt;IN&lt;/span&gt; (&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now let’s assume the list is null, but there’s still no null-check in the expression. It would attempt to convert the list to its SQL equivalent and fail with the same exception as above.&lt;/p&gt;
 &lt;p&gt;Finally, we add the null check. Now NHibernate still is trying to generate a query. Perhaps it decides that “list IS NULL” is a perfectly reasonable SQL expression, or perhaps not. Regardless, &lt;em&gt;it still has to iterate over the list to generate the &lt;code&gt;IN&lt;/code&gt; clause&lt;/em&gt;, which it cannot do.&lt;/p&gt;
-&lt;p&gt;In essence, we are mixing a test that doesn‘t belong in a query with a test that does, but NHibernate does not know that’s the case. The solution is to move the tests where they belong.&lt;/p&gt;
+&lt;p&gt;In essence, we are mixing a test that doesn’t belong in a query with a test that does, but NHibernate does not know that’s the case. The solution is to move the tests where they belong.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-cs&quot;&gt;List&amp;lt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&amp;gt; list = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
 &lt;span class=&quot;comment&quot;&gt;// ... something tries to populate the list ...&lt;/span&gt;
 &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; q = Session.Query&amp;lt;Tbl&amp;gt;();
@@ -220,8 +250,9 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
 &lt;span class=&quot;comment&quot;&gt;// Otherwise return everything.&lt;/span&gt;
 &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (list != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) {
     q = q.Where(t =&amp;gt; list.Contains(t.IntProp));
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It&amp;#39;s a bit clumsier without the fluent interface to lean on, but it does have the side benefit of making the resultant SQL query cleaner.&lt;/p&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It’s a bit clumsier without the fluent interface to lean on, but it does have the side benefit of making the resultant SQL query cleaner.&lt;/p&gt;
 </description>
     </item>
     <item>
@@ -230,7 +261,7 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
       <pubDate>Tue, 29 Oct 2013 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://www.roufa.com/articles/internet-famous/</guid>
       <author></author>
-      <description>&lt;p&gt;My coworking space, &lt;a href=&quot;http://www.worksprogressseattle.com/&quot;&gt;Works Progress&lt;/a&gt;, interviewed me on their blog! &lt;a href=&quot;http://www.worksprogressseattle.com/meet-mike-roufa/&quot;&gt;I&amp;#39;m famous… on the Internet.&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;My coworking space, &lt;a href=&quot;http://www.worksprogressseattle.com&quot;&gt;Works Progress&lt;/a&gt;, interviewed me on their blog! &lt;a href=&quot;http://www.worksprogressseattle.com/meet-mike-roufa/&quot;&gt;I’m famous… on the Internet.&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     <item>
@@ -239,7 +270,7 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
       <pubDate>Sun, 27 Oct 2013 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://www.roufa.com/articles/modern-ie-saves-the-day/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;img src=&quot;http://www.roufa.com/articles/modern-ie-saves-the-day/vms.png&quot; alt=&quot;Windows XP, never so pleased to see you!&quot;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&quot;/articles/modern-ie-saves-the-day/vms.png&quot; alt=&quot;Windows XP, never so pleased to see you!&quot;&gt;&lt;/p&gt;
 &lt;p&gt;My laptop returned with one bad RAM stick missing. While it was gone, I discovered I prefer Windows 8.1 to its predecessor, especially the return of the start button and the improved start screen that installers cannot automatically colonize. I upgraded my laptop immediately.&lt;/p&gt;
 &lt;p&gt;Microsoft introduced more changes under the hood, though, and a few programs stopped working. One was &lt;a href=&quot;http://www.1upindustries.com/Bins/default.aspx&quot;&gt;Bins&lt;/a&gt; which I use to keep my browsers together, but they had a &lt;a href=&quot;http://feedback.1upindustries.com/forums/103687-bugs/suggestions/4681319-windows-8-1-werfault-exe-error-upon-starting-bins&quot;&gt;fix available&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;A more serious problem was the &lt;a href=&quot;http://www.eightforums.com/general-support/33644-upgrade-8-1-disaster.html&quot;&gt;Juniper Remote Desktop Client&lt;/a&gt;. Without this, I was unable to complete my latest contract.&lt;/p&gt;
@@ -248,8 +279,8 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
 &lt;li&gt;Rollback (noooo! not my new shiny toy!)&lt;/li&gt;
 &lt;li&gt;VM&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Of course, #2 won. But I couldn&amp;#39;t locate my Windows 8 installation disks, and was not about to fork over more cash just to run one program. The solution? &lt;a href=&quot;http://modern.ie/&quot;&gt;modern.IE&lt;/a&gt;! I grabbed a copy of XP with IE8, threw it into Hyper-V, and I&amp;#39;m back in business. &lt;/p&gt;
-&lt;p&gt;While it‘s intended to ease the pain of backwards-compatible web development, modern.IE is also a great resource for emergency backwards-compatible Windows development. Somebody reports a Vista bug? Grab a Vista image and test. Need to check something on Windows Server 2012? That’s there as well. The images have a 30 day grace period after which you need to purchase a license, so you cannot use the same OS indefinitely. But still, it&amp;#39;s a very useful addition to my toolkit.&lt;/p&gt;
+&lt;p&gt;Of course, #2 won. But I couldn’t locate my Windows 8 installation disks, and was not about to fork over more cash just to run one program. The solution? &lt;a href=&quot;http://modern.ie&quot;&gt;modern.IE&lt;/a&gt;! I grabbed a copy of XP with IE8, threw it into Hyper-V, and I’m back in business. &lt;/p&gt;
+&lt;p&gt;While it’s intended to ease the pain of backwards-compatible web development, modern.IE is also a great resource for emergency backwards-compatible Windows development. Somebody reports a Vista bug? Grab a Vista image and test. Need to check something on Windows Server 2012? That’s there as well. The images have a 30 day grace period after which you need to purchase a license, so you cannot use the same OS indefinitely. But still, it’s a very useful addition to my toolkit.&lt;/p&gt;
 </description>
     </item>
     <item>
@@ -258,9 +289,9 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
       <pubDate>Mon, 21 Oct 2013 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://www.roufa.com/articles/quick-bootcamp-tip/</guid>
       <author></author>
-      <description>&lt;p&gt;Thought I‘d leave this nugget in case it helps somebody. Yesterday my 6-month-old Lenovo ThinkPad W530 died, and my wife needed a new computer anyway, so I picked up a Mac Mini. It’s her computer, but will act as my emergency machine in case something like this happens again. Since I&amp;#39;m primarily a Windows developer, I set up a small partition with Boot Camp.&lt;/p&gt;
-&lt;p&gt;Here‘s what I’ve learned: If you&amp;#39;re attempting to install Windows 8.1 on a Mac Mini using Boot Camp, and you choose to download the drivers to a USB flash drive and then install from an external DVD drive, &lt;a href=&quot;http://support.apple.com/kb/TS4536&quot;&gt;you must remove the flash drive before rebooting into the Windows installer&lt;/a&gt;. Otherwise you‘ll just see a blank screen and nothing will happen and you’ll be scared and afraid for your brand new purchase.&lt;/p&gt;
-&lt;p&gt;Also, the “alt” key is your friend if you don&amp;#39;t have an Apple keyboard — hold it down on boot to see the boot options.&lt;/p&gt;
+      <description>&lt;p&gt;Thought I’d leave this nugget in case it helps somebody. Yesterday my 6-month-old Lenovo ThinkPad W530 died, and my wife needed a new computer anyway, so I picked up a Mac Mini. It’s her computer, but will act as my emergency machine in case something like this happens again. Since I’m primarily a Windows developer, I set up a small partition with Boot Camp.&lt;/p&gt;
+&lt;p&gt;Here’s what I’ve learned: If you’re attempting to install Windows 8.1 on a Mac Mini using Boot Camp, and you choose to download the drivers to a USB flash drive and then install from an external DVD drive, &lt;a href=&quot;http://support.apple.com/kb/TS4536&quot;&gt;you must remove the flash drive before rebooting into the Windows installer&lt;/a&gt;. Otherwise you’ll just see a blank screen and nothing will happen and you’ll be scared and afraid for your brand new purchase.&lt;/p&gt;
+&lt;p&gt;Also, the “alt” key is your friend if you don’t have an Apple keyboard — hold it down on boot to see the boot options.&lt;/p&gt;
 </description>
     </item>
     <item>
@@ -275,11 +306,11 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
 &lt;/div&gt;
 
 &lt;p&gt;During the presentation I tried to demonstrate TDD by building &lt;a href=&quot;http://www.codinghorror.com/blog/2007/02/why-cant-programmers-program.html&quot;&gt;FizzBuzz&lt;/a&gt; in a test-driven manner, then showed off Dependency Injection and Mocking by adding text from my twitter feed. &lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.roufa.com/articles/bootstrapping-quality/FizzBuzzInc.zip&quot;&gt;Download the source here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/articles/bootstrapping-quality/FizzBuzzInc.zip&quot;&gt;Download the source here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Notes: &lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;I removed my twitter app authentication keys, so if you execute the program it won&amp;#39;t work. See the file Twit.cs and &lt;a href=&quot;https://dev.twitter.com/docs&quot;&gt;Twitter Development&lt;/a&gt; if you feel the need to resuscitate this.&lt;/li&gt;
-&lt;li&gt;I turned off the Azure VM that hosted the Jenkins instance referenced in the slides. It was costing me two cents an hour! That&amp;#39;s like a latte every week.&lt;/li&gt;
+&lt;li&gt;I removed my twitter app authentication keys, so if you execute the program it won’t work. See the file Twit.cs and &lt;a href=&quot;https://dev.twitter.com/docs&quot;&gt;Twitter Development&lt;/a&gt; if you feel the need to resuscitate this.&lt;/li&gt;
+&lt;li&gt;I turned off the Azure VM that hosted the Jenkins instance referenced in the slides. It was costing me two cents an hour! That’s like a latte every week.&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -290,17 +321,18 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
       <guid isPermaLink="true">http://www.roufa.com/articles/lovely-usage-wrapper-for-jasmine/</guid>
       <author></author>
       <description>&lt;p&gt;I was looking for a way to do a bit of data-driven testing with &lt;a href=&quot;http://pivotal.github.io/jasmine/&quot;&gt;jasmine&lt;/a&gt;, and &lt;a href=&quot;http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests&quot;&gt;JP nailed it&lt;/a&gt;.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;describe(&lt;span class=&quot;string&quot;&gt;&quot;username validation&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;() {
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;describe(&lt;span class=&quot;string&quot;&gt;&quot;username validation&quot;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; {&lt;/span&gt;
   using(&lt;span class=&quot;string&quot;&gt;&quot;valid values&quot;&lt;/span&gt;, 
     [&lt;span class=&quot;string&quot;&gt;&quot;abc&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;longusername&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;john_doe&quot;&lt;/span&gt;], 
-    &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(value){
-      it(&lt;span class=&quot;string&quot;&gt;&quot;should return true for valid usernames&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;() {
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(value)&lt;/span&gt;{&lt;/span&gt;
+      it(&lt;span class=&quot;string&quot;&gt;&quot;should return true for valid usernames&quot;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; {&lt;/span&gt;
         expect(validateUserName(value)).toBeTruthy();
       });
     });
-});&lt;/code&gt;&lt;/pre&gt;
+});
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The gist is that you can simply wrap your &lt;code&gt;it()&lt;/code&gt; calls in a function that iterates over an array and pass the data in with each loop. It works great with synchronous and asynchronous tests. The function integrates cleanly with the test runner so each spec gets its own descriptive row. Best of all, it has a very pleasing syntax that makes it clear what is going to happen when you use it.&lt;/p&gt;
-&lt;p&gt;Check out &lt;a href=&quot;http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests&quot;&gt;JP&amp;#39;s blog&lt;/a&gt; for the source.&lt;/p&gt;
+&lt;p&gt;Check out &lt;a href=&quot;http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests&quot;&gt;JP’s blog&lt;/a&gt; for the source.&lt;/p&gt;
 </description>
     </item>
     <item>
@@ -309,7 +341,7 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
       <pubDate>Wed, 09 Oct 2013 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://www.roufa.com/articles/the-worst-api-ever/</guid>
       <author></author>
-      <description>&lt;p&gt;I&amp;#39;m integrating with what may be the worst API ever. Check this out!&lt;/p&gt;
+      <description>&lt;p&gt;I’m integrating with what may be the worst API ever. Check this out!&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-xml&quot;&gt;&lt;span class=&quot;pi&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;soap:Envelope&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;xmlns:soap&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&lt;/span&gt; 
                &lt;span class=&quot;attribute&quot;&gt;xmlns:xsi&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt; 
@@ -321,7 +353,8 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;data&lt;/span&gt;&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;Create&lt;/span&gt;&amp;gt;&lt;/span&gt;
  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;soap:Body&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;soap:Envelope&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;soap:Envelope&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;So much wrong in so little space. Here we have:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;a SOAP message…&lt;/li&gt;
@@ -333,7 +366,7 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
 &lt;li&gt;… which is again a string….&lt;/li&gt;
 &lt;li&gt;… of improperly formatted JSON!&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;I suspect the last improper formatting is to reduce the amount of quote-escaping needed given that you are now in double-escape territory. Oh, and lest you think it&amp;#39;s just being permissive — if you attempt to properly JSON-encode the inner data parameter, the call fails with &amp;quot;unable to parse JSON!&amp;quot; &lt;/p&gt;
+&lt;p&gt;I suspect the last improper formatting is to reduce the amount of quote-escaping needed given that you are now in double-escape territory. Oh, and lest you think it’s just being permissive — if you attempt to properly JSON-encode the inner data parameter, the call fails with “unable to parse JSON!” &lt;/p&gt;
 &lt;p&gt;This. Is. A. Maz. Ing.&lt;/p&gt;
 </description>
     </item>
@@ -343,10 +376,10 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
       <pubDate>Tue, 08 Oct 2013 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://www.roufa.com/articles/wintersmith-so-far-so-good/</guid>
       <author></author>
-      <description>&lt;p&gt;After a very short period running &lt;a href=&quot;http://www.orchardproject.net/&quot;&gt;Orchard&lt;/a&gt; for my blog, I decided to reverse course and try out &lt;a href=&quot;http://wintersmith.io/&quot;&gt;wintersmith&lt;/a&gt; instead. &lt;/p&gt;
-&lt;p&gt;Orchard seemed like a natural fit for me when I started out. Open source, free, .NET-based, and installed with one click from Azure‘s dashboard. I figured I’d spend some time with it, tweak it a bit, make it my own… But then, I didn&amp;#39;t. I had zero desire to play with it. For my needs, it was far too heavyweight, like peeling a potato with a sword.&lt;/p&gt;
+      <description>&lt;p&gt;After a very short period running &lt;a href=&quot;http://www.orchardproject.net/&quot;&gt;Orchard&lt;/a&gt; for my blog, I decided to reverse course and try out &lt;a href=&quot;http://wintersmith.io&quot;&gt;wintersmith&lt;/a&gt; instead. &lt;/p&gt;
+&lt;p&gt;Orchard seemed like a natural fit for me when I started out. Open source, free, .NET-based, and installed with one click from Azure’s dashboard. I figured I’d spend some time with it, tweak it a bit, make it my own… But then, I didn’t. I had zero desire to play with it. For my needs, it was far too heavyweight, like peeling a potato with a sword.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Enter wintersmith. It&amp;#39;s a node.js variant of Jekyll. Posts are composed as markdown files in a folder structure, with Jade templates to determine the layout. And right out of the box, it looks nice. Editing .md files with the &lt;a href=&quot;http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f&quot;&gt;Web Essentials extension&lt;/a&gt; to Visual Studio is a joy as you can see what the changes will look like every time you press save.&lt;/p&gt;
+&lt;p&gt;Enter wintersmith. It’s a node.js variant of Jekyll. Posts are composed as markdown files in a folder structure, with Jade templates to determine the layout. And right out of the box, it looks nice. Editing .md files with the &lt;a href=&quot;http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f&quot;&gt;Web Essentials extension&lt;/a&gt; to Visual Studio is a joy as you can see what the changes will look like every time you press save.&lt;/p&gt;
 &lt;p&gt;The blog is hosted on Azure following &lt;a href=&quot;http://www.collectivematters.com/2012/12/getting-your-blog-onto-azure/&quot;&gt;these steps&lt;/a&gt;. My blog is now code on github. I like it.&lt;/p&gt;
 </description>
     </item>
@@ -356,15 +389,15 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
       <pubDate>Mon, 07 Oct 2013 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://www.roufa.com/articles/a-few-thoughts-on-firebase/</guid>
       <author></author>
-      <description>&lt;p&gt;&lt;a href=&quot;http://www.firebase.com/&quot;&gt;Firebase&lt;/a&gt; is a beautiful thing. Real-time updates? AngularJS bindings? No need for a database of your own? It‘s a compelling offering. When it comes to actually using it, though… it’s complicated.&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&quot;http://www.firebase.com&quot;&gt;Firebase&lt;/a&gt; is a beautiful thing. Real-time updates? AngularJS bindings? No need for a database of your own? It’s a compelling offering. When it comes to actually using it, though… it’s complicated.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;I&amp;#39;m building a JavaScript version of the old “dots and lines” game, just for fun. Players take turns choosing line segments on a grid of dots, and when one completes a box (four line segments) he/she gets a point and another turn. &lt;/p&gt;
-&lt;p&gt;My original plan was to try to build this with Firebase. Right off the bat, FireBase packages up much of what I want from my game&amp;#39;s backend: a place to store moves, real-time updates when moves happen, and the ability to distinguish between users via authorization.&lt;/p&gt;
+&lt;p&gt;I’m building a JavaScript version of the old “dots and lines” game, just for fun. Players take turns choosing line segments on a grid of dots, and when one completes a box (four line segments) he/she gets a point and another turn. &lt;/p&gt;
+&lt;p&gt;My original plan was to try to build this with Firebase. Right off the bat, FireBase packages up much of what I want from my game’s backend: a place to store moves, real-time updates when moves happen, and the ability to distinguish between users via authorization.&lt;/p&gt;
 &lt;p&gt;I hit my first snag when I started to think about security. In a traditional client/server game model, the server maintains a representation of the entire game and acts as the authority on whether any given move is legal. If somebody attempts to cheat by playing a move out of turn, the server can easily detect and prevent it.&lt;/p&gt;
 &lt;p&gt;Firebase, on the other hand, was designed as a promiscuous database in the cloud. Secrecy in Firebase is managed by writing “security rules” in the “Forge” (their dashboard). In their security model, you must pre-define what areas of your data tree are available to each user. Considering that its main selling point is persisting arbitrary JSON objects, having to spend time on their server defining security rules has a definite “bolted-on” feel.&lt;/p&gt;
 &lt;p&gt;Validation on their platform requires a lot of planning ahead. In my case, I first tried to tackle the idea of each player having to take turns. There are a few ways to do this in Firebase, but the easiest is to disallow a write to a particular node if the last write was by the same user. Simple enough.&lt;/p&gt;
-&lt;p&gt;Then came the case where completing a box would give the current user another turn. At this point, Firebase lost its appeal. The solution is to give Firebase a representation of the entire game, just as I&amp;#39;d want in a server-side solution. But… how? How complicated would the validation logic be? &lt;/p&gt;
-&lt;p&gt;I&amp;#39;m not saying there is no solution to the problem that would use Firebase exclusively. There may well be. What I am saying is that, within a few hours, I realized that any solution would be an order of magnitude more difficult than having my own server perform the same task. And at that point… why not host my own database?&lt;/p&gt;
+&lt;p&gt;Then came the case where completing a box would give the current user another turn. At this point, Firebase lost its appeal. The solution is to give Firebase a representation of the entire game, just as I’d want in a server-side solution. But… how? How complicated would the validation logic be? &lt;/p&gt;
+&lt;p&gt;I’m not saying there is no solution to the problem that would use Firebase exclusively. There may well be. What I am saying is that, within a few hours, I realized that any solution would be an order of magnitude more difficult than having my own server perform the same task. And at that point… why not host my own database?&lt;/p&gt;
 </description>
     </item>
     <item>
@@ -375,22 +408,22 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)&lt;/code&gt;&lt;/pre
       <author></author>
       <description>&lt;p&gt;For a recent green-field Java project, I chose &lt;a href=&quot;http://flywaydb.org/&quot;&gt;Flyway&lt;/a&gt; to manage all our database scripts. This library is a gem&lt;a name=&quot;1up&quot;&gt;&lt;/a&gt;&lt;sup&gt;&lt;a href=&quot;http://www.roufa.com/articles/flywaydb-super-simple-migrations/#1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, and I highly recommend it for anybody building or maintaining relational databases in Java.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;It‘s not for every project, of course. Before you commit to using it, you’ll need to be sure yours can adhere to the following guidelines:&lt;/p&gt;
+&lt;p&gt;It’s not for every project, of course. Before you commit to using it, you’ll need to be sure yours can adhere to the following guidelines:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;You are only planning to support a single database engine (e.g. MySQL, Postgresql, SQL Server).&lt;/li&gt;
 &lt;li&gt;You are comfortable writing and maintaining raw SQL files for said engine.&lt;/li&gt;
 &lt;li&gt;You are comfortable with a forward-only migration plan and do not need rollback capabilities.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Point #3 is one that FlywayDB enforces simply by exclusion — there is no “down” pattern to follow a la Rails Migrations. I‘ve spent many hours maintaining “down” scripts, and in the few instances where I’ve attempted to use them, they&amp;#39;ve invariably run into problems in the field. For example:&lt;/p&gt;
+&lt;p&gt;Point #3 is one that FlywayDB enforces simply by exclusion — there is no “down” pattern to follow a la Rails Migrations. I’ve spent many hours maintaining “down” scripts, and in the few instances where I’ve attempted to use them, they’ve invariably run into problems in the field. For example:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Newly inserted data cannot be removed due to a forgotten foreign key constraint (my fault, but an easy mistake to make)&lt;/li&gt;
 &lt;li&gt;Reverted data structures require more thought than automation can accomplish (e.g. you went from a 1:1 relationship to 1:M, and reverting means having to choose to delete user data that could now be important)&lt;/li&gt;
-&lt;li&gt;Sometimes when you go forward you drop tables or columns. There&amp;#39;s no good way to reconstruct them!&lt;/li&gt;
+&lt;li&gt;Sometimes when you go forward you drop tables or columns. There’s no good way to reconstruct them!&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Furthermore, old “down” migration code rapidly becomes cruft as newer migrations are added. When your project is a year old, do you really plan to revert back to a database schema from 6 months ago? I&amp;#39;m fine knowing that if I need to revert something, I do so by going forward.&lt;/p&gt;
+&lt;p&gt;Furthermore, old “down” migration code rapidly becomes cruft as newer migrations are added. When your project is a year old, do you really plan to revert back to a database schema from 6 months ago? I’m fine knowing that if I need to revert something, I do so by going forward.&lt;/p&gt;
 &lt;p&gt;Like much modern software, Flyway is very opinionated and prefers convention over configuration. You name your files like &lt;code&gt;VX_Y__DescriptiveName.sql&lt;/code&gt; (where X &amp;amp; Y are major and minor version numbers) and place them in &lt;code&gt;/src/main/resources/db/migration&lt;/code&gt;. Make sure each new file is in ascending order and Flyway takes care of the rest.  When you need to customize the configuration, Flyway is there for you as well. In our case we had some servers running postgresql 8, while our production platform was postgresql 9. That led to some script incompatibilities. We resolved that by adding a separate folder for pg9-specific migrations, then configuring each server to run migrations from their own set of folders.&lt;/p&gt;
 &lt;p&gt;Finally, for actually executing the migrations themselves you have several choices. You can run them via a command-line tool, Gradle or Maven plugin, Ant Task, or take the easy road (as we did) and embed it into your application itself via Spring. The scripts are run within a single transaction, so even if you have a pool of servers attempting to execute the code only one machine will actually succeed at committing. A table called &lt;code&gt;SCHEMA_MIGRATION&lt;/code&gt; will be added to your database, which FlywayDB will use to ensure only needed migrations are run.&lt;/p&gt;
-&lt;p&gt;It&amp;#39;s rare to find a component that does its job so well you rarely even think about it. Flyway fits that description. Give it a try!&lt;/p&gt;
+&lt;p&gt;It’s rare to find a component that does its job so well you rarely even think about it. Flyway fits that description. Give it a try!&lt;/p&gt;
 &lt;p&gt;&lt;small&gt;&lt;a name=&quot;1&quot; href=&quot;#1up&quot;&gt;1.&lt;/a&gt; Not a ruby gem, just a real world gem. Like a ruby. No wait.&lt;/small&gt;&lt;/p&gt;
 </description>
     </item>

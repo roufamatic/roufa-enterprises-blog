@@ -3,6 +3,8 @@ title: Morse Code Decoder Bookmarklet
 author: Michael Roufa
 date: 2013-07-30
 template: article.jade
+disqusId: morse-code-decryptor-bookmarklet
+disqusUrl: http://www.roufa.com/articles/morse-code-decryptor-bookmarklet
 ---
 
 Ever been to a web page where a clever person has left you some morse code? And you have to go to some other website to decrypt it for you? How pass&eacute;! 

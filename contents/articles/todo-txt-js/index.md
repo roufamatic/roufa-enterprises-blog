@@ -3,6 +3,8 @@ title: Todo.txt JavaScript parser
 author: Michael Roufa
 date: 2014-08-21
 template: article.jade
+disqusId: todo-txt-js
+disqusUrl: http://www.roufa.com/articles/todo-txt-js
 ---
 
 <div class="github-widget" data-repo="roufamatic/todo-txt-js" style="padding-bottom:20px"></div>

@@ -3,6 +3,9 @@ title: Async/Await -- Through the Looking Glass
 author: Michael Roufa
 date: 2013-12-17
 template: article.jade
+disqusId: async-await-through-the-looking-glass
+disqusUrl: http://www.roufa.com/articles/async-await-through-the-looking-glass
+
 ---
 <p class="callout">**Update 2014-04-10**: [I wouldn't read too much into my conclusion below.](/articles/async-await-apologia/)</p>
 

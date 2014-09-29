@@ -3,6 +3,8 @@ title: The 2013 Holiday Card
 author: Michael Roufa
 date: 2013-12-26
 template: article.jade
+disqusId: happy-holidays-2013
+disqusUrl: http://www.roufa.com/articles/happy-holidays-2013
 ---
 [![My 2013 holiday card](card-1024.jpg)](card.jpg)
 

@@ -41,7 +41,7 @@
           
         </script>
         <h1>Lovely &quot;usage&quot; wrapper for jasmine data-driven tests</h1>
-        <p class="author"><span class="author">Michael Roufa - 14 October 2013</span> 
+        <p class="author"><span class="author">Michael Roufa - 14 October 2013</span>
         </p>
       </div>
     </header>
@@ -49,27 +49,43 @@
       <div class="content-wrap">
         <article class="article">
           <section class="content"><p>I was looking for a way to do a bit of data-driven testing with <a href="http://pivotal.github.io/jasmine/">jasmine</a>, and <a href="http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests"><span class="caps">JP</span> nailed it</a>.</p>
-<pre><code class="lang-javascript">describe(<span class="string">"username validation"</span>, <span class="keyword">function</span>() {
+<pre><code class="lang-javascript">describe(<span class="string">"username validation"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
   using(<span class="string">"valid values"</span>, 
     [<span class="string">"abc"</span>, <span class="string">"longusername"</span>, <span class="string">"john_doe"</span>], 
-    <span class="keyword">function</span>(value){
-      it(<span class="string">"should return true for valid usernames"</span>, <span class="keyword">function</span>() {
+    <span class="function"><span class="keyword">function</span><span class="params">(value)</span>{</span>
+      it(<span class="string">"should return true for valid usernames"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
         expect(validateUserName(value)).toBeTruthy();
       });
     });
-});</code></pre>
+});
+</code></pre>
 <p>The gist is that you can simply wrap your <code>it()</code> calls in a function that iterates over an array and pass the data in with each loop. It works great with synchronous and asynchronous tests. The function integrates cleanly with the test runner so each spec gets its own descriptive row. Best of all, it has a very pleasing syntax that makes it clear what is going to happen when you use&nbsp;it.</p>
-<p>Check out <a href="http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests"><span class="caps">JP</span>&#39;s blog</a> for the&nbsp;source.</p>
+<p>Check out <a href="http://blog.jphpsf.com/2012/08/30/drying-up-your-javascript-jasmine-tests"><span class="caps">JP</span>’s blog</a> for the&nbsp;source.</p>
 </section>
         </article>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+          var disqus_shortname = 'roufa'; // required: replace example with your forum shortname
+          var disqus_id = 'lovely-usage-wrapper-for-jasmine';
+          var disqus_url = 'http://www.roufa.com/articles/lovely-usage-wrapper-for-jasmine';
+          
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+          
+        </script>
       </div>
     </div>
     <footer>
       <div class="content-wrap">
         <div class="nav"><a href="/">« Full blog</a></div>
         <section class="about"><p><img src="/i/moi.jpeg" alt="My handsome mug">
-Hi, I&#39;m Michael Roufa.</p>
-<p>For the last 15 years, I‘ve been working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I specialize in backend development and build/deploy automation, but I’m no JavaScript slouch either. I hold a Masters in Software Engineering from Seattle University.</p>
+Hi, I’m Michael Roufa.</p>
+<p>For the last 15 years, I’ve been working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I specialize in backend development and build/deploy automation, but I’m no JavaScript slouch either. I hold a Masters in Software Engineering from Seattle University.</p>
 <p><a href="mailto:mike@roufa.com">Email</a> | <a href="https://twitter.com/roufamatic">Twitter</a> | <a href="http://www.linkedin.com/in/michaelroufa">LinkedIn</a> | <a href="http://stackoverflow.com/users/197860/roufamatic">StackOverflow</a> | <a href="https://github.com/roufamatic">GitHub</a></p>
 
         </section>

@@ -41,7 +41,7 @@
           
         </script>
         <h1>FlywayDB -- super-simple forward-only raw SQL database migrations for Java</h1>
-        <p class="author"><span class="author">Michael Roufa - 12 August 2013</span> 
+        <p class="author"><span class="author">Michael Roufa - 12 August 2013</span>
         </p>
       </div>
     </header>
@@ -50,33 +50,48 @@
         <article class="article">
           <section class="content"><p>For a recent green-field Java project, I chose <a href="http://flywaydb.org/">Flyway</a> to manage all our database scripts. This library is a gem<a name="1up"></a><sup><a href="/articles/flywaydb-super-simple-migrations/#1">1</a></sup>, and I highly recommend it for anybody building or maintaining relational databases in&nbsp;Java.</p>
 <hr>
-<p>It‘s not for every project, of course. Before you commit to using it, you’ll need to be sure yours can adhere to the following&nbsp;guidelines:</p>
+<p>It’s not for every project, of course. Before you commit to using it, you’ll need to be sure yours can adhere to the following&nbsp;guidelines:</p>
 <ol>
 <li>You are only planning to support a single database engine (e.g. MySQL, Postgresql, <span class="caps">SQL</span>&nbsp;Server).</li>
 <li>You are comfortable writing and maintaining raw <span class="caps">SQL</span> files for said&nbsp;engine.</li>
 <li>You are comfortable with a forward-only migration plan and do not need rollback&nbsp;capabilities.</li>
 </ol>
-<p>Point #3 is one that FlywayDB enforces simply by exclusion — there is no “down” pattern to follow a la Rails Migrations. I‘ve spent many hours maintaining “down” scripts, and in the few instances where I’ve attempted to use them, they&#39;ve invariably run into problems in the field. For&nbsp;example:</p>
+<p>Point #3 is one that FlywayDB enforces simply by exclusion — there is no “down” pattern to follow a la Rails Migrations. I’ve spent many hours maintaining “down” scripts, and in the few instances where I’ve attempted to use them, they’ve invariably run into problems in the field. For&nbsp;example:</p>
 <ul>
 <li>Newly inserted data cannot be removed due to a forgotten foreign key constraint (my fault, but an easy mistake to&nbsp;make)</li>
 <li>Reverted data structures require more thought than automation can accomplish (e.g. you went from a 1:1 relationship to 1:M, and reverting means having to choose to delete user data that could now be&nbsp;important)</li>
-<li>Sometimes when you go forward you drop tables or columns. There&#39;s no good way to reconstruct&nbsp;them!</li>
+<li>Sometimes when you go forward you drop tables or columns. There’s no good way to reconstruct&nbsp;them!</li>
 </ul>
-<p>Furthermore, old “down” migration code rapidly becomes cruft as newer migrations are added. When your project is a year old, do you really plan to revert back to a database schema from 6 months ago? I&#39;m fine knowing that if I need to revert something, I do so by going&nbsp;forward.</p>
+<p>Furthermore, old “down” migration code rapidly becomes cruft as newer migrations are added. When your project is a year old, do you really plan to revert back to a database schema from 6 months ago? I’m fine knowing that if I need to revert something, I do so by going&nbsp;forward.</p>
 <p>Like much modern software, Flyway is very opinionated and prefers convention over configuration. You name your files like <code>VX_Y__DescriptiveName.sql</code> (where X <span class="amp">&amp;</span> Y are major and minor version numbers) and place them in <code>/src/main/resources/db/migration</code>. Make sure each new file is in ascending order and Flyway takes care of the rest.  When you need to customize the configuration, Flyway is there for you as well. In our case we had some servers running postgresql 8, while our production platform was postgresql 9. That led to some script incompatibilities. We resolved that by adding a separate folder for pg9-specific migrations, then configuring each server to run migrations from their own set of&nbsp;folders.</p>
 <p>Finally, for actually executing the migrations themselves you have several choices. You can run them via a command-line tool, Gradle or Maven plugin, Ant Task, or take the easy road (as we did) and embed it into your application itself via Spring. The scripts are run within a single transaction, so even if you have a pool of servers attempting to execute the code only one machine will actually succeed at committing. A table called <code>SCHEMA_MIGRATION</code> will be added to your database, which FlywayDB will use to ensure only needed migrations are&nbsp;run.</p>
-<p>It&#39;s rare to find a component that does its job so well you rarely even think about it. Flyway fits that description. Give it a&nbsp;try!</p>
+<p>It’s rare to find a component that does its job so well you rarely even think about it. Flyway fits that description. Give it a&nbsp;try!</p>
 <p><small><a name="1" href="#1up">1.</a> Not a ruby gem, just a real world gem. Like a ruby. No wait.</small></p>
 </section>
         </article>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+          var disqus_shortname = 'roufa'; // required: replace example with your forum shortname
+          var disqus_id = 'flywaydb-super-simple-migrations';
+          var disqus_url = 'http://www.roufa.com/articles/flywaydb-super-simple-migrations';
+          
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+          
+        </script>
       </div>
     </div>
     <footer>
       <div class="content-wrap">
         <div class="nav"><a href="/">« Full blog</a></div>
         <section class="about"><p><img src="/i/moi.jpeg" alt="My handsome mug">
-Hi, I&#39;m Michael Roufa.</p>
-<p>For the last 15 years, I‘ve been working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I specialize in backend development and build/deploy automation, but I’m no JavaScript slouch either. I hold a Masters in Software Engineering from Seattle University.</p>
+Hi, I’m Michael Roufa.</p>
+<p>For the last 15 years, I’ve been working with talented designers and UX experts to bring their ideas to life using whatever technologies are at hand. I specialize in backend development and build/deploy automation, but I’m no JavaScript slouch either. I hold a Masters in Software Engineering from Seattle University.</p>
 <p><a href="mailto:mike@roufa.com">Email</a> | <a href="https://twitter.com/roufamatic">Twitter</a> | <a href="http://www.linkedin.com/in/michaelroufa">LinkedIn</a> | <a href="http://stackoverflow.com/users/197860/roufamatic">StackOverflow</a> | <a href="https://github.com/roufamatic">GitHub</a></p>
 
         </section>

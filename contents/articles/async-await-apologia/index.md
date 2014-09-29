@@ -3,6 +3,8 @@ title: Async-Await Apologia
 author: Michael Roufa
 date: 2014-04-10
 template: article.jade
+disqusId: async-await-apologia
+disqusUrl: http://www.roufa.com/articles/async-await-apologia
 ---
 
 ![Work in progress -- by Alexander Baxevanis: https://www.flickr.com/photos/futureshape/4000128011/ (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)](apologies.jpg)

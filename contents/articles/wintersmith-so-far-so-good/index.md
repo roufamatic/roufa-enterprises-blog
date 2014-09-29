@@ -3,6 +3,8 @@ title: wintersmith -- So far, so good
 author: Michael Roufa
 date: 2013-10-09
 template: article.jade
+disqusId: wintersmith-so-far-so-good
+disqusUrl: http://www.roufa.com/articles/wintersmith-so-far-so-good
 ---
 
 After a very short period running [Orchard](http://www.orchardproject.net/) for my blog, I decided to reverse course and try out [wintersmith](http://wintersmith.io) instead. 

@@ -3,6 +3,8 @@ title: A few thoughts on Firebase
 author: Michael Roufa
 date: 2013-10-08
 template: article.jade
+disqusId: a-few-thoughts-on-firebase
+disqusUrl: http://www.roufa.com/articles/a-few-thoughts-on-firebase
 ---
 
 [Firebase](http://www.firebase.com) is a beautiful thing. Real-time updates? AngularJS bindings? No need for a database of your own? It's a compelling offering. When it comes to actually using it, though... it's complicated.

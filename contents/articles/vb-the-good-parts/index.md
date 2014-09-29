@@ -3,6 +3,8 @@ title: VB - The Good Parts (for C# peeps)
 author: Michael Roufa
 date: 2014-05-29
 template: article.jade
+disqusId: vb-the-good-parts
+disqusUrl: http://www.roufa.com/articles/vb-the-good-parts
 ---
 ![GW Basic. Remember it? -- from WikiPedia: (http://en.wikipedia.org/wiki/File:GW-BASIC_3.23.png)](gwbasic.png)
 
