@@ -50,7 +50,7 @@
 <p>Well, it turns out my analysis was completely wrong. Actually, my application was modifying files in a folder that belonged to an <span class="caps">ASP</span>.NET website. Modifying folders inside of ASP.NET can <a href="http://stackoverflow.com/questions/2248825/asp-net-restarts-when-a-folder-is-created-renamed-or-deleted">cause application restarts</a>. Though I’ve moved on from this project, I now believe that the behavior I was seeing had to do with the timing of the <span class="caps">ASP</span>.NET restart, and had nothing whatsoever to do with crossing thread boundaries. Since async/await uses continuations, any differences I was seeing between where I came from and where I got to had to occur outside of the bounds of my&nbsp;program.</p>
 <p>We live, we&nbsp;learn.</p>
 
-            <p style="text-align:center;font-size:smaller"><a href="/articles/async-await-apologia/#disqus_thread" data-disqus-identifier="async-await-apologia" class="articleLink">Comments</a></p>
+            <p style="font-size:smaller"><a href="/articles/async-await-apologia/#disqus_thread" data-disqus-identifier="async-await-apologia" class="articleLink">Comments</a></p>
           </section>
         </article>
         <article class="article intro">
@@ -64,7 +64,7 @@ the photography and&nbsp;photoshopping!</p>
 <p>Russell also put together this big-headed version of the same. It was a tough call but I decided to play it straight for the physical cards.&nbsp;Enjoy!</p>
 <p><a href="/articles/happy-holidays-2013/bigheads.jpg"><img src="/articles/happy-holidays-2013/bigheads.jpg" alt="Look at the big heads!"></a></p>
 
-            <p style="text-align:center;font-size:smaller"><a href="/articles/happy-holidays-2013/#disqus_thread" data-disqus-identifier="happy-holidays-2013" class="articleLink">Comments</a></p>
+            <p style="font-size:smaller"><a href="/articles/happy-holidays-2013/#disqus_thread" data-disqus-identifier="happy-holidays-2013" class="articleLink">Comments</a></p>
           </section>
         </article>
         <article class="article intro">
@@ -115,7 +115,7 @@ public async Task VerifyFileExists(string path) {
 </code></pre><p>This throws a <code>NullReferenceException</code> the <strong>second</strong> time that you try to access <code>HttpContext.Current</code>. Why? The <code>fsw.Created</code> handler is called on a different thread than the one you just came from. That’s a pretty well-known fact and is why the <code>FileSystemWatcher</code> has a <code>SynchronizingObject</code> property to help WinForms programmers navigate their way back to the <span class="caps">UI</span>&nbsp;thread. </p>
 <p>But it also exposes the “through the looking glass” nature of <em>async/await</em>. The simplified syntax obscures the true nature of the code — in one method, the same object goes from having a value to having no value. Watch&nbsp;out!</p>
 
-            <p style="text-align:center;font-size:smaller"><a href="/articles/async-await-through-the-looking-glass/#disqus_thread" data-disqus-identifier="async-await-through-the-looking-glass" class="articleLink">Comments</a></p>
+            <p style="font-size:smaller"><a href="/articles/async-await-through-the-looking-glass/#disqus_thread" data-disqus-identifier="async-await-through-the-looking-glass" class="articleLink">Comments</a></p>
           </section>
         </article>
       </div>

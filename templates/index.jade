@@ -25,7 +25,7 @@ block content
         if article.hasMore
           p.more
             a.articleLink(href=article.url) more
-        p(style="text-align:center;font-size:smaller")
+        p(style="font-size:smaller")
           a.articleLink(href=article.url + "#disqus_thread",data-disqus-identifier=article.metadata.disqusId) Comments
 
 block prepend footer
