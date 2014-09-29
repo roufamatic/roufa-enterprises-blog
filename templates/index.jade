@@ -20,7 +20,7 @@ block content
           span= moment.utc(article.date).format('DD. MMMM YYYY')
         h2
           a.articleLink(href=article.url)= article.title
-        p(style="text-align:center;font-size:smaller")
+        p(style="text-align:center;font-size:xx-small")
           a.articleLink(href=article.url + "#disqus_thread",data-disqus-identifier=article.metadata.disqusId) Comments
       section.content
         !{ typogr(article.intro).typogrify() }
