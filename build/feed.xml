@@ -15,7 +15,7 @@
       <guid isPermaLink="true">http://www.roufa.com/articles/heap-in-csharp/</guid>
       <author></author>
       <description>&lt;p&gt;&lt;img src=&quot;/articles/heap-in-csharp/dung-406217_960_720.jpg&quot; alt=&quot;What a heap.&quot;&gt;&lt;/p&gt;
-&lt;p&gt;I found myself wanting to learn a bit more about Heaps so I built one in C#. 
+&lt;p&gt;I found myself wanting to learn a bit more about &lt;a href=&quot;https://en.wikipedia.org/wiki/Heap_%28data_structure%29&quot;&gt;Heaps&lt;/a&gt; so I built one in C#. 
 Array backed storage, &lt;em&gt;O(log(n))&lt;/em&gt; inserts and removals, &lt;em&gt;(O(1))&lt;/em&gt; to get the min/max value. 
 It can be a Min- or a Max-Heap, and it accepts any type as long as that type is &lt;em&gt;IComparable&lt;/em&gt;.
 &amp;nbsp;&lt;br&gt;&lt;/p&gt;
