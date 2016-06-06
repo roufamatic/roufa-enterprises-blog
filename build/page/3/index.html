@@ -37,6 +37,57 @@
         </script>
         <article class="article intro">
           <header>
+            <p class="date"><span>17. December 2013</span></p>
+            <h2><a href="/articles/async-await-through-the-looking-glass/" class="articleLink">Async/Await -- Through the Looking Glass</a></h2>
+          </header>
+          <section class="content"><p class="callout"><strong>Update 2014-04-10</strong>: <a href="/articles/async-await-apologia/">I wouldn’t read too much into my conclusion&nbsp;below.</a></p>
+
+<p><img src="/articles/async-await-through-the-looking-glass/ttlg.jpg" alt="Alice entering the Looking-glass World (http://www.victorianweb.org/art/illustration/tenniel/lookingglass/1.4.html)"></p>
+<p>I finally had a chance to try out the no longer very new <em>async/await</em> paradigm for asynchronous programming in .<span class="caps">NET</span>. My goal: make a long-running MVC4 action asynchronous to prevent thread starvation in&nbsp;ASP.NET.</p>
+<p>When the call is made, the action fires off an executable to perform some work. This executable returns immediately and offers few hooks, so the only way I can be certain that the operation has completed is to watch for the appearance of a particular zero-byte file that it creates when it has&nbsp;finished.</p>
+<p>The beauty of <em>async/await</em> is how it does away with the traditional async callback method. Instead of Begin/End pairs, or Async/Complete, or even callback events, you get code that looks something like&nbsp;this.</p>
+<pre><code>public async Task&lt;Stuff&gt; GetStuffAsync() {
+    Stuff stuff = await DoTheAsyncThing();
+    return stuff;
+}
+</code></pre><p>It all looks very synchronous and saves a lot of mental unwinding that would happen&nbsp;otherwise.</p>
+<p>But as I learned today, once you do hit the <code>await</code> statement, you are still leaving the stack. And when the <code>await</code> returns, the place you come back to may not be identical to the place you left, depending on how it got there. Here’s a contrived&nbsp;example.</p>
+<pre><code>public async Task&lt;Stuff&gt; GetStuffAsync(string someRelativeFolder) {
+    string completionFile = 
+        HttpContext.Current.Server.MapPath(
+            Path.Combine(someRelativeFolder, &quot;file.txt&quot;))
+    await VerifyFileExists(completionFile);
+
+    string absolutePath = HttpContext.Current.Server.MapPath(
+        Path.Combine(someRelativeFolder, &quot;anotherfile.xml&quot;));
+
+    return LoadStuffFromAbsolutePath(absolutePath);
+}
+
+public async Task VerifyFileExists(string path) {
+    if (File.Exists(path)) return Task.FromResult(true);
+    var tsc = new TaskCompletionSource&lt;bool&gt;();
+    var fsw = new FileSystemWatcher(Path.GetDirectoryName(path));
+    FileSystemEventHandler createdHandler = null;
+    createdHandler = (s, e) =&gt; {
+        if (e.Name == Path.GetFileName(path)) {
+            tcs.SetResult(true);
+            watcher.Created -= createdHandler;
+            watcher.Dispose();
+        }
+    }
+    watcher.Created += createdHandler;
+    watcher.EnableRaisingEvents = true;
+    return tcs.Task;
+}
+</code></pre><p>This throws a <code>NullReferenceException</code> the <strong>second</strong> time that you try to access <code>HttpContext.Current</code>. Why? The <code>fsw.Created</code> handler is called on a different thread than the one you just came from. That’s a pretty well-known fact and is why the <code>FileSystemWatcher</code> has a <code>SynchronizingObject</code> property to help WinForms programmers navigate their way back to the <span class="caps">UI</span>&nbsp;thread. </p>
+<p>But it also exposes the “through the looking glass” nature of <em>async/await</em>. The simplified syntax obscures the true nature of the code — in one method, the same object goes from having a value to having no value. Watch&nbsp;out!</p>
+
+            <p style="font-size:smaller"><a href="/articles/async-await-through-the-looking-glass/#disqus_thread" data-disqus-identifier="async-await-through-the-looking-glass" class="articleLink">Comments</a></p>
+          </section>
+        </article>
+        <article class="article intro">
+          <header>
             <p class="date"><span>18. November 2013</span></p>
             <h2><a href="/articles/when-badimageformatexception-is-not-what-it-seems/" class="articleLink">When BadImageFormatException Is Not What It Seems</a></h2>
           </header>
@@ -130,16 +181,6 @@ at System.Linq.Enumerable.Cast[TResult](IEnumerable source)
             <p style="font-size:smaller"><a href="/articles/nhibernate-cant-short-circuit/#disqus_thread" data-disqus-identifier="nhibernate-cant-short-circuit" class="articleLink">Comments</a></p>
           </section>
         </article>
-        <article class="article intro">
-          <header>
-            <p class="date"><span>30. October 2013</span></p>
-            <h2><a href="/articles/internet-famous/" class="articleLink">Internet Famous?</a></h2>
-          </header>
-          <section class="content"><p>My coworking space, <a href="http://www.worksprogressseattle.com">Works Progress</a>, interviewed me on their blog! <a href="http://www.worksprogressseattle.com/meet-mike-roufa/">I’m famous… on the&nbsp;Internet.</a></p>
-
-            <p style="font-size:smaller"><a href="/articles/internet-famous/#disqus_thread" data-disqus-identifier="internet-famous" class="articleLink">Comments</a></p>
-          </section>
-        </article>
       </div>
     </div>
     <footer>
@@ -153,7 +194,7 @@ Hi, I’m Michael Roufa.</p>
 
         </section>
         <section class="copy">
-          <p>&copy; 2014 Michael Roufa &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          <p>&copy; 2016 Michael Roufa &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
           </p>
         </section>
         <script>

@@ -5,9 +5,23 @@
     <atom:link href="http://www.roufa.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://www.roufa.com</link>
     <description>Making Beautiful Things Work</description>
-    <pubDate>Sun, 28 Sep 2014 17:00:00 -0700</pubDate>
+    <pubDate>Sat, 04 Jun 2016 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Heap in C#</title>
+      <link>http://www.roufa.com/articles/heap-in-csharp/</link>
+      <pubDate>Sat, 04 Jun 2016 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://www.roufa.com/articles/heap-in-csharp/</guid>
+      <author></author>
+      <description>&lt;p&gt;&lt;img src=&quot;/articles/heap-in-csharp/dung-406217_960_720.jpg&quot; alt=&quot;What a heap.&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I found myself wanting to learn a bit more about Heaps so I built one in C#. 
+Array backed storage, &lt;em&gt;O(log(n))&lt;/em&gt; inserts and removals, &lt;em&gt;(O(1))&lt;/em&gt; to get the min/max value. 
+It can be a Min- or a Max-Heap, and it accepts any type as long as that type is &lt;em&gt;IComparable&lt;/em&gt;.
+&amp;nbsp;&lt;br&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/roufamatic/ee7e11469809f2b276c0d3dc6b8dd80b.js&quot;&gt;&lt;/script&gt;
+</description>
+    </item>
     <item>
       <title>Pay the Piper</title>
       <link>http://www.roufa.com/articles/pay-the-piper/</link>
